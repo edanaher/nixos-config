@@ -96,6 +96,8 @@ in
     Option "RTCornerButton" "3"
     Option "TapButton2" "3"
     Option "TapButton3" "2"
+    Option "ClickFinger2" "3"
+    Option "ClickFinger3" "2"
     Option "CircularScrolling" "1"
     Option "CircScrollTrigger" "2"
     Option "RightButtonAreaLeft" "560"
