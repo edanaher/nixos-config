@@ -15,13 +15,13 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/acfbe5c4-50a7-4e63-a5d3-daad2b5221d6";
       fsType = "btrfs";
-      options = [ "subvol=root" ];
+      options = [ "subvol=root" "compress" ];
     };
 
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/acfbe5c4-50a7-4e63-a5d3-daad2b5221d6";
       fsType = "btrfs";
-      options = [ "subvol=home" ];
+      options = [ "subvol=home" "compress" ];
     };
 
   swapDevices =
