@@ -147,6 +147,7 @@ in
 
   # hardware.firmware = [ custom-firmware ];
   hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.package = pkgs.pulseaudioFull;
   hardware.bluetooth.enable = true;
 
   swapDevices = [ { device = "/dev/sda9"; } ];
