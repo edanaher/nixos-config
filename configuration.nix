@@ -21,6 +21,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./exim.nix
     ];
 
   # networking.firewall.enable=false;
