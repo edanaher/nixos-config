@@ -29,6 +29,18 @@
       options = [ "noatime" ];
     };
 
+  fileSystems."/home/edanaher/extra" =
+    { device = "/dev/mapper/vgtor-home--extra";
+      fsType = "ext4";
+      options = [ "noatime" "noexec" ];
+    };
+
+  fileSystems."/mnt/snapshots" =
+    { device = "/dev/mapper/vgfah-home--snapshots";
+      fsType = "btrfs";
+      options = [ "compress" "noatime" ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/7e7b4a0c-3c6e-47e9-9278-ca315d8b83ea"; }
     ];
