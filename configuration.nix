@@ -84,6 +84,8 @@
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
   hardware.bluetooth.enable = true;
 
+  networking.extraHosts = "216.218.223.91 gahlpo";
+
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "16.03";
 
