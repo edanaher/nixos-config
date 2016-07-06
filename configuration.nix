@@ -85,6 +85,9 @@
   hardware.bluetooth.enable = true;
 
   networking.extraHosts = "216.218.223.91 gahlpo";
+  networking.firewall.allowedUDPPortRanges = [
+    { from = 60000; to = 61000; }
+  ];
 
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "16.03";
