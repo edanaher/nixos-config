@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./exim.nix
       ./snapshot.nix
+      ./pulseaudio
     ];
 
   # Use the GRUB 2 boot loader.
@@ -79,10 +80,6 @@
   };
 
   nix.buildCores = 4;
-
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.package = pkgs.pulseaudioFull;
-  hardware.bluetooth.enable = true;
 
   networking.extraHosts = "216.218.223.91 gahlpo";
   networking.firewall.allowedUDPPortRanges = [
