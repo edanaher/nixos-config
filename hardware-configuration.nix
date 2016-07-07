@@ -38,7 +38,13 @@
   fileSystems."/mnt/snapshots" =
     { device = "/dev/mapper/vgfah-home--snapshots";
       fsType = "btrfs";
-      options = [ "compress" "noatime" ];
+      options = [ "compress" "noatime" "nofail" ];
+    };
+
+  fileSystems."/mnt/movies" =
+    { device = "/dev/mapper/vgtor-movies";
+      fsType = "ext4";
+      options = [ "nofail" "noatime" ];
     };
 
   swapDevices =
