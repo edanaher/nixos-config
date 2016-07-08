@@ -47,6 +47,12 @@
       options = [ "nofail" "noatime" ];
     };
 
+  fileSystems."/mnt/old" =
+    { device = "/dev/mapper/vgtor-old";
+      fsType = "ext4";
+      options = [ "nofail" "noatime" ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/7e7b4a0c-3c6e-47e9-9278-ca315d8b83ea"; }
     ];
