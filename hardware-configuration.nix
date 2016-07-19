@@ -53,6 +53,12 @@
       options = [ "nofail" "noatime" ];
     };
 
+  fileSystems."/mnt/external" =
+    { device = "/dev/disk/by-uuid/6d5f4267-2d60-4cd6-b623-3b96793b3529";
+      fsType = "btrfs";
+      options = [ "noauto" "noatime" "nofail" ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/7e7b4a0c-3c6e-47e9-9278-ca315d8b83ea"; }
     ];
