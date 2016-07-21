@@ -53,10 +53,22 @@
       options = [ "nofail" "noatime" ];
     };
 
+  fileSystems."/mnt/bak" =
+    { device = "/dev/mapper/vgtor-bak";
+      fsType = "ext4";
+      options = [ "nofail" "noatime" ];
+    };
+
   fileSystems."/mnt/external" =
     { device = "/dev/disk/by-uuid/6d5f4267-2d60-4cd6-b623-3b96793b3529";
       fsType = "btrfs";
       options = [ "noauto" "noatime" "nofail" ];
+    };
+
+  fileSystems."/mnt/data" =
+    { device = "/dev/mapper/vgtor-data";
+      fsType = "ext4";
+      options = [ "noatime" "nofail" ];
     };
 
   swapDevices =
