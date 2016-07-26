@@ -71,6 +71,13 @@
       options = [ "noatime" "nofail" ];
     };
 
+  fileSystems."/mnt/kobo" =
+    { device = "/dev/disk/by-uuid/51A9-A1CD";
+      fsType = "vfat";
+      options = [ "noatime" "nofail" "noauto" "user" ];
+    };
+
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/7e7b4a0c-3c6e-47e9-9278-ca315d8b83ea"; }
     ];

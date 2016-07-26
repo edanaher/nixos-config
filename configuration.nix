@@ -91,5 +91,7 @@
 
   boot.tmpOnTmpfs = true;
 
+  security.setuidPrograms = [ "mount" "umount" ];
+
   nix.useSandbox = true;
 }
