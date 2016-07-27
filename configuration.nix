@@ -76,7 +76,7 @@
   users.extraUsers.edanaher = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "audio" ];
+    extraGroups = [ "audio" "docker" ];
   };
 
   nix.buildCores = 4;
@@ -92,6 +92,9 @@
   boot.tmpOnTmpfs = true;
 
   security.setuidPrograms = [ "mount" "umount" ];
+
+  virtualisation.docker.enable = true;
+  virtualisation.docker.storageDriver = "btrfs";
 
   nix.useSandbox = true;
 }
