@@ -16,6 +16,7 @@ let
     };
     configfile=./kernel/customKernel.config;
   };
+  fvwm_gestures = pkgs.fvwm.override { gestures = true; };
 in
 {
   imports =
@@ -59,7 +60,7 @@ in
     wget
     vim
     hdparm
-    (pkgs.fvwm.override { gestures = true; })
+    fvwm_gestures
 #    fvwm
     screen
     rxvt_unicode
@@ -118,7 +119,7 @@ in
         start = ''
           export PATH=$PATH:/home/edanaher/bin/bin
           xmodmap ~/.Xmodmap
-	  ${pkgs.fvwm}/bin/fvwm &
+	  ${fvwm_gestures}/bin/fvwm &
           waitPID=$!
         '';
       } 
