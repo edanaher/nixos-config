@@ -9,10 +9,10 @@ let
   acpid-script = (import scripts/acpid-script.nix);
   custom-firmware = (import firmware/default.nix);
   my_kernelPackages = pkgs.linuxPackages_custom {
-    version = "4.6.3";
+    version = "4.7.2";
     src = pkgs.fetchurl {
-      url = "mirror://kernel/linux/kernel/v4.x/linux-4.6.3.tar.xz";
-      sha256 = "13188892941ea6c21d5db5a391ee73a27ef20de4cc81f14574aff0a522630967";
+      url = "mirror://kernel/linux/kernel/v4.x/linux-4.7.2.tar.xz";
+      sha256 = "58493ee6569484fab1658e680fbb7a72ad75f02211316628fe7ee5fd39f96488";
     };
     configfile=./kernel/customKernel.config;
   };
@@ -128,7 +128,7 @@ in
 #  fonts.fontconfig.hinting.autohint = false;
 #  fonts.fontconfig.hinting.style = "slight";
   fonts.fontconfig.ultimate.enable = true;
-  fonts.fontconfig.ultimate.rendering = pkgs.fontconfig-ultimate.rendering.shove;
+  #fonts.fontconfig.ultimate.rendering = pkgs.fontconfig-ultimate.rendering.shove;
 
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.kdm.enable = true;
