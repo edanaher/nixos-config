@@ -76,7 +76,7 @@
   users.extraUsers.edanaher = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "audio" "docker" ];
+    extraGroups = [ "audio" "docker" "wheel" ];
   };
 
   nix.buildCores = 4;
