@@ -85,6 +85,9 @@
   networking.firewall.allowedUDPPortRanges = [
     { from = 60000; to = 61000; }
   ];
+  networking.firewall.allowedTCPPortRanges = [
+    { from = 5900; to = 5920; }
+  ];
 
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "16.03";
