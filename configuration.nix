@@ -99,5 +99,8 @@
   virtualisation.docker.enable = true;
   virtualisation.docker.storageDriver = "btrfs";
 
+  virtualisation.virtualbox.host.enable = true;
+
   nix.useSandbox = true;
 }
+
