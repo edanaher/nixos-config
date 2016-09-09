@@ -24,9 +24,9 @@
     };
 
   fileSystems."/home" =
-    { device = "/dev/mapper/vgsehn-home";
-      fsType = "ext4";
-      options = [ "noatime" ];
+    { device = "/dev/disk/by-uuid/8e74b8e7-fd92-4e62-b9b5-55782f48e064";
+      fsType = "btrfs";
+      options = [ "subvol=home" "compress" "noatime" ];
     };
 
   fileSystems."/home/edanaher/extra" =
