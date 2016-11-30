@@ -8,18 +8,16 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./exim.nix
-      ./snapshot.nix
       ./pulseaudio
     ];
 
   # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.enable = false;
+  # boot.loader.grub.version = 2;
+  # # Define on which hard drive you want to install Grub.
+  # boot.loader.grub.device = "/dev/sda";
 
-  networking.hostName = "chileh"; # Define your hostname.
+  networking.hostName = "gemedet"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Select internationalisation properties.
@@ -35,8 +33,6 @@
   environment.systemPackages = with pkgs; [
    wget
    vim
-   hdparm
-   fvwm
    screen
    rxvt_unicode
    hsetroot
@@ -79,27 +75,23 @@
     extraGroups = [ "audio" "docker" "wheel" ];
   };
 
-  nix.buildCores = 4;
+  nix.buildCores = 8;
 
-  networking.extraHosts = "216.218.223.91 gahlpo";
-  networking.firewall.allowedUDPPortRanges = [
-    { from = 60000; to = 61000; }
-  ];
-  networking.firewall.allowedTCPPortRanges = [
-    { from = 5900; to = 5920; }
-  ];
+  #networking.firewall.allowedTCPPortRanges = [
+  #  { from = 5900; to = 5920; }
+  #];
 
   # The NixOS release to be compatible with for stateful data such as databases.
-  system.stateVersion = "16.03";
+  system.stateVersion = "16.09";
 
   boot.tmpOnTmpfs = true;
 
   security.setuidPrograms = [ "mount" "umount" ];
 
-  virtualisation.docker.enable = true;
-  virtualisation.docker.storageDriver = "btrfs";
+  #virtualisation.docker.enable = true;
+  #virtualisation.docker.storageDriver = "btrfs";
 
-  virtualisation.virtualbox.host.enable = true;
+  #virtualisation.virtualbox.host.enable = true;
 
   nix.useSandbox = true;
 }
