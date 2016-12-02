@@ -9,6 +9,9 @@
     ];
 
   boot.initrd.availableKernelModules = [ "ahci" "rtsx_pci_sdmmc" ];
+  boot.initrd.luks.devices = [
+    { name = "nvme0n1p3_crypt"; device = "/dev/sda3"; preLVM = true; }
+  ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
@@ -18,12 +21,13 @@
       options = [ "subvol=root" "compress" "noatime" ];
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/e53e014b-8fe5-4eb9-be4d-9c3a3f8c284a";
-      fsType = "ext2";
-    };
+  # Ubuntu's boot partition; nix just does it all on EFI.
+  #fileSystems."/boot" =
+  #  { device = "/dev/disk/by-uuid/e53e014b-8fe5-4eb9-be4d-9c3a3f8c284a";
+  #    fsType = "ext2";
+  #  };
 
-  fileSystems."/boot/efi" =
+  fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/F49A-AC67";
       fsType = "vfat";
     };

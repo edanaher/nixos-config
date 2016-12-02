@@ -12,10 +12,15 @@
     ];
 
   # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = false;
+  # boot.loader.grub.enable = true;
   # boot.loader.grub.version = 2;
   # # Define on which hard drive you want to install Grub.
   # boot.loader.grub.device = "/dev/sda";
+  #
+  # Use the gummiboot efi boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.timeout = 10;
+  boot.loader.efi.canTouchEfiVariables = false;
 
   networking.hostName = "gemedet"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
