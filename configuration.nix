@@ -98,6 +98,9 @@
 
   #virtualisation.virtualbox.host.enable = true;
 
+  #services.physlock.enable = true;
+  #services.physlock.user = "edanaher";
+
   nix.useSandbox = true;
 }
 
