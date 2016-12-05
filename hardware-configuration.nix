@@ -29,11 +29,11 @@
       options = [ "subvol=home" "compress" "noatime" ];
     };
 
-  fileSystems."/home/edanaher/extra" =
+  /*fileSystems."/home/edanaher/extra" =
     { device = "/dev/mapper/vgtor-home--extra";
       fsType = "ext4";
       options = [ "noatime" "noexec" ];
-    };
+    };*/
 
   fileSystems."/mnt/snapshots" =
     { device = "/dev/mapper/vgfah-home--snapshots";

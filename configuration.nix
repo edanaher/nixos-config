@@ -87,7 +87,13 @@
   ];
   networking.firewall.allowedTCPPortRanges = [
     { from = 5900; to = 5920; }
+    { from = 24800; to = 24800; }
   ];
+
+  # NAT for containers
+  networking.nat.enable = true;
+  networking.nat.internalInterfaces = ["ve-+"];
+  networking.nat.externalInterface = "wlp2s0";
 
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "16.03";
