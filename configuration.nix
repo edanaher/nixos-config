@@ -107,6 +107,9 @@
   #networking.firewall.allowedTCPPortRanges = [
   #  { from = 5900; to = 5920; }
   #];
+  networking.extraHosts = ''
+    127.0.0.1 gemedet
+  '';
 
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "16.09";
