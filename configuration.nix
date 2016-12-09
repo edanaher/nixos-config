@@ -124,5 +124,7 @@
   #services.physlock.user = "edanaher";
 
   nix.useSandbox = true;
+  nix.trustedBinaryCaches = [ https://bob.logicblox.com ];
+  nix.requireSignedBinaryCaches = false;
 }
 
