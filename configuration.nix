@@ -83,7 +83,12 @@
 
   nix.buildCores = 4;
 
-  networking.extraHosts = "216.218.223.91 gahlpo";
+  networking.extraHosts = ''
+    #216.218.223.91 gahlpo
+    71.19.155.118 gahlpo
+    192.168.12.235 deretheni
+    169.254.94.126 gemedetw
+    '';
   networking.firewall.allowedUDPPortRanges = [
     { from = 60000; to = 61000; }
   ];
