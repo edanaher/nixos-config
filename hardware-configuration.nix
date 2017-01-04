@@ -42,19 +42,19 @@
     };
 
   fileSystems."/mnt/movies" =
-    { device = "/dev/mapper/vgtor-movies";
+    { device = "/dev/mapper/vgvagafah-movies";
       fsType = "ext4";
       options = [ "nofail" "noatime" ];
     };
 
   fileSystems."/mnt/old" =
-    { device = "/dev/mapper/vgtor-old";
+    { device = "/dev/mapper/vgvagafah-old";
       fsType = "ext4";
       options = [ "nofail" "noatime" ];
     };
 
   fileSystems."/mnt/bak" =
-    { device = "/dev/mapper/vgtor-bak";
+    { device = "/dev/mapper/vgvagafah-bak";
       fsType = "ext4";
       options = [ "nofail" "noatime" ];
     };
