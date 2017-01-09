@@ -121,6 +121,10 @@
 
   security.setuidPrograms = [ "mount" "umount" ];
 
+  security.sudo.configFile = ''
+    edanaher ALL=(ALL) NOPASSWD: /home/edanaher/bin/bin/_set_brightness.sh
+  '';
+
   #virtualisation.docker.enable = true;
   #virtualisation.docker.storageDriver = "btrfs";
 
