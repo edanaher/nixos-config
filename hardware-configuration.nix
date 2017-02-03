@@ -42,7 +42,7 @@
     };
 
   fileSystems."/mnt/movies" =
-    { device = "/dev/mapper/vgvagafah-movies";
+    { device = "/dev/mapper/vgtor-movies";
       fsType = "ext4";
       options = [ "nofail" "noatime" ];
     };
@@ -66,7 +66,7 @@
     };
 
   fileSystems."/mnt/data" =
-    { device = "/dev/mapper/vgtor-data";
+    { device = "/dev/mapper/vgvagafah-data";
       fsType = "ext4";
       options = [ "noatime" "nofail" ];
     };
