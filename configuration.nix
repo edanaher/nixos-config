@@ -8,14 +8,6 @@ let
   udev-keyboard-autoplug = (import scripts/udev-keyboard-autoplug.nix);
   acpid-script = (import scripts/acpid-script.nix);
   custom-firmware = (import firmware/default.nix);
-  my_kernelPackages = pkgs.linuxPackages_custom {
-    version = "4.7.2";
-    src = pkgs.fetchurl {
-      url = "mirror://kernel/linux/kernel/v4.x/linux-4.7.2.tar.xz";
-      sha256 = "58493ee6569484fab1658e680fbb7a72ad75f02211316628fe7ee5fd39f96488";
-    };
-    configfile=./kernel/customKernel.config;
-  };
   fvwm_gestures = pkgs.fvwm.override { gestures = true; };
 in
 {
@@ -32,9 +24,6 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.timeout = 10;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.kernelPackages = my_kernelPackages;
-  #boot.kernelPackages = pkgs.linuxPackages_4_6;
 
   #boot.kernelModules = boot.kernelModules ++ [ "i2c_core" ];
   #boot.initrd.availableKernelModules = boot.initrd.availableKernelModules ++ [ "i2c_core" ];
