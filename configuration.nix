@@ -132,6 +132,7 @@ in
 
   security.sudo.configFile= ''
     edanaher ALL=(ALL) NOPASSWD: /home/edanaher/bin/bin/_set_brightness.sh
+    edanaher ALL=(ALL) NOPASSWD: /run/current-system/sw/bin/rfkill
   '';
 
   nix.buildCores = 4;
