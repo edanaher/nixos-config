@@ -1,5 +1,6 @@
 #!/bin/sh
 
+export XAUTHORITY=/home/edanaher/.Xauthority
 export PATH=$PATH:/run/current-system/sw/bin/
 export DISPLAY=:0
 STATE=`cat /proc/acpi/button/lid/LID0/state | xargs echo -n`
