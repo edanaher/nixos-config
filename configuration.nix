@@ -114,15 +114,6 @@ in
       } 
     ];
      
-#  fonts.fontconfig.hinting.autohint = false;
-#  fonts.fontconfig.hinting.style = "slight";
-  fonts.fontconfig.ultimate.enable = true;
-  #fonts.fontconfig.ultimate.rendering = pkgs.fontconfig-ultimate.rendering.shove;
-
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.kdm.enable = true;
-  # services.xserver.desktopManager.kde4.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.edanaher = {
     isNormalUser = true;
