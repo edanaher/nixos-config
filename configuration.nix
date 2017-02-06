@@ -19,7 +19,7 @@
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda";
 
-  boot.kernelPackages = pkgs.linuxPackages_4_8;
+  boot.kernelPackages = pkgs.linuxPackages_4_9;
 
   networking.hostName = "chileh"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
