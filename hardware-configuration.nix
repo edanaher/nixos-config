@@ -12,6 +12,8 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  boot.supportedFilesystems = [ "exfat" ];
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/acfbe5c4-50a7-4e63-a5d3-daad2b5221d6";
       fsType = "btrfs";
