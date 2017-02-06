@@ -1,6 +1,7 @@
 {config, lib, pkgs, ...}:
 
 let
+  utils = import ./utils.nix { inherit lib; };
   hosts = {
     "chileh" = {
       host.class ="desktop";
@@ -26,9 +27,7 @@ let
 
     };
   };
-  hostconfigs = lib.mapAttrs (name: host: lib.mkIf (name == config.host.name) host) hosts;
-  hostconfig = lib.mkMerge (builtins.attrValues hostconfigs);
-  classconfigs = lib.mapAttrs (name: class: lib.mkIf (name == "desktop") class) classes;
-  classconfig = lib.mkMerge (builtins.attrValues classconfigs);
+  hostconfig = utils.select config.host.name hosts;
+  classconfig = utils.select config.host.class classes;
 in
   lib.mkMerge [ hostconfig classconfig ]
