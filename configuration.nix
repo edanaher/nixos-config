@@ -9,6 +9,8 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./exim.nix
+      ./host
+      ./hostname.nix
       ./snapshot.nix
       ./pulseaudio
     ];
@@ -21,7 +23,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_4_9;
 
-  networking.hostName = "chileh"; # Define your hostname.
+  networking.hostName = config.host.name; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Select internationalisation properties.

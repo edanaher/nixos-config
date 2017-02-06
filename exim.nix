@@ -3,7 +3,6 @@
 let secrets = import ./secrets.nix;
 in
 {
-  services.exim.enable = true;
   services.exim.config = ''
     domainlist local_domains = @ : localhost
     hostlist relay_from_hosts = <; 127.0.0.1 ; ::1
