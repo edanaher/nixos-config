@@ -144,7 +144,6 @@ in
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
   hardware.bluetooth.enable = true;
 
-  swapDevices = [ { device = "/dev/sda9"; } ];
   services.udev.extraRules = ''
     ACTION=="add", ATTRS{idVendor}=="06cb", ATTRS{idProduct}=="2819", RUN+="${udev-keyboard-autoplug}/bin/udev-keyboard-autoplug.sh"
   '';
