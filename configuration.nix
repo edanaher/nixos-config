@@ -158,5 +158,11 @@ in
     fsType = "vfat";
   };
 
+  services.tlp.enable = true;
+  services.tlp.extraConfig = ''
+    RESTORE_DEVICE_STATE_ON_STARTUP=1
+  '';
+
   #nix.nixPath = [ "/home/edanaher" "nixos-config=/etc/nixos/configuration.nix" ];
+
 }
