@@ -83,8 +83,6 @@
     extraGroups = [ "audio" "docker" "wheel" ];
   };
 
-  nix.buildCores = 4;
-
   networking.extraHosts = ''
     #216.218.223.91 gahlpo
     71.19.155.118 gahlpo
