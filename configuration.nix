@@ -15,7 +15,6 @@ in
       ./hostname.nix
       ./containers.nix
       ./exim.nix
-      ./snapshot.nix
       ./pulseaudio
     ];
 
