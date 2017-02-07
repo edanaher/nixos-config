@@ -77,7 +77,7 @@ in
   users.extraUsers.edanaher = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "audio" ];
+    extraGroups = [ "audio" "docker" "wheel" ];
   };
 
   time.timeZone = "America/New_York";
