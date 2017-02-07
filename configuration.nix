@@ -5,7 +5,6 @@
 { config, pkgs, ... }:
 
 let
-  udev-keyboard-autoplug = (import scripts/udev-keyboard-autoplug.nix);
   fvwm_gestures = pkgs.fvwm.override { gestures = true; };
 in
 {
@@ -37,7 +36,6 @@ in
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  services.udev.packages = [ udev-keyboard-autoplug ];
   environment.systemPackages = with pkgs; [
     wget
     vim
@@ -51,7 +49,6 @@ in
     imagemagick
     xlibs.xmodmap
     xlibs.xev
-    udev-keyboard-autoplug
   ];
 
   # List services that you want to enable:
@@ -93,10 +90,6 @@ in
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
   hardware.bluetooth.enable = true;
-
-  services.udev.extraRules = ''
-    ACTION=="add", ATTRS{idVendor}=="06cb", ATTRS{idProduct}=="2819", RUN+="${udev-keyboard-autoplug}/bin/udev-keyboard-autoplug.sh"
-  '';
 
   services.tlp.enable = true;
   services.tlp.extraConfig = ''

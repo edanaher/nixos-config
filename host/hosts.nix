@@ -2,6 +2,7 @@
 
 let
   utils = import ./utils.nix { inherit lib; };
+  udev-keyboard-autoplug = import ../scripts/udev-keyboard-autoplug.nix;
   acpid-script = import ../scripts/acpid-script.nix;
   hosts = {
     "chileh" = {
@@ -36,6 +37,12 @@ let
         Option "MiddleButtonAreaRight" "559"
         Option "MiddleButtonAreaTop" "400"
       '';
+
+      services.udev.packages = [ udev-keyboard-autoplug ];
+      services.udev.extraRules = ''
+        ACTION=="add", ATTRS{idVendor}=="06cb", ATTRS{idProduct}=="2819", RUN+="${udev-keyboard-autoplug}/bin/udev-keyboard-autoplug.sh"
+      '';
+
     };
     "gemedet" = {
       nix.buildCores = 8;
