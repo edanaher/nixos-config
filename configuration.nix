@@ -13,6 +13,7 @@ in
       ./hardware-configuration
       ./host
       ./hostname.nix
+      ./containers.nix
       ./pulseaudio
     ];
 
