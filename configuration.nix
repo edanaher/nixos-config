@@ -93,8 +93,7 @@ in
     { from = 24800; to = 24800; } # Synergy
   ];
 
-  # The NixOS release to be compatible with for stateful data such as databases.
-  system.stateVersion = "16.03";
+  #nix.nixPath = [ "/home/edanaher" "nixos-config=/etc/nixos/configuration.nix" ];
 
   boot.tmpOnTmpfs = true;
 
