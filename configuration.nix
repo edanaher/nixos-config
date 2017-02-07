@@ -37,12 +37,10 @@ in
     vim
     hdparm
     fvwm_gestures
-#    fvwm
     screen
     rxvt_unicode
     hsetroot
     binutils
-    imagemagick
     xlibs.xmodmap
     xlibs.xev
   ];
