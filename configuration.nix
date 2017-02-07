@@ -4,10 +4,13 @@
 
 { config, pkgs, ... }:
 
+let
+  fvwm_gestures = pkgs.fvwm.override { gestures = config.host.touchscreen; };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware-configuration
       ./pulseaudio
     ];
 
