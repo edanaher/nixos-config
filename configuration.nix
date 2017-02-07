@@ -68,31 +68,6 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "us";
-  services.xserver.synaptics.enable = true;
-  # Uses a generic driver instead of the synaptics one; not as nice.
-  #services.xserver.multitouch.enable = true;
-
-  services.xserver.synaptics.accelFactor = "0.05";
-  services.xserver.synaptics.minSpeed = "1";
-  services.xserver.synaptics.maxSpeed = "2.5";
-  services.xserver.synaptics.twoFingerScroll = true;
-  services.xserver.synaptics.vertEdgeScroll = true;
-  services.xserver.synaptics.additionalOptions = ''
-    Option "VertScrollDelta" "16"
-    Option "RTCornerButton" "3"
-    Option "TapButton2" "3"
-    Option "TapButton3" "2"
-    Option "ClickFinger2" "3"
-    Option "ClickFinger3" "2"
-    Option "CircularScrolling" "1"
-    Option "CircScrollTrigger" "2"
-    Option "RightButtonAreaLeft" "560"
-    Option "RightButtonAreaTop" "400"
-    Option "MiddleButtonAreaLeft" "460"
-    Option "MiddleButtonAreaRight" "559"
-    Option "MiddleButtonAreaTop" "400"
-  '';
-
 
   programs.bash.enableCompletion = true;
 
@@ -115,12 +90,6 @@ in
     uid = 1000;
     extraGroups = [ "audio" ];
   };
-
-  security.sudo.configFile= ''
-    edanaher ALL=(ALL) NOPASSWD: /home/edanaher/bin/bin/_set_brightness.sh
-    edanaher ALL=(ALL) NOPASSWD: /run/current-system/sw/bin/rfkill
-  '';
-
 
   time.timeZone = "America/New_York";
 
