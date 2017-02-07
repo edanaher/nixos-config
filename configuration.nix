@@ -24,10 +24,7 @@ in
   boot.loader.timeout = 10;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  #boot.kernelModules = boot.kernelModules ++ [ "i2c_core" ];
-  #boot.initrd.availableKernelModules = boot.initrd.availableKernelModules ++ [ "i2c_core" ];
   boot.kernelParams = [ "resume=${(builtins.head config.swapDevices).device}" ];
-  # boot.kernelExtraConfig = "SND_SOC_INTEL_BROADWELL_MACH y";
 
   networking.hostName = config.host.name; # Define your hostname.
   networking.hostId = "65c89bd7";
