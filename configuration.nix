@@ -4,6 +4,9 @@
 
 { config, pkgs, ... }:
 
+let
+  fvwm_gestures = pkgs.fvwm.override { gestures = config.host.touchscreen; };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -40,7 +43,7 @@
    wget
    vim
    hdparm
-   fvwm
+   fvwm_gestures
    screen
    rxvt_unicode
    hsetroot
@@ -70,7 +73,7 @@
         start = ''
           export PATH=$PATH:/home/edanaher/bin/bin
           xmodmap ~/.Xmodmap
-	  ${pkgs.fvwm}/bin/fvwm &
+	  ${fvwm_gestures}/bin/fvwm &
           waitPID=$!
         '';
       } 
