@@ -62,6 +62,11 @@ let
       services.acpid.enable = true;
       services.acpid.lidEventCommands = "${acpid-script}/bin/acpid-script.sh";
       services.logind.extraConfig = "HandleLidSwitch=ignore";
+
+      services.tlp.enable = true;
+      services.tlp.extraConfig = ''
+        RESTORE_DEVICE_STATE_ON_STARTUP=1
+      '';
     };
     "desktop" = {
     };
