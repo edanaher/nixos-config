@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let secrets = import ./secrets;
+let secrets = import ./secrets.nix;
 in
 {
   services.exim.enable = true;
