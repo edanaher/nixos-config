@@ -53,7 +53,6 @@ in
     xlibs.xmodmap
     xlibs.xev
     udev-keyboard-autoplug
-    acpid-script
   ];
 
   # List services that you want to enable:
