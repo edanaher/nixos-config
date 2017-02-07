@@ -77,15 +77,19 @@ in
 
   time.timeZone = "America/New_York";
 
-  #networking.firewall.allowedTCPPortRanges = [
-  #  { from = 5900; to = 5910; } # VNC
-  #];
   networking.extraHosts = ''
-    127.0.0.1 gemedet
+    71.19.155.118 gahlpo
   '';
 
-  # The NixOS release to be compatible with for stateful data such as databases.
-  system.stateVersion = "16.09";
+  networking.firewall.allowedUDPPortRanges = [
+    { from = 60000; to = 61000; }  # Mosh
+  ];
+  networking.firewall.allowedTCPPortRanges = [
+    { from = 5900; to = 5910; } # VNC
+    { from = 24800; to = 24800; } # Synergy
+  ];
+
+  #nix.nixPath = [ "/home/edanaher" "nixos-config=/etc/nixos/configuration.nix" ];
 
   boot.tmpOnTmpfs = true;
 
