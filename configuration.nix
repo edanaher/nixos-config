@@ -17,6 +17,7 @@ in
       ./pulseaudio
     ];
 
+  boot.kernelParams = [ "resume=${(builtins.head config.swapDevices).device}" ];
 
   networking.hostName = config.host.name; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless.
