@@ -96,6 +96,4 @@ in
   security.setuidPrograms = [ "mount" "umount" ];
 
   nix.useSandbox = true;
-  nix.trustedBinaryCaches = [ https://bob.logicblox.com ];
-  nix.requireSignedBinaryCaches = false;
 }
