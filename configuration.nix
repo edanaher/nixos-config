@@ -30,16 +30,19 @@ in
   #   defaultLocale = "en_US.UTF-8";
   # };
 
-
+  # List packages installed in system profile. To search by name, run:
+  # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-   wget
-   vim
-   screen
-   rxvt_unicode
-   hsetroot
-   binutils
-   xlibs.xmodmap
-   xlibs.xev
+    wget
+    vim
+    hdparm
+    fvwm_gestures
+    screen
+    rxvt_unicode
+    hsetroot
+    binutils
+    xlibs.xmodmap
+    xlibs.xev
   ];
 
   # List services that you want to enable:
@@ -63,7 +66,7 @@ in
         start = ''
           export PATH=$PATH:/home/edanaher/bin/bin
           xmodmap ~/.Xmodmap
-	  ${pkgs.fvwm}/bin/fvwm &
+          ${fvwm_gestures}/bin/fvwm &
           waitPID=$!
         '';
       }
