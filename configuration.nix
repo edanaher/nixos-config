@@ -27,7 +27,7 @@ in
 
   #boot.kernelModules = boot.kernelModules ++ [ "i2c_core" ];
   #boot.initrd.availableKernelModules = boot.initrd.availableKernelModules ++ [ "i2c_core" ];
-  boot.kernelParams = [ "resume=/dev/sda9" ];
+  boot.kernelParams = [ "resume=${(builtins.head config.swapDevices).device}" ];
   # boot.kernelExtraConfig = "SND_SOC_INTEL_BROADWELL_MACH y";
 
   # networking.hostName = "nixos"; # Define your hostname.
