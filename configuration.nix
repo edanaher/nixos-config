@@ -14,6 +14,8 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./host
+      ./hostname.nix
       ./exim.nix
     ];
 
@@ -27,8 +29,7 @@ in
   boot.kernelParams = [ "resume=${(builtins.head config.swapDevices).device}" ];
   # boot.kernelExtraConfig = "SND_SOC_INTEL_BROADWELL_MACH y";
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  networking.hostName = "kroen"; # Define your hostname.
+  networking.hostName = config.host.name; # Define your hostname.
   networking.hostId = "65c89bd7";
   networking.wireless.enable = true;  # Enables wireless.
 
@@ -123,7 +124,6 @@ in
     edanaher ALL=(ALL) NOPASSWD: /run/current-system/sw/bin/rfkill
   '';
 
-  nix.buildCores = 4;
 
   time.timeZone = "America/New_York";
 
