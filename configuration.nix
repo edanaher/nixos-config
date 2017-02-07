@@ -95,4 +95,9 @@ in
 
   #nix.nixPath = [ "/home/edanaher" "nixos-config=/etc/nixos/configuration.nix" ];
 
+  boot.tmpOnTmpfs = true;
+
+  security.setuidPrograms = [ "mount" "umount" ];
+
+  nix.useSandbox = true;
 }
