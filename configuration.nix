@@ -20,7 +20,6 @@ in
   boot.kernelParams = [ "resume=${(builtins.head config.swapDevices).device}" ];
 
   networking.hostName = config.host.name; # Define your hostname.
-  networking.hostId = "65c89bd7";
   networking.wireless.enable = true;  # Enables wireless.
 
   # Select internationalisation properties.
