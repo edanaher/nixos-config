@@ -6,7 +6,6 @@
 
 let
   udev-keyboard-autoplug = (import scripts/udev-keyboard-autoplug.nix);
-  acpid-script = (import scripts/acpid-script.nix);
   fvwm_gestures = pkgs.fvwm.override { gestures = true; };
 in
 {
@@ -98,10 +97,6 @@ in
   services.udev.extraRules = ''
     ACTION=="add", ATTRS{idVendor}=="06cb", ATTRS{idProduct}=="2819", RUN+="${udev-keyboard-autoplug}/bin/udev-keyboard-autoplug.sh"
   '';
-
-  services.acpid.enable = true;
-  services.acpid.lidEventCommands = "${acpid-script}/bin/acpid-script.sh";
-  services.logind.extraConfig = "HandleLidSwitch=ignore";
 
   services.tlp.enable = true;
   services.tlp.extraConfig = ''

@@ -2,6 +2,7 @@
 
 let
   utils = import ./utils.nix { inherit lib; };
+  acpid-script = import ../scripts/acpid-script.nix;
   hosts = {
     "chileh" = {
       host.class ="desktop";
@@ -47,6 +48,10 @@ let
         edanaher ALL=(ALL) NOPASSWD: /home/edanaher/bin/bin/_set_brightness.sh
         edanaher ALL=(ALL) NOPASSWD: /run/current-system/sw/bin/rfkill
       '';
+
+      services.acpid.enable = true;
+      services.acpid.lidEventCommands = "${acpid-script}/bin/acpid-script.sh";
+      services.logind.extraConfig = "HandleLidSwitch=ignore";
     };
     "desktop" = {
     };
