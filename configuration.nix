@@ -14,6 +14,7 @@ in
       ./exim.nix
       ./host
       ./hostname.nix
+      ./containers.nix
       ./snapshot.nix
       ./pulseaudio
     ];
@@ -92,22 +93,12 @@ in
     { from = 24800; to = 24800; } # Synergy
   ];
 
-  # NAT for containers
-  networking.nat.enable = true;
-  networking.nat.internalInterfaces = ["ve-+"];
-  networking.nat.externalInterface = "wlp2s0";
-
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "16.03";
 
   boot.tmpOnTmpfs = true;
 
   security.setuidPrograms = [ "mount" "umount" ];
-
-  virtualisation.docker.enable = true;
-  virtualisation.docker.storageDriver = "btrfs";
-
-  virtualisation.virtualbox.host.enable = true;
 
   nix.useSandbox = true;
 }
