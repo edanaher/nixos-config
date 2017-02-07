@@ -16,11 +16,6 @@ in
       ./exim.nix
     ];
 
-  # Use the gummiboot efi boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.timeout = 10;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   boot.kernelParams = [ "resume=${(builtins.head config.swapDevices).device}" ];
 
   networking.hostName = config.host.name; # Define your hostname.

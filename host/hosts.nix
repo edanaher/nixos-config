@@ -7,6 +7,7 @@ let
   hosts = {
     "chileh" = {
       host.class ="desktop";
+      host.boot-type = "bios";
       nix.buildCores = 4;
       services.exim.enable = true;
     };

@@ -28,7 +28,26 @@ in
         Whether or not the host has a touchscreen; enables relevant features.
       '';
     };
+    boot-type = mkOption {
+      type = types.enum [ "bios" "efi" ];
+      default = "efi";
+      description = ''
+        Type of boot; bios will use grub; efi will use systemd-boot/gummiboot.
+      '';
+    };
   };
 
+  config = mkMerge [
+    (mkIf (cfg.boot-type == "efi") {
+      boot.loader.systemd-boot.enable = true;
+      boot.loader.timeout = 10;
+      boot.loader.efi.canTouchEfiVariables = true;
+    })
+    (mkIf (cfg.boot-type == "bios") {
+      boot.loader.grub.enable = true;
+      boot.loader.grub.version = 2;
+      boot.loader.grub.device = config.fileSystems."/boot".device;
+    })
+  ];
 
 }
