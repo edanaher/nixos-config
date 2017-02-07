@@ -7,7 +7,6 @@
 let
   udev-keyboard-autoplug = (import scripts/udev-keyboard-autoplug.nix);
   acpid-script = (import scripts/acpid-script.nix);
-  custom-firmware = (import firmware/default.nix);
   fvwm_gestures = pkgs.fvwm.override { gestures = true; };
 in
 {
@@ -93,7 +92,6 @@ in
 
   time.timeZone = "America/New_York";
 
-  # hardware.firmware = [ custom-firmware ];
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
   hardware.bluetooth.enable = true;
