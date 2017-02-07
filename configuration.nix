@@ -17,8 +17,6 @@ in
       ./pulseaudio
     ];
 
-  boot.blacklistedKernelModules = [ "radeon" ];
-
 
   networking.hostName = config.host.name; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless.

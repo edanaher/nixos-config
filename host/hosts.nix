@@ -58,6 +58,9 @@ let
 
       nix.trustedBinaryCaches = [ https://bob.logicblox.com ];
       nix.requireSignedBinaryCaches = false;
+
+      boot.blacklistedKernelModules = [ "radeon" ];
+
     };
   };
   classes = {
