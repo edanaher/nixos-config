@@ -55,6 +55,11 @@ let
     "gemedet" = {
       nix.buildCores = 8;
       host.class ="laptop";
+
+      nix.trustedBinaryCaches = [ https://bob.logicblox.com ];
+      nix.requireSignedBinaryCaches = false;
+
+      boot.blacklistedKernelModules = [ "radeon" ];
     };
   };
   classes = {
