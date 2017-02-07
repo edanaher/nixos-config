@@ -14,6 +14,7 @@ in
       ./host
       ./hostname.nix
       ./exim.nix
+      ./pulseaudio
     ];
 
   boot.kernelParams = [ "resume=${(builtins.head config.swapDevices).device}" ];
@@ -81,10 +82,6 @@ in
   };
 
   time.timeZone = "America/New_York";
-
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.package = pkgs.pulseaudioFull;
-  hardware.bluetooth.enable = true;
 
   services.tlp.enable = true;
   services.tlp.extraConfig = ''
