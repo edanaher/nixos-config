@@ -7,6 +7,7 @@ let
       host.class ="desktop";
       nix.buildCores = 4;
       services.exim.enable = true;
+      host.boot-type = "bios";
     };
     "kroen" = {
       nix.buildCores = 4;

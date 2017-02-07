@@ -18,12 +18,6 @@ in
       ./pulseaudio
     ];
 
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/sda";
-
   boot.kernelPackages = pkgs.linuxPackages_4_9;
 
   networking.hostName = config.host.name; # Define your hostname.
