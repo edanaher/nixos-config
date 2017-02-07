@@ -46,7 +46,8 @@ in
     (mkIf (cfg.boot-type == "bios") {
       boot.loader.grub.enable = true;
       boot.loader.grub.version = 2;
-      boot.loader.grub.device = "/dev/sda";#config.fileSystems."/boot".device;
+      # TODO: How to extract /dev/sda from symlink /dev/disk/by-uuid/*?
+      boot.loader.grub.device = "/dev/sda"; #config.fileSystems."/boot".device;
     })
   ];
 
