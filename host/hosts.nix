@@ -43,6 +43,7 @@ let
         ACTION=="add", ATTRS{idVendor}=="06cb", ATTRS{idProduct}=="2819", RUN+="${udev-keyboard-autoplug}/bin/udev-keyboard-autoplug.sh"
       '';
 
+      host.touchscreen = true;
     };
     "gemedet" = {
       nix.buildCores = 8;

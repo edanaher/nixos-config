@@ -21,6 +21,13 @@ in
         Class of machine; used to pick reasonable defaults
       '';
     };
+    touchscreen = mkOption {
+      type = types.bool;
+      default = false;
+      description = ''
+        Whether or not the host has a touchscreen; enables relevant features.
+      '';
+    };
     test = mkOption {
       type = types.str;
       description = ''

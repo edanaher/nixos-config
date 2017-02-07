@@ -5,7 +5,7 @@
 { config, pkgs, ... }:
 
 let
-  fvwm_gestures = pkgs.fvwm.override { gestures = true; };
+  fvwm_gestures = pkgs.fvwm.override { gestures = config.host.touchscreen; };
 in
 {
   imports =
