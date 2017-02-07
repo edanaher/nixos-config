@@ -21,7 +21,7 @@ in
   boot.kernelPackages = pkgs.linuxPackages_4_9;
 
   networking.hostName = config.host.name; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = true;  # Enables wirelessr
 
   # Select internationalisation properties.
   # i18n = {
@@ -30,20 +30,18 @@ in
   #   defaultLocale = "en_US.UTF-8";
   # };
 
-  # Set your time zone.
-  time.timeZone = "America/New_York";
 
   environment.systemPackages = with pkgs; [
-   wget
-   vim
-   hdparm
-   fvwm_gestures
-   screen
-   rxvt_unicode
-   hsetroot
-   binutils
-   xlibs.xmodmap
-   xlibs.xev
+    wget
+    vim
+    hdparm
+    fvwm_gestures
+    screen
+    rxvt_unicode
+    hsetroot
+    binutils
+    xlibs.xmodmap
+    xlibs.xev
   ];
 
   # List services that you want to enable:
@@ -67,10 +65,10 @@ in
         start = ''
           export PATH=$PATH:/home/edanaher/bin/bin
           xmodmap ~/.Xmodmap
-	  ${fvwm_gestures}/bin/fvwm &
+          ${fvwm_gestures}/bin/fvwm &
           waitPID=$!
         '';
-      } 
+      }
     ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -79,6 +77,8 @@ in
     uid = 1000;
     extraGroups = [ "audio" "docker" "wheel" ];
   };
+
+  time.timeZone = "America/New_York";
 
   networking.extraHosts = ''
     #216.218.223.91 gahlpo
