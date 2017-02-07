@@ -95,20 +95,7 @@ in
 
   security.setuidPrograms = [ "mount" "umount" ];
 
-  security.sudo.configFile = ''
-    edanaher ALL=(ALL) NOPASSWD: /home/edanaher/bin/bin/_set_brightness.sh
-  '';
-
-  #virtualisation.docker.enable = true;
-  #virtualisation.docker.storageDriver = "btrfs";
-
-  #virtualisation.virtualbox.host.enable = true;
-
-  #services.physlock.enable = true;
-  #services.physlock.user = "edanaher";
-
   nix.useSandbox = true;
   nix.trustedBinaryCaches = [ https://bob.logicblox.com ];
   nix.requireSignedBinaryCaches = false;
 }
-
