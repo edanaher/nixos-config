@@ -104,12 +104,6 @@ in
   services.acpid.lidEventCommands = "${acpid-script}/bin/acpid-script.sh";
   services.logind.extraConfig = "HandleLidSwitch=ignore";
 
-  fileSystems."/boot" =
-  {
-    device = "/dev/sda1";
-    fsType = "vfat";
-  };
-
   services.tlp.enable = true;
   services.tlp.extraConfig = ''
     RESTORE_DEVICE_STATE_ON_STARTUP=1

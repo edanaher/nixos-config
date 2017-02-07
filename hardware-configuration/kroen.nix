@@ -26,6 +26,12 @@
       options = [ "subvol=home" "compress" ];
     };
 
+  fileSystems."/boot" =
+  {
+    device = "/dev/sda1";
+    fsType = "vfat";
+  };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/079673fa-831e-469f-a583-0aca63fc4217"; }
     ];
