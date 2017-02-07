@@ -7,6 +7,8 @@ in
     domainlist local_domains = @ : localhost
     hostlist relay_from_hosts = <; 127.0.0.1 ; ::1
 
+    untrusted_set_sender = ^''${sender_ident} : *@edanaher.net
+
     acl_smtp_rcpt = acl_check_rcpt
     acl_smtp_data = acl_check_data
 
