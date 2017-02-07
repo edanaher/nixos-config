@@ -20,17 +20,15 @@ in
 
 
   networking.hostName = config.host.name; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = true;  # Enables wireless.
 
   # Select internationalisation properties.
   # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
+  #   consoleFont = "lat9w-16";
   #   consoleKeyMap = "us";
   #   defaultLocale = "en_US.UTF-8";
   # };
 
-  # Set your time zone.
-  time.timeZone = "America/New_York";
 
   environment.systemPackages = with pkgs; [
    wget
@@ -54,28 +52,6 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "us";
-  #services.xserver.synaptics.enable = true;
-
-  #services.xserver.synaptics.accelFactor = "0.05";
-  #services.xserver.synaptics.minSpeed = "1";
-  #services.xserver.synaptics.maxSpeed = "2.5";
-  #services.xserver.synaptics.twoFingerScroll = true;
-  #services.xserver.synaptics.vertEdgeScroll = true;
-  #services.xserver.synaptics.additionalOptions = ''
-  #  Option "VertScrollDelta" "16"
-  #  Option "RTCornerButton" "3"
-  #  Option "TapButton2" "3"
-  #  Option "TapButton3" "2"
-  #  Option "ClickFinger2" "3"
-  #  Option "ClickFinger3" "2"
-  #  Option "CircularScrolling" "1"
-  #  Option "CircScrollTrigger" "2"
-  #  Option "RightButtonAreaLeft" "560"
-  #  Option "RightButtonAreaTop" "400"
-  #  Option "MiddleButtonAreaLeft" "460"
-  #  Option "MiddleButtonAreaRight" "559"
-  #  Option "MiddleButtonAreaTop" "400"
-  #'';
 
   programs.bash.enableCompletion = true;
 
@@ -89,7 +65,7 @@ in
 	  ${pkgs.fvwm}/bin/fvwm &
           waitPID=$!
         '';
-      } 
+      }
     ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -99,10 +75,10 @@ in
     extraGroups = [ "audio" "docker" "wheel" ];
   };
 
-  nix.buildCores = 8;
+  time.timeZone = "America/New_York";
 
   #networking.firewall.allowedTCPPortRanges = [
-  #  { from = 5900; to = 5920; }
+  #  { from = 5900; to = 5910; } # VNC
   #];
   networking.extraHosts = ''
     127.0.0.1 gemedet
