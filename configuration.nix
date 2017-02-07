@@ -19,7 +19,7 @@ in
       ./pulseaudio
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_4_9;
+  boot.kernelParams = [ "resume=${(builtins.head config.swapDevices).device}" ];
 
   networking.hostName = config.host.name; # Define your hostname.
   networking.wireless.enable = true;  # Enables wirelessr
