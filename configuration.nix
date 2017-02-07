@@ -81,15 +81,15 @@ in
   time.timeZone = "America/New_York";
 
   networking.extraHosts = ''
-    #216.218.223.91 gahlpo
     71.19.155.118 gahlpo
-    '';
+  '';
+
   networking.firewall.allowedUDPPortRanges = [
-    { from = 60000; to = 61000; }
+    { from = 60000; to = 61000; }  # Mosh
   ];
   networking.firewall.allowedTCPPortRanges = [
-    { from = 5900; to = 5920; }
-    { from = 24800; to = 24800; }
+    { from = 5900; to = 5910; } # VNC
+    { from = 24800; to = 24800; } # Synergy
   ];
 
   # NAT for containers
