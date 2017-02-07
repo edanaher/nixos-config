@@ -66,12 +66,12 @@ in
         start = ''
           export PATH=$PATH:/home/edanaher/bin/bin
           xmodmap ~/.Xmodmap
-	  ${fvwm_gestures}/bin/fvwm &
+          ${fvwm_gestures}/bin/fvwm &
           waitPID=$!
         '';
-      } 
+      }
     ];
-     
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.edanaher = {
     isNormalUser = true;
