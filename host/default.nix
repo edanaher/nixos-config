@@ -28,12 +28,6 @@ in
         Whether or not the host has a touchscreen; enables relevant features.
       '';
     };
-    test = mkOption {
-      type = types.str;
-      description = ''
-        For testing
-      '';
-    };
   };
 
 
