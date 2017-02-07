@@ -88,9 +88,7 @@ let
   hostconfig = utils.select config.host.name hosts;
   classconfig = utils.select config.host.class classes;
   # TODO: directly using hostname.nix because of imports and infinite recursion and mkIf fail.
-  hostname = (import ../hostname.nix).host.name;
-  hostimports = (if hostname == "chileh" then [ ../snapshot.nix ] else []) ++
-                (if hostname != "gemedet" then [ ../exim.nix ] else []);
+  hostimports = if (import ../hostname.nix).host.name == "chileh" then [ ../snapshot.nix ] else [];
 in
 {
   imports = hostimports;
