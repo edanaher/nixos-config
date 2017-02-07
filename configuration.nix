@@ -11,7 +11,6 @@
       ./pulseaudio
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_4_8;
   boot.blacklistedKernelModules = [ "radeon" ];
 
   # Use the GRUB 2 boot loader.
