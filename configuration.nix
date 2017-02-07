@@ -11,10 +11,10 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration
-      ./exim.nix
       ./host
       ./hostname.nix
       ./containers.nix
+      ./exim.nix
       ./snapshot.nix
       ./pulseaudio
     ];
@@ -22,16 +22,17 @@ in
   boot.kernelParams = [ "resume=${(builtins.head config.swapDevices).device}" ];
 
   networking.hostName = config.host.name; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wirelessr
+  networking.wireless.enable = true;  # Enables wireless.
 
   # Select internationalisation properties.
   # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
+  #   consoleFont = "lat9w-16";
   #   consoleKeyMap = "us";
   #   defaultLocale = "en_US.UTF-8";
   # };
 
-
+  # List packages installed in system profile. To search by name, run:
+  # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     wget
     vim
@@ -101,4 +102,3 @@ in
 
   nix.useSandbox = true;
 }
-
