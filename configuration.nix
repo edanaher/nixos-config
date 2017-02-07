@@ -82,6 +82,10 @@ in
 
   time.timeZone = "America/New_York";
 
+  networking.extraHosts = ''
+    71.19.155.118 gahlpo
+  '';
+
   #nix.nixPath = [ "/home/edanaher" "nixos-config=/etc/nixos/configuration.nix" ];
 
 }

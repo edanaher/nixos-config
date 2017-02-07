@@ -10,6 +10,11 @@ let
       host.boot-type = "bios";
       nix.buildCores = 4;
       services.exim.enable = true;
+
+      networking.extraHosts = ''
+        192.168.12.235 deretheni
+        169.254.94.126 gemedetw
+      '';
     };
     "kroen" = {
       nix.buildCores = 4;
