@@ -64,7 +64,7 @@ let
   };
   classes = {
     "laptop" = {
-      security.sudo.configFile= ''
+      security.sudo.extraConfig = ''
         edanaher ALL=(ALL) NOPASSWD: /home/edanaher/bin/bin/_set_brightness.sh
         edanaher ALL=(ALL) NOPASSWD: /run/current-system/sw/bin/rfkill
       '';
