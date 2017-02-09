@@ -100,4 +100,6 @@ in
   security.setuidPrograms = [ "mount" "umount" ];
 
   nix.useSandbox = true;
+  nix.daemonNiceLevel = 10;
+  nix.daemonIONiceLevel = 3;
 }
