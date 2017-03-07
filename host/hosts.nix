@@ -61,9 +61,29 @@ let
 
       boot.blacklistedKernelModules = [ "radeon" ];
     };
+    "kdfsh" = {
+      host.class ="server";
+      host.boot-type = "xen";
+
+      networking.firewall.allowedUDPPortRanges = [
+        { from = 53; to = 53; }  # DNS (kdf-dns)
+      ];
+      networking.firewall.allowedTCPPortRanges = [
+        { from = 25; to = 25; }  # SMTP (exim)
+        { from = 587; to = 587; }  # SMTP (exim)
+        { from = 80; to = 80; }  # HTTP (kdf-web)
+        { from = 143; to = 143; }  # IMAP (dovecot)
+        { from = 993; to = 993; }  # IMAP (dovecot)
+        { from = 5269; to = 5269; }  # XMPP (prosody)
+        { from = 5222; to = 5222; }  # XMPP (prosody)
+        { from = 5280; to = 5281; }  # XMPP (prosody)
+      ];
+    };
   };
   classes = {
     "laptop" = {
+      time.timeZone = "America/New_York";
+
       security.sudo.extraConfig = ''
         edanaher ALL=(ALL) NOPASSWD: /home/edanaher/bin/bin/_set_brightness.sh
         edanaher ALL=(ALL) NOPASSWD: /run/current-system/sw/bin/rfkill
@@ -79,6 +99,7 @@ let
       '';
     };
     "desktop" = {
+      time.timeZone = "America/New_York";
     };
     "server" = {
       host.xserver.enable = false;

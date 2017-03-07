@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   fvwm_gestures = pkgs.fvwm.override { gestures = config.host.touchscreen; };
@@ -19,7 +19,8 @@ in
       ./xserver.nix
     ];
 
-  boot.kernelParams = [ "resume=${(builtins.head config.swapDevices).device}" ];
+  boot.kernelParams = lib.optional (config.host.class != "server")
+      "resume=${(builtins.head config.swapDevices).device}";
 
   networking.hostName = config.host.name; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless.
@@ -61,8 +62,6 @@ in
     uid = 1000;
     extraGroups = [ "audio" "docker" "wheel" ];
   };
-
-  time.timeZone = "America/New_York";
 
   networking.extraHosts = ''
     71.19.155.118 gahlpo

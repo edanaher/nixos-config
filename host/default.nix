@@ -29,7 +29,7 @@ in
       '';
     };
     boot-type = mkOption {
-      type = types.enum [ "bios" "efi" ];
+      type = types.enum [ "bios" "efi" "xen" ];
       default = "efi";
       description = ''
         Type of boot; bios will use grub; efi will use systemd-boot/gummiboot.
