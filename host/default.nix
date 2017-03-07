@@ -6,7 +6,10 @@ let
   cfg = config.host;
 in
 {
-  imports = [ ./hosts.nix ];
+  imports = [
+    ./hosts.nix
+    ./kdf-nginx.nix
+  ];
   options.host = {
     name = mkOption {
       type = types.str;
