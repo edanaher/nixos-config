@@ -12,7 +12,7 @@ let
       services.exim.enable = true;
 
       networking.extraHosts = ''
-        192.168.12.235 deretheni
+        192.168.12.205 deretheni
         169.254.94.126 gemedetw
       '';
     };
