@@ -81,7 +81,7 @@ let
     "desktop" = {
     };
     "server" = {
-
+      host.xserver.enable = false;
     };
   };
   hostconfig = utils.select config.host.name hosts;

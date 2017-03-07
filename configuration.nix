@@ -16,6 +16,7 @@ in
       ./containers.nix
       ./exim.nix
       ./pulseaudio
+      ./xserver.nix
     ];
 
   boot.kernelParams = [ "resume=${(builtins.head config.swapDevices).device}" ];
@@ -36,7 +37,6 @@ in
     wget
     vim
     hdparm
-    fvwm_gestures
     screen
     rxvt_unicode
     hsetroot
@@ -53,24 +53,7 @@ in
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "us";
-
   programs.bash.enableCompletion = true;
-
-  services.xserver.desktopManager.default = "fvwm";
-  services.xserver.desktopManager.session =
-    [ { manage = "desktop";
-        name = "fvwm";
-        start = ''
-          export PATH=$PATH:/home/edanaher/bin/bin
-          xmodmap ~/.Xmodmap
-          ${fvwm_gestures}/bin/fvwm &
-          waitPID=$!
-        '';
-      }
-    ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.edanaher = {
