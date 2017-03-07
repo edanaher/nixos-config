@@ -82,6 +82,7 @@ let
     };
     "server" = {
       host.xserver.enable = false;
+      host.pulseaudio.enable = false;
     };
   };
   hostconfig = utils.select config.host.name hosts;

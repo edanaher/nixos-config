@@ -35,6 +35,13 @@ in
         Type of boot; bios will use grub; efi will use systemd-boot/gummiboot.
       '';
     };
+    pulseaudio.enable = mkOption {
+      type = types.bool;
+      default = true;
+      description = ''
+        Whether or not to use pulseaudio.
+      '';
+    };
     xserver.enable = mkOption {
       type = types.bool;
       default = true;

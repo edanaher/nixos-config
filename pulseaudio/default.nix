@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.package = pkgs.pulseaudioFull;
-  hardware.bluetooth.enable = true;
-  hardware.pulseaudio.configFile = ./default.pa;
+  config = lib.mkIf config.host.pulseaudio.enable {
+    hardware.pulseaudio.enable = true;
+    hardware.pulseaudio.package = pkgs.pulseaudioFull;
+    hardware.bluetooth.enable = true;
+    hardware.pulseaudio.configFile = ./default.pa;
+  };
 }
