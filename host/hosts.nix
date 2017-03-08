@@ -71,7 +71,8 @@ let
       networking.firewall.allowedTCPPortRanges = [
         { from = 25; to = 25; }  # SMTP (exim)
         { from = 587; to = 587; }  # SMTP (exim)
-        { from = 80; to = 80; }  # HTTP (kdf-web)
+        { from = 80; to = 80; }  # HTTP (nginx)
+        { from = 443; to = 443; }  # HTTPS (nginx)
         { from = 143; to = 143; }  # IMAP (dovecot)
         { from = 993; to = 993; }  # IMAP (dovecot)
         { from = 5269; to = 5269; }  # XMPP (prosody)

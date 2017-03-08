@@ -8,6 +8,8 @@
  
     services.nginx.virtualHosts = {
       "forum.kellyandevan.party" = {
+        enableACME = true;
+        forceSSL = true;
         locations = {
           "/" = {
             proxyPass = http://unix:/var/discourse/shared/standalone/nginx.http.sock:;
