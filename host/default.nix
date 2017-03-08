@@ -8,7 +8,7 @@ in
 {
   imports = [
     ./hosts.nix
-    ./kdf-nginx.nix
+    ../services/kdf-nginx.nix
   ];
   options.host = {
     name = mkOption {
