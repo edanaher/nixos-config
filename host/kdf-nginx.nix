@@ -1,5 +1,15 @@
 {config, lib, pkgs, ...}:
 
+let robots-none-txt =
+  with pkgs.stdenv; mkDerivation {
+    name = "robots-none-txt";
+    phases = [ "installPhase" ];
+    installPhase = ''
+      mkdir -p $out
+      cp ${./robots-none.txt} $out/robots.txt
+    '';
+  };
+in
 {
   config = lib.mkIf (config.host.name == "kdfsh") {
     services.nginx.enable = true;
@@ -11,6 +21,9 @@
         enableACME = true;
         forceSSL = true;
         locations = {
+          "/robots.txt" = {
+            root = robots-none-txt;
+          };
           "/" = {
             proxyPass = http://unix:/var/discourse/shared/standalone/nginx.http.sock:;
             extraConfig = ''
