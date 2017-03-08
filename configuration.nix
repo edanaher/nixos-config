@@ -39,11 +39,7 @@ in
     vim
     hdparm
     screen
-    rxvt_unicode
-    hsetroot
     binutils
-    xlibs.xmodmap
-    xlibs.xev
   ];
 
   # List services that you want to enable:
