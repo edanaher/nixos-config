@@ -3,6 +3,8 @@
 {
   config = lib.mkIf (config.host.name == "kdfsh") {
     services.nginx.enable = true;
+
+    services.nginx.recommendedOptimisation = true;
  
     services.nginx.virtualHosts = {
       "forum.kellyandevan.party" = {
