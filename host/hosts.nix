@@ -77,7 +77,6 @@ let
         { from = 993; to = 993; }  # IMAP (dovecot)
         { from = 5269; to = 5269; }  # XMPP (prosody)
         { from = 5222; to = 5222; }  # XMPP (prosody)
-        { from = 5280; to = 5281; }  # XMPP (prosody)
       ];
     };
   };
