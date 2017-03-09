@@ -10,11 +10,11 @@
   acl_smtp_data = acl_check_data
 
   never_users = root
-  host_lookup = 
+  host_lookup =
   rfc1413_hosts = *
   rfc1413_query_timeout = 0s
   prdr_enable = true
-  tls_advertise_hosts = 
+  tls_advertise_hosts =
 
   begin acl
   acl_check_rcpt:
