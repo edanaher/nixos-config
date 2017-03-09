@@ -14,7 +14,7 @@ in
       ./host
       ./hostname.nix
       ./containers.nix
-      ./exim.nix
+      ./exim
       ./pulseaudio
       ./xserver.nix
     ];
