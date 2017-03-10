@@ -11,6 +11,9 @@ in
     services.nginx.enable = true;
 
     services.nginx.recommendedOptimisation = true;
+    services.nginx.recommendedTlsSettings = true;
+    services.nginx.recommendedGzipSettings = true;
+    services.nginx.recommendedProxySettings = true;
  
     services.nginx.virtualHosts = {
       "forum.kellyandevan.party" = {
@@ -22,12 +25,6 @@ in
           };
           "/" = {
             proxyPass = http://unix:/var/discourse/shared/standalone/nginx.http.sock:;
-            extraConfig = ''
-              proxy_set_header Host $http_host;
-              proxy_http_version 1.1;
-              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_set_header X-Forwarded-Proto $scheme;
-            '';
           };
         };
       };
@@ -36,11 +33,7 @@ in
           "/" = {
             proxyPass = http://localhost:8081;
             extraConfig = ''
-              proxy_set_header Host $http_host;
               proxy_set_header X-Kdf-Real-Ip $proxy_add_x_forwarded_for;
-              proxy_http_version 1.1;
-              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_set_header X-Forwarded-Proto $scheme;
             '';
           };
         };
