@@ -149,8 +149,8 @@
   # need the first setting, or in separate files, in which case you need both
   # options.
   
-  tls_certificate = /var/ssl/exim.cert
-  tls_privatekey = /var/ssl/exim.key
+  tls_certificate = /var/lib/acme/kdf.sh/fullchain.pem
+  tls_privatekey = /var/lib/acme/kdf.sh/key.pem
   
   # In order to support roaming users who wish to send email from anywhere,
   # you may want to make Exim listen on other ports as well as port 25, in

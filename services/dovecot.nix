@@ -5,10 +5,12 @@
     services.dovecot2 = {
       enable = true;
       enableImap = true;
-      # TODO: Hook this up to letsencrypt.
-      sslServerKey = "/mnt/debian/etc/dovecot/private/dovecot.pem";
-      sslServerCert = "/mnt/debian/etc/dovecot/dovecot.pem";
+      # Certs are generated in kdf-nginx.nix under kdf.sh hostname.
+      sslServerKey = "/var/lib/acme/kdf.sh/key.pem";
+      sslServerCert = "/var/lib/acme/kdf.sh/fullchain.pem";
       mailLocation = "maildir:~/.maildir:LAYOUT=fs";
     };
+    security.acme.certs."kdf.sh".group = "exim";
+    security.acme.certs."kdf.sh".allowKeysForGroup = true;
   };
 }

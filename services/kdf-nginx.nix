@@ -28,6 +28,18 @@ in
           };
         };
       };
+      # Generate an ACME cert for kdf.sh, but otherwise serve from kdf-web.
+      "kdf.sh" = {
+        enableACME = true;
+        locations = {
+          "/" = {
+            proxyPass = http://localhost:8081;
+            extraConfig = ''
+              proxy_set_header X-Kdf-Real-Ip $proxy_add_x_forwarded_for;
+            '';
+          };
+        };
+      };
       "*.kdf.sh" = {
         locations = {
           "/" = {
