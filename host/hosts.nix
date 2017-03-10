@@ -69,6 +69,8 @@ let
         ipv6Address = "2605:2700:0:5::4713:9cf2";
       };
 
+      services.exim.enable = true;
+
       networking.firewall.allowedUDPPortRanges = [
         { from = 53; to = 53; }  # DNS (kdf-dns)
       ];
