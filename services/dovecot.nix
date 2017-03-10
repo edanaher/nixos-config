@@ -8,7 +8,7 @@
       # TODO: Hook this up to letsencrypt.
       sslServerKey = "/mnt/debian/etc/dovecot/private/dovecot.pem";
       sslServerCert = "/mnt/debian/etc/dovecot/dovecot.pem";
-      mailLocation = "mbox:~/mail:INBOX=~/.mbox";
+      mailLocation = "maildir:~/.maildir:LAYOUT=fs";
     };
   };
 }

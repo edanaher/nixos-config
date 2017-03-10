@@ -673,7 +673,9 @@
   
   local_delivery:
     driver = appendfile
-    file = $home/.mbox
+    directory = $home/.maildir/
+    create_directory
+    maildir_format
     delivery_date_add
     envelope_to_add
     return_path_add
