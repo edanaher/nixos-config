@@ -65,6 +65,10 @@ let
       host.class ="server";
       host.boot-type = "xen";
 
+      networking.interfaces.eth0 = {
+        ipv6Address = "2605:2700:0:5::4713:9cf2";
+      };
+
       networking.firewall.allowedUDPPortRanges = [
         { from = 53; to = 53; }  # DNS (kdf-dns)
       ];
