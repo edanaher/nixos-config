@@ -7,5 +7,6 @@
     ./dovecot.nix
     ./gritonputty.nix
     ./iodine.nix
+    ./prosody.nix
   ];
 }
