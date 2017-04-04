@@ -15,6 +15,25 @@ let
         192.168.12.205 deretheni
         169.254.94.126 gemedetw
       '';
+
+      systemd.services.check-edanaher-mail = {
+        description = "Check mail for edanaher";
+        path = [ pkgs.fetchmail pkgs.procmail ];
+        serviceConfig = {
+          Type = "oneshot";
+          User = "edanaher";
+          ExecStart = "/home/edanaher/bin/bin/run_fetchmail";
+        };
+      };
+
+      systemd.timers.check-edanaher-mail = {
+        description = "Check mail for edanaher every half hour";
+        wantedBy = [ "timers.target" ];
+        timerConfig = {
+          OnCalendar = "*-*-* *:00,30:00";
+          Persistent = true;
+        };
+      };
     };
     "kroen" = {
       nix.buildCores = 4;
