@@ -6,4 +6,26 @@
     0 * * * * /mnt/snapshots/do.sh
     #37 1 * * * { umount /mnt/snapshots && mount /mnt/snapshots; } >/dev/null 2>&1
   '';
+
+  systemd.services.backup-deretheni = {
+    description = "Backup deretheni";
+    path = with pkgs; [ bup rsync openssh ];
+    wants = [ "network-online.target" ];
+    serviceConfig = {
+      type = "oneshot";
+      User = "edanaher";
+      Group = "users";
+      ExecStart = "/mnt/bak/deretheni/do.sh";
+    };
+  };
+
+  systemd.timers.backup-deretheni = {
+    description = "Backup deretheni daily";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+    };
+  };
+
 }
