@@ -12,10 +12,11 @@
     path = with pkgs; [ bup rsync openssh ];
     wants = [ "network-online.target" ];
     serviceConfig = {
-      type = "oneshot";
       User = "edanaher";
       Group = "users";
       ExecStart = "/mnt/bak/deretheni/do.sh";
+      Restart = "on-failure";
+      RestartSec = "1h";
     };
   };
 
