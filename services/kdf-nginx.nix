@@ -9,6 +9,7 @@ in
 {
   config = lib.mkIf (config.host.name == "kdfsh") {
     services.nginx.enable = true;
+    services.nginx.package = pkgs.nginx.override { modules = [ pkgs.nginxModules.echo ]; };
 
     services.nginx.recommendedOptimisation = true;
     services.nginx.recommendedTlsSettings = true;
@@ -37,6 +38,19 @@ in
             extraConfig = ''
               proxy_set_header Host $host;
               proxy_set_header Hostname $proxy_add_x_forwarded_for;
+            '';
+          };
+        };
+      };
+      "echo.kdf.sh" = {
+        locations = {
+          "/" = {
+            extraConfig = ''
+              default_type text/plain;
+              echo_duplicate 1 $echo_client_request_headers;
+              echo "\r";
+              echo_read_request_body;
+              echo_request_body;
             '';
           };
         };
