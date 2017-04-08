@@ -7,6 +7,14 @@ let secrets = import ../secrets.nix;
     };
     server-config = lib.mkIf (config.host.name == "kdfsh") {
       services.exim.config = import ./kdfsh-conf.nix { inherit smtp-to-xmpp; };
+      security.acme.certs."exim-kdf.sh" ={
+        domain = "kdf.sh";
+        user = "root";
+        group = "exim";
+        allowKeysForGroup = true;
+        webroot = config.security.acme.certs."kdf.sh".webroot;
+        postRun = "systemctl reload exim";
+      };
     };
 in
 {
