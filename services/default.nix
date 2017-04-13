@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./kdf-discourse.nix
     ./kdf-nginx.nix
     ./kdf-parts.nix
     ./dovecot.nix
