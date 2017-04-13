@@ -23,7 +23,7 @@ in
       "resume=${(builtins.head config.swapDevices).device}";
 
   networking.hostName = config.host.name; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless.
+  networking.wireless.enable = config.host.class != "server";  # Enables wireless.
 
   # Select internationalisation properties.
   # i18n = {
