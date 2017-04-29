@@ -48,6 +48,7 @@ in
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  programs.mosh.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -65,9 +66,6 @@ in
     71.19.155.118 gahlpo
   '';
 
-  networking.firewall.allowedUDPPortRanges = [
-    { from = 60000; to = 61000; }  # Mosh
-  ];
   networking.firewall.allowedTCPPortRanges = [
     { from = 5900; to = 5910; } # VNC
     { from = 24800; to = 24800; } # Synergy
