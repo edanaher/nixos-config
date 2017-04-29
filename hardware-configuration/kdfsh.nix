@@ -35,7 +35,11 @@
 
     nix.maxJobs = lib.mkDefault 1;
   }
-  # xen-domU.nix wants to use grub 2; override that here.
-  (lib.mkForce { boot.loader.grub.version = 1; })
+  (lib.mkForce {
+    # xen-domU.nix wants to use grub 2; override that here.
+    boot.loader.grub.version = 1;
+    # xen-domU.nix also turns of ntp, but we're not getting anything from Dom0, so turn it back on.
+    services.timesyncd.enable = true;
+  })
   ];
 }
