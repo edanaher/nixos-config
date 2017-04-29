@@ -9,7 +9,7 @@
 
   systemd.services.backup-deretheni = {
     description = "Backup deretheni";
-    path = with pkgs; [ bup rsync openssh ];
+    path = with pkgs; [ borgbackup bup rsync openssh ];
     wants = [ "network-online.target" ];
     serviceConfig = {
       User = "edanaher";
@@ -29,4 +29,22 @@
     };
   };
 
+  systemd.services.snapshot-chileh-edanaher = {
+    description = "Snapshot chileh homedir";
+    path = with pkgs; [ btrfs-progs ];
+    wants = [ "network-online.target" ];
+    serviceConfig = {
+      User = "root";
+      ExecStart = "/home/edanaher/bin/bin/do_snapshot_home";
+    };
+  };
+
+  systemd.timers.snapshot-chileh-edanaher = {
+    description = "Snapshot chileh homedir hourly";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "hourly";
+      Persistent = true;
+    };
+  };
 }
