@@ -75,7 +75,10 @@ in
 
   boot.tmpOnTmpfs = true;
 
-  security.setuidPrograms = [ "mount" "umount" ];
+  security.wrappers = {
+    mount.source = "${pkgs.utillinux}/bin/mount";
+    umount.source = "${pkgs.utillinux}/bin/umount";
+  };
 
   nix.useSandbox = true;
   nix.daemonNiceLevel = 10;
