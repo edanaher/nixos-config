@@ -25,6 +25,8 @@ in
   networking.hostName = config.host.name; # Define your hostname.
   networking.wireless.enable = config.host.class != "server";  # Enables wireless.
 
+  services.ntp.enable = true;
+
   # Select internationalisation properties.
   # i18n = {
   #   consoleFont = "lat9w-16";
