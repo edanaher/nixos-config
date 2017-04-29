@@ -58,6 +58,7 @@
   
   domainlist local_domains = @:xmpp.kdf.sh : partywiththe.party
   domainlist relay_to_domains =
+  domainlist relay_to_gahlpo_domains = willcaltrainsucktoday.com : edanaher.net : xmpp.edanaher.net : kellyandevan2018.com : kellyandevan.party : appeasement.party
   hostlist   relay_from_hosts = 127.0.0.1
   
   # Most straightforward access control requirements can be obtained by
@@ -425,7 +426,7 @@
     # relaying. Any other domain is rejected as being unacceptable for relaying.
   
     require message = relay not permitted
-            domains = +local_domains : +relay_to_domains
+            domains = +local_domains : +relay_to_domains : +relay_to_gahlpo_domains
   
     # We also require all accepted addresses to be verifiable. This check will
     # do local part verification for local domains, but only check the domain
@@ -538,9 +539,17 @@
   
   dnslookup:
     driver = dnslookup
-    domains = ! +local_domains
+    domains = ! +local_domains : ! +relay_to_gahlpo_domains
     transport = remote_smtp
     ignore_target_hosts = 0.0.0.0 : 127.0.0.0/8
+    no_more
+
+  forward_to_gahlpo:
+    driver = manualroute
+    domains = +relay_to_gahlpo_domains
+    transport = remote_smtp
+    ignore_target_hosts = 0.0.0.0 : 127.0.0.0/8
+    route_list = * gahlpo.edanaher.net
     no_more
   
   
