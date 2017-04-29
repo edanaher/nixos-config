@@ -55,6 +55,22 @@ in
           };
         };
       };
+      "www.partywiththe.party" = {
+        globalRedirect = "kgb30.com";
+        locations = {
+          "/" = {
+            #globalRedirect = "kgb30.com";
+          };
+        };
+        };
+      "partywiththe.party" = {
+        globalRedirect = "kgb30.com";
+        locations = {
+          "/" = {
+            #globalRedirect = "kgb30.com";
+          };
+        };
+        };
       "*.kdf.sh" = {
         locations = {
           "/" = {
