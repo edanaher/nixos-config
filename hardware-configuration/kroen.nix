@@ -37,4 +37,6 @@
     ];
 
   nix.maxJobs = 4;
+
+  services.ntp.enable = true;
 }
