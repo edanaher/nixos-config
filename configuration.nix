@@ -11,6 +11,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration
+      ./backports.nix
       ./host
       ./hostname.nix
       ./containers.nix
