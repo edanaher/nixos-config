@@ -129,6 +129,7 @@ let
     "server" = {
       host.xserver.enable = false;
       host.pulseaudio.enable = false;
+      environment.noXlibs = true;
     };
   };
   hostconfig = utils.select config.host.name hosts;
