@@ -129,6 +129,7 @@ let
     "server" = {
       host.xserver.enable = false;
       host.pulseaudio.enable = false;
+      host.server-overlays.enable = true;
       environment.noXlibs = true;
     };
   };
