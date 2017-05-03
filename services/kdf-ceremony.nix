@@ -14,7 +14,7 @@ let party-site = pkgs.stdenv.mkDerivation {
 };
 in
 {
-  config = lib.mkIf (config.host.name == "kdfsh") {
+  config = lib.mkIf config.host.kdf-services.enable {
     services.nginx.virtualHosts = {
       "realsite.kellyandevan.party" = {
         enableACME = true;

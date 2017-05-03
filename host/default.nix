@@ -52,6 +52,13 @@ in
         Whether or not to use X.
       '';
     };
+    kdf-services.enable = mkOption {
+      type = types.bool;
+      default = false;
+      description = ''
+        Bulk-enable the various kdf services.
+      '';
+    };
   };
 
   config = mkMerge [

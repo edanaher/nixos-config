@@ -1,7 +1,7 @@
 { config, lib, pkgs, ...}:
 
 {
-  config = lib.mkIf (config.host.name == "kdfsh") {
+  config = lib.mkIf config.host.kdf-services.enable {
     systemd.services.party-discourse = {
       description = "Discourse docker container";
       path = with pkgs; [ docker gawk git inetutils which ];

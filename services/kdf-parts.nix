@@ -6,7 +6,7 @@ let kdf-web = import /home/edanaher/kdf/web { inherit pkgs; } ;
     kdf-learn = import /home/edanaher/kdf/learn { inherit pkgs; } ;
 in
 {
-  config = lib.mkIf (config.host.name == "kdfsh") {
+  config = lib.mkIf config.host.kdf-services.enable {
     systemd.services.kdf-web = {
       description = "kdf dynamic web services";
       after = [ "network.target" ];

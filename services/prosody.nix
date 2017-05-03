@@ -3,7 +3,7 @@
 let kdf-plugins = import /home/edanaher/prosody-mod { inherit pkgs; };
 in
 {
-  config = lib.mkIf (config.host.name == "kdfsh") {
+  config = lib.mkIf config.host.kdf-services.enable {
     security.acme.certs."prosody-kdf.sh" ={
       domain = "kdf.sh";
       user = "root";
