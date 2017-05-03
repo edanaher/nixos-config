@@ -9,7 +9,7 @@ let robots-none-txt = pkgs.writeText "robots-none.txt"
   randomtobyPort = "8082";
 in
 {
-  config = lib.mkIf (config.host.name == "kdfsh") {
+  config = lib.mkIf config.host.randomtoby.enable {
     systemd.services.randomtoby = {
       description = "Random toby image server";
       after = [ "network.target" ];
@@ -42,6 +42,15 @@ in
           };
         };
       };
+    };
+  };
+  options = {
+    host.randomtoby.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = ''
+        Enable randomtoby service.
+      '';
     };
   };
 }
