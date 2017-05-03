@@ -1,7 +1,7 @@
 {config, lib, pkgs, ...}:
 
 {
-  config = lib.mkIf (config.host.name == "kdfsh") {
+  config = lib.mkIf config.host.dovecot.enable {
     services.dovecot2 = {
       enable = true;
       enableImap = true;
@@ -19,6 +19,16 @@
       webroot = config.security.acme.certs."kdf.sh".webroot;
       postRun = "systemctl reload dovecot2";
       email = "dovecotcert@kdf.sh";
+    };
+  };
+
+  options = {
+    host.dovecot.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = ''
+        Enable dovecot serving IMAP.
+      '';
     };
   };
 }
