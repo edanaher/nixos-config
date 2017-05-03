@@ -15,6 +15,17 @@ in
     services.nginx.recommendedTlsSettings = true;
     services.nginx.recommendedGzipSettings = true;
     services.nginx.recommendedProxySettings = true;
+
+    services.nginx.commonHttpConfig = ''
+      log_format extended '$remote_addr - $remote_user [$time_local] '
+                      '"$request_method $scheme://$http_host$request_uri $server_protocol" $status $body_bytes_sent '
+                      '"$http_referer" "$http_user_agent"';
+      access_log syslog:server=unix:/dev/log extended;
+      '';
+      # Default format:
+      #log_format main '$remote_addr - $remote_user [$time_local] '
+      #                '"$request" $status $body_bytes_sent '
+      #                '"$http_referer" "$http_user_agent"';
  
     services.nginx.virtualHosts = {
       "forum.kellyandevan.party" = {
