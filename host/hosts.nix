@@ -87,6 +87,7 @@ let
       host.kdf-services.enable = true;
       host.dovecot.enable = true;
       host.gritonputty.enable = true;
+      host.iodine.enable = true;
 
       networking.interfaces.eth0 = {
         ipv6Address = "2605:2700:0:5::4713:9cf2";
