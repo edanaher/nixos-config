@@ -20,7 +20,7 @@ let gritonputty = with pkgs.stdenv; mkDerivation rec {
 };
 in
 {
-  config = lib.mkIf (config.host.name == "kdfsh") {
+  config = lib.mkIf config.host.gritonputty.enable {
     services.nginx.virtualHosts = {
       "gritonputty.kdf.sh" = {
         enableACME = true;
@@ -32,6 +32,15 @@ in
           };
         };
       };
+    };
+  };
+  options = {
+    host.gritonputty.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = ''
+        Enable grit-on-putty service
+      '';
     };
   };
 }
