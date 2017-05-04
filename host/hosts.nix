@@ -111,41 +111,8 @@ let
       ];
     };
   };
-  classes = {
-    "laptop" = {
-      time.timeZone = "America/New_York";
-      host.exim.class = "client";
-
-      security.sudo.extraConfig = ''
-        edanaher ALL=(ALL) NOPASSWD: /home/edanaher/bin/bin/_set_brightness.sh
-        edanaher ALL=(ALL) NOPASSWD: /run/current-system/sw/bin/rfkill
-      '';
-
-      services.acpid.enable = true;
-      services.acpid.lidEventCommands = "${acpid-script}/bin/acpid-script.sh";
-      services.logind.extraConfig = "HandleLidSwitch=ignore";
-
-      services.tlp.enable = true;
-      services.tlp.extraConfig = ''
-        RESTORE_DEVICE_STATE_ON_STARTUP=1
-      '';
-    };
-    "desktop" = {
-      time.timeZone = "America/New_York";
-      host.exim.class = "client";
-    };
-    "server" = {
-      host.xserver.enable = false;
-      host.pulseaudio.enable = false;
-      host.virtualbox.enable = false;
-      host.server-overlays.enable = true;
-      environment.noXlibs = true;
-      host.exim.class = "server";
-    };
-  };
   hostconfig = utils.select config.host.name hosts;
-  classconfig = utils.select config.host.class classes;
 in
 {
-  config = lib.mkMerge [ hostconfig classconfig ];
+  config = hostconfig;
 }
