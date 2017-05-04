@@ -114,6 +114,7 @@ let
   classes = {
     "laptop" = {
       time.timeZone = "America/New_York";
+      host.exim.class = "client";
 
       security.sudo.extraConfig = ''
         edanaher ALL=(ALL) NOPASSWD: /home/edanaher/bin/bin/_set_brightness.sh
@@ -131,6 +132,7 @@ let
     };
     "desktop" = {
       time.timeZone = "America/New_York";
+      host.exim.class = "client";
     };
     "server" = {
       host.xserver.enable = false;
@@ -138,6 +140,7 @@ let
       host.virtualbox.enable = false;
       host.server-overlays.enable = true;
       environment.noXlibs = true;
+      host.exim.class = "server";
     };
   };
   hostconfig = utils.select config.host.name hosts;
