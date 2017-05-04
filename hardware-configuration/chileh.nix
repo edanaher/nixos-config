@@ -62,7 +62,7 @@
   fileSystems."/mnt/external" =
     { device = "/dev/disk/by-uuid/6d5f4267-2d60-4cd6-b623-3b96793b3529";
       fsType = "btrfs";
-      options = [ "noauto" "noatime" "nofail" ];
+      options = [ "noauto" "noatime" "nofail" "compress" "user" ];
     };
 
   fileSystems."/mnt/data" =
