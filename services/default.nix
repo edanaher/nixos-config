@@ -9,6 +9,7 @@
     ./dovecot.nix
     ./gritonputty.nix
     ./randomtoby.nix
+    ./caltrain.nix
     ./iodine.nix
     ./prosody.nix
   ];
