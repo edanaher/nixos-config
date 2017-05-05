@@ -46,6 +46,7 @@
     condition = ''${if eq{''${address:$header_from:}}{edanaher@gmail.com}}
     transport = gmail_relay
     route_list = * smtp.gmail.com
+    headers_remove = sender
 
   gahlpo_route:
     driver = manualroute
@@ -53,6 +54,7 @@
     condition = ''${if !eq{''${address:$header_from:}}{edanaher@gmail.com}}
     transport = gahlpo_relay
     route_list = * gahlpo.edanaher.net
+    headers_remove = sender
 
 
   begin transports
