@@ -38,12 +38,17 @@ in
 {
   config = lib.mkIf config.host.caltrain.enable {
     services.nginx.virtualHosts = {
-      "willcaltrainsucktoday.com".globalRedirect = "www.willcaltrainsucktoday.com";
-      "www.willcaltrainsucktoday.com" = {
-        locations."/".proxyPass = "http://localhost:8083";
-      };
       "willcaltrainsucktoday.kdf.sh" = {
+        serverAliases = [ "willcaltrainsucktoday.com" "www.willcaltrainsucktoday.com" ];
         locations."/".proxyPass = "http://localhost:8083";
+        enableSSL = true;
+        sslCertificate = /var/lib/acme/kdf.sh/fullchain.pem;
+        sslCertificateKey = /var/lib/acme/kdf.sh/key.pem;
+        extraConfig = ''
+          listen 80;
+          listen [::]:80;
+        '' ;
+
       };
     };
 
