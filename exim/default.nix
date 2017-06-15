@@ -17,6 +17,7 @@ let cfg = config.host.exim;
         postRun = "systemctl reload exim";
       };
       services.rspamd.enable = true;
+      services.rmilter.enable = false;
     };
 in
 {

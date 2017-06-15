@@ -91,8 +91,6 @@ let
       host.randomtoby.enable = true;
       host.caltrain.enable = true;
 
-      services.rspamd.enable = true;
-
       networking.interfaces.eth0 = {
         ipv6Address = "2605:2700:0:5::4713:9cf2";
       };
