@@ -16,6 +16,7 @@ let cfg = config.host.exim;
         webroot = config.security.acme.certs."kdf.sh".webroot;
         postRun = "systemctl reload exim";
       };
+      services.rspamd.enable = true;
     };
 in
 {

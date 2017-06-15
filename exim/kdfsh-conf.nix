@@ -128,8 +128,7 @@
   # is shown in this commented example. As for virus scanning, you must also
   # modify the acl_check_data access control list to enable spam scanning.
   
-  # spamd_address = 127.0.0.1 783
-  
+spamd_address = /run/rspamd/rspamd.sock variant=rspamd
   
   # If Exim is compiled with support for TLS, you may want to enable the
   # following options so that Exim allows clients to make encrypted
@@ -486,7 +485,26 @@
     # Add headers to a message if it is judged to be spam. Before enabling this,
     # you must install SpamAssassin. You may also need to set the spamd_address
     # option above.
-    #
+
+    # Don't scan outbound mail
+    accept hosts = +relay_from_hosts
+    accept condition = ''${if eq{$interface_port}{587}}
+    accept authenticated = *
+
+    warn spam = nobody:true
+         add_header = X-Spam-Score: $spam_score ($spam_bar)
+         add_header = X-Spam-Report: $spam_report
+
+    defer message = Please try again later
+          condition = ''${if eq{$spam_action}{soft reject}}
+
+    deny message = Message discarded as high-probability spam
+         condition = ''${if eq{$spam_action}{reject}}
+
+    warn
+      condition = ''${if >{$spam_score_int}{0}}
+      add_header = X-Spam-Level: $spam_bar
+
     # warn    spam       = nobody
     #         add_header = X-Spam_score: $spam_score\n\
     #                      X-Spam_score_int: $spam_score_int\n\
