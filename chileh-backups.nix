@@ -2,12 +2,6 @@
 
 {
   config = lib.mkIf config.host.chileh-backups.enable {
-    services.fcron.enable = true;
-    services.fcron.systab = ''
-      0 * * * * /mnt/snapshots/do.sh
-      #37 1 * * * { umount /mnt/snapshots && mount /mnt/snapshots; } >/dev/null 2>&1
-    '';
-
     systemd.services.backup-deretheni = {
       description = "Backup deretheni";
       path = with pkgs; [ borgbackup bup rsync openssh ];
