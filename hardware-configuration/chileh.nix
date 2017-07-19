@@ -36,7 +36,7 @@
     };*/
 
   fileSystems."/mnt/snapshots" =
-    { device = "/dev/mapper/vgfah-home--snapshots";
+    { device = "/dev/mapper/vgvagafah-home--snapshots";
       fsType = "btrfs";
       options = [ "compress" "noatime" "nofail" ];
     };
@@ -79,7 +79,7 @@
 
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/7e7b4a0c-3c6e-47e9-9278-ca315d8b83ea"; }
+    [ { device = "/dev/disk/by-uuid/e45c71d2-534d-4878-973e-435e6eb627cf"; }
     ];
 
   nix.maxJobs = lib.mkDefault 4;
