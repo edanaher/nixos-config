@@ -42,19 +42,19 @@
     };
 
   fileSystems."/mnt/movies" =
-    { device = "/dev/mapper/vgtor-movies";
+    { device = "/dev/mapper/vgvagabree-movies";
       fsType = "ext4";
       options = [ "nofail" "noatime" ];
     };
 
   fileSystems."/mnt/old" =
-    { device = "/dev/mapper/vgvagafah-old";
+    { device = "/dev/mapper/vgvagabree-old";
       fsType = "ext4";
       options = [ "nofail" "noatime" ];
     };
 
   fileSystems."/mnt/bak" =
-    { device = "/dev/mapper/vgvagafah-bak";
+    { device = "/dev/mapper/vgvagabree-bak";
       fsType = "ext4";
       options = [ "nofail" "noatime" ];
     };
@@ -66,7 +66,7 @@
     };
 
   fileSystems."/mnt/data" =
-    { device = "/dev/mapper/vgvagafah-data";
+    { device = "/dev/mapper/vgvagabree-data";
       fsType = "ext4";
       options = [ "noatime" "nofail" ];
     };
