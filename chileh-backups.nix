@@ -42,6 +42,24 @@
         Persistent = true;
       };
     };
+
+    systemd.services.snapshot-chileh-edanaher-to-borg = {
+      description = "Copy chileh homedir snapshots to borg";
+      path = with pkgs; [ bash borgbackup utillinux ];
+      serviceConfig = {
+        User = "root";
+        ExecStart = "/mnt/snapshots-borg/borg/do.sh";
+      };
+    };
+
+    systemd.timers.snapshot-chileh-edanaher-to-borg = {
+      description = "Copy chileh homedir snapshots to borg daily";
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "daily";
+        Persistent = true;
+      };
+    };
   };
 
   options = {

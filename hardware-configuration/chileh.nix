@@ -65,6 +65,18 @@
       options = [ "noauto" "noatime" "nofail" "compress" "user" ];
     };
 
+  fileSystems."/mnt/external-borg" =
+    { device = "/dev/md/borg-bak";
+      fsType = "ext4";
+      options = [ "noauto" "noatime" "nofail" "user" ];
+    };
+
+  fileSystems."/mnt/snapshots-borg" =
+    { device = "/dev/vgvagabree/borg-home";
+      fsType = "ext4";
+      options = [ "noatime" "nofail" ];
+    };
+
   fileSystems."/mnt/data" =
     { device = "/dev/mapper/vgvagabree-data";
       fsType = "ext4";
