@@ -90,6 +90,7 @@ let
       host.iodine.enable = true;
       host.randomtoby.enable = true;
       host.caltrain.enable = true;
+      host.lwt.enable = true;
 
       networking.interfaces.eth0 = {
         ipv6Address = "2605:2700:0:5::4713:9cf2";

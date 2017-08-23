@@ -12,5 +12,6 @@
     ./caltrain.nix
     ./iodine.nix
     ./prosody.nix
+    ./lwt.nix
   ];
 }
