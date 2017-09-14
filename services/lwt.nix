@@ -27,6 +27,7 @@ in
       listen = "/var/run/lwt-php.sock";
       extraConfig = ''
         user = nobody
+        listen.group = "nginx"
         pm = dynamic
         pm.max_children = 75
         pm.start_servers = 3
