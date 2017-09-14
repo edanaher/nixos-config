@@ -13,5 +13,6 @@
     ./iodine.nix
     ./prosody.nix
     ./lwt.nix
+    ./angell-classes.nix
   ];
 }
