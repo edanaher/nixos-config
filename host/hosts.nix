@@ -12,6 +12,12 @@ let
       nix.buildCores = 4;
       services.exim.enable = true;
 
+
+      services.openssh.forwardX11 = true;
+      networking.firewall.allowedTCPPortRanges = [
+        { from = 6945; to = 6949; }  # bittorrent
+      ];
+
       networking.extraHosts = ''
         192.168.12.205 deretheni
         169.254.94.126 gemedetw

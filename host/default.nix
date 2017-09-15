@@ -66,6 +66,10 @@ in
       client = mkIf (cfg.class != "server") {
         time.timeZone = "America/New_York";
         host.exim.class = "client";
+        environment.systemPackages = [ pkgs.firejail ];
+        security.wrappers = {
+          firejail.source = "${pkgs.firejail}/bin/firejail";
+        };
       };
       desktop = mkIf (cfg.class == "desktop") {
       };
