@@ -9,7 +9,7 @@ in
 {
   config = lib.mkIf config.host.kdf-services.enable {
     services.nginx.enable = true;
-    services.nginx.package = pkgs.nginx.override { modules = [ pkgs.nginxModules.echo ]; };
+    services.nginx.package = pkgs.nginx.override { modules = with pkgs.nginxModules; [ echo lua ]; };
 
     services.nginx.recommendedOptimisation = true;
     services.nginx.recommendedTlsSettings = true;

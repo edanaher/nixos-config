@@ -14,5 +14,6 @@
     ./prosody.nix
     ./lwt.nix
     ./angell-classes.nix
+    ./nowaytopreventthis.nix
   ];
 }
