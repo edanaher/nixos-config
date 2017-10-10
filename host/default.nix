@@ -64,6 +64,7 @@ in
   config =
     let
       client = mkIf (cfg.class != "server") {
+        programs.command-not-found.enable = true;
         time.timeZone = "America/New_York";
         host.exim.class = "client";
         environment.systemPackages = [ pkgs.firejail ];
