@@ -1,11 +1,16 @@
 { config, lib, pkgs, ... }:
 
+let two-days = 60 * 60 * 24 * 2 - 60; in
 {
   config = lib.mkIf config.host.chileh-backups.enable {
+    services.periodimail.intervals = [ two-days ];
     systemd.services.backup-deretheni = {
       description = "Backup deretheni";
       path = with pkgs; [ borgbackup bup rsync openssh ];
       wants = [ "network-online.target" ];
+      unitConfig = {
+        OnFailure = "periodimail-${builtins.toString two-days}@%n.service";
+      };
       serviceConfig = {
         User = "edanaher";
         Group = "users";
