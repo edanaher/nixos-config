@@ -8,6 +8,7 @@ let angell-path = "/var/run/angell-classes";
       ${update-script} > ${angell-path}/index.html.tmp
       mv ${angell-path}/index.html.tmp ${angell-path}/index.html
     '';
+    utils = import ../utils.nix;
 in
 {
   config = lib.mkIf config.host.angell-classes.enable {
@@ -33,14 +34,7 @@ in
       };
     };
 
-    systemd.timers.update-angell-classes= {
-      description = "Scrape updates for Angell classes daily";
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "daily";
-        Persistent = true;
-      };
-    };
+    systemd.timers.update-angell-classes = utils.simple-timer "daily" "Scrape updates for Angell classes daily";
   };
   options = {
     host.angell-classes.enable = lib.mkOption {

@@ -1,6 +1,7 @@
 {config, lib, pkgs, ...}:
 
 let
+  utils = import ../utils.nix;
   escapeSlash = builtins.replaceStrings [ "/" ] [ "_" ];
   mon-script-template = builtins.readFile ./disk-mon.sh;
   mon-script-text = disk: usage: builtins.replaceStrings [ "$DISK" "$USAGE" ] [ disk usage ] mon-script-template;
@@ -17,14 +18,7 @@ let
       };
     };
 
-  mon-timer-for = disk: usage: {
-    description = "Monitor usage for ${disk} at ${toString usage} daily";
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "daily";
-      Persistent = true;
-    };
-  };
+  mon-timer-for = disk: usage: utils.simple-timer "daily" "Monitor usage for ${disk} at ${toString usage} daily";
 
   services = lib.mapAttrs' (disk: usage: lib.nameValuePair ("monitor-disk-" + escapeSlash disk) (mon-service-for disk usage)) config.host.monitor-disks;
   timers = lib.mapAttrs' (disk: usage: lib.nameValuePair ("monitor-disk-" + escapeSlash disk) (mon-timer-for disk usage)) config.host.monitor-disks;

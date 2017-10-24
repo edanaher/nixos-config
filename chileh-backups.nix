@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
-let two-days = 60 * 60 * 24 * 2 - 60; in
+let two-days = 60 * 60 * 24 * 2 - 60;
+    utils = import ./utils.nix;
+in
 {
   config = lib.mkIf config.host.chileh-backups.enable {
     services.periodimail.intervals = [ two-days ];
@@ -20,14 +22,7 @@ let two-days = 60 * 60 * 24 * 2 - 60; in
       };
     };
 
-    systemd.timers.backup-deretheni = {
-      description = "Backup deretheni daily";
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "daily";
-        Persistent = true;
-      };
-    };
+    systemd.timers.backup-deretheni = utils.simple-timer "daily" "Backup deretheni daily";
 
     systemd.services.snapshot-chileh-edanaher = {
       description = "Snapshot chileh homedir";
@@ -39,14 +34,7 @@ let two-days = 60 * 60 * 24 * 2 - 60; in
       };
     };
 
-    systemd.timers.snapshot-chileh-edanaher = {
-      description = "Snapshot chileh homedir hourly";
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "hourly";
-        Persistent = true;
-      };
-    };
+    systemd.timers.snapshot-chileh-edanaher = utils.simple-timer "hourly" "Snapshot chileh homedir hourly";
 
     systemd.services.snapshot-chileh-edanaher-to-borg = {
       description = "Copy chileh homedir snapshots to borg";
@@ -57,14 +45,7 @@ let two-days = 60 * 60 * 24 * 2 - 60; in
       };
     };
 
-    systemd.timers.snapshot-chileh-edanaher-to-borg = {
-      description = "Copy chileh homedir snapshots to borg daily";
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "daily";
-        Persistent = true;
-      };
-    };
+    systemd.timers.snapshot-chileh-edanaher-to-borg = utils.simple-timer "daily" "Copy chileh homedir snapshots to borg daily";
   };
 
   options = {
