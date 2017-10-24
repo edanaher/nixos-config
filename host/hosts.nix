@@ -41,6 +41,17 @@ let
           Persistent = true;
         };
       };
+
+      host.monitor-disks = {
+        "/" = 90;
+        "/mnt/movies" = 95;
+        "/mnt/bak" = 90;
+        "/boot" = 90;
+        "/mnt/data" = 95;
+        "/mnt/old" = 90;
+        "/mnt/snapshots" = 90;
+        "/mnt/snapshots-borg" = 90;
+      };
     };
     "kroen" = {
       nix.buildCores = 4;
