@@ -1,6 +1,6 @@
 { pkgs }:
 
-let periodimail-script = pkgs.writeScript "periodimail" ''
+let periodimail-script = pkgs.writeScriptBin "periodimail" ''
   #!/bin/sh
   unit=''${2//\//_}
   mkdir -p /tmp/.periodimail
@@ -52,5 +52,5 @@ let periodimail-script = pkgs.writeScript "periodimail" ''
 in
 {
   wrap = { interval, service, script}:
-    "${periodimail-script} ${builtins.toString interval} ${service} ${script}";
+    "${periodimail-script}/bin/periodimail ${builtins.toString interval} ${service} ${script}";
 }
