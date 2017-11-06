@@ -23,7 +23,7 @@ let urls = [
         width: 100%;
         padding: 0;
         margin: 0;
-        text-align: center;
+        text-align: right;
       }
       #bar a {
         text-decoration: none;
