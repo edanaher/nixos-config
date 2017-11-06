@@ -1,11 +1,11 @@
 {config, lib, pkgs, ...}:
 
 let urls = [
-        http://www.theonion.com/article/no-way-to-prevent-this-says-only-nation-where-this-36131
-        http://www.theonion.com/article/no-way-prevent-says-only-nation-where-regularly-ha-51443
-        http://www.theonion.com/article/no-way-prevent-says-only-nation-where-regularly-ha-51938
-        http://www.theonion.com/article/no-way-prevent-says-only-nation-where-regularly-ha-51444
-        http://www.theonion.com/article/no-way-prevent-says-only-nation-where-regularly-ha-57086
+        https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1819576527
+        https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1819577935
+        https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1819578474
+        https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1819578287
+        https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1819580358
         https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1820163660
       ];
     header = ''
