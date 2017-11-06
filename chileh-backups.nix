@@ -1,22 +1,19 @@
 { config, lib, pkgs, ... }:
 
 let two-days = 60 * 60 * 24 * 2 - 60;
+    periodimail = import ./scripts/periodimail.nix { inherit pkgs; };
     utils = import ./utils.nix;
 in
 {
   config = lib.mkIf config.host.chileh-backups.enable {
-    services.periodimail.intervals = [ two-days ];
     systemd.services.backup-deretheni = {
       description = "Backup deretheni";
-      path = with pkgs; [ borgbackup bup rsync openssh ];
+      path = with pkgs; [ borgbackup bup rsync openssh exim ];
       wants = [ "network-online.target" ];
-      unitConfig = {
-        OnFailure = "periodimail-${builtins.toString two-days}@%n.service";
-      };
       serviceConfig = {
         User = "edanaher";
         Group = "users";
-        ExecStart = "/mnt/bak/deretheni/do.sh";
+        ExecStart = periodimail.wrap { interval = two-days; script = "/mnt/bak/deretheni/do.sh"; service = "backup-deretheni"; };
         Restart = "on-failure";
         RestartSec = "1h";
       };

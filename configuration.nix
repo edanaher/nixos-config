@@ -16,7 +16,6 @@
       ./exim
       ./pulseaudio
       ./xserver.nix
-      ./scripts/periodimail.nix
     ];
 
   boot.kernelParams = lib.optional (config.host.class != "server")
