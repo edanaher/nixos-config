@@ -27,7 +27,7 @@ in
       wants = [ "network-online.target" ];
       serviceConfig = {
         User = "root";
-        ExecStart = "/home/edanaher/bin/bin/do_snapshot_home";
+        ExecStart = periodimail.wrap { interval = two-days; script = "/home/edanaher/bin/bin/do_snapshot_home"; service = "snapshot-chileh-edanaher"; };
       };
     };
 
@@ -35,10 +35,10 @@ in
 
     systemd.services.snapshot-chileh-edanaher-to-borg = {
       description = "Copy chileh homedir snapshots to borg";
-      path = with pkgs; [ bash borgbackup utillinux ];
+      path = with pkgs; [ bash borgbackup utillinux exim ];
       serviceConfig = {
         User = "root";
-        ExecStart = "/mnt/snapshots-borg/borg/do.sh";
+        ExecStart = periodimail.wrap { interval = two-days; script = "/mnt/snapshots-borg/borg/do.sh"; service = "snapshot-chileh-edanaher-to-borg"; };
       };
     };
 
