@@ -8,7 +8,25 @@ from string import Template
 import urllib
 import urllib.request
 
-DEBUG=False
+from docopt import docopt
+
+usage = """Angell page generator
+Usage: generate.py [-hd] -o=<outfile> -r=<rawdir>
+
+Options:
+  -h --help      show this screen
+  -d             read from <rawdir> instead of pulling from source
+  -o <outfile>   output html file
+  -r <rawdir>    directory to output saved files (or read if -d)
+"""
+
+args = docopt(usage)
+DEBUG=args['-d']
+RAWDIR=args['-r']
+OUTFILE=args['-o']
+
+if not os.path.isdir(RAWDIR):
+  os.mkdir(RAWDIR)
 
 def fetch(url):
   req = urllib.request.Request(url=url, headers = { "User-Agent": "script for angell.kdf.sh" })
@@ -24,12 +42,14 @@ def extractMatch(match, errString = "ERROR"):
 
 
 if DEBUG:
-  with open("urls") as f:
+  with open(RAWDIR + "/urls", encoding="latin-1") as f:
     urls = f.read().splitlines()
 else:
   page = fetch('https://www.mspca.org/animal_care/boston-dog-training/')
   all_urls = { re.search('https://secure2.convio.net[^"]*', str(l)).group(0) for l in page.splitlines() if(b"See Dates" in l) }
   urls = sorted(all_urls)
+  with open(RAWDIR + "/urls", "w") as f:
+    f.write("\n".join(urls))
 
 days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
@@ -87,10 +107,12 @@ def classify(session):
 classes = {}
 for u in urls:
   if DEBUG:
-    with open(re.sub("/", "_", u)) as f:
+    with open(RAWDIR + "/" + re.sub("/", "_", u), encoding="latin-1") as f:
       lines = f.read()
   else:
     lines = str(fetch(u))
+    with open(RAWDIR + "/" + re.sub("/", "_", u), "w", encoding="latin-1") as f:
+      f.write(lines)
   title_line = re.search('product_image.*alt="([^"]*)"', lines)
   if title_line == None:
     continue
@@ -118,7 +140,6 @@ for u in urls:
 
 classData = []
 for c in sorted(classes):
-  sys.stderr.write(c + "\n")
   classData.append('<h2><a href="' + classes[c][0] + '">' + c + '</a></h2>')
   sessions = sorted(classes[c][1])
   if len(sessions) == 0:
@@ -141,4 +162,6 @@ with open("template.html") as f:
   templateContents = f.read()
 template = Template(templateContents)
 now = list(os.popen('TZ=America/New_York date'))[0].rstrip()
-print(template.substitute(now=now, classes = "\n".join(classData)))
+output = template.substitute(now=now, classes = "\n".join(classData))
+with open(OUTFILE, "w") as outfile:
+  outfile.write(output)
