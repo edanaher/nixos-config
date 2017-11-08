@@ -5,6 +5,16 @@ import os
 import re
 import sys
 from string import Template
+import urllib
+import urllib.request
+
+DEBUG=False
+
+def fetch(url):
+  req = urllib.request.Request(url=url, headers = { "User-Agent": "script for angell.kdf.sh" })
+  with urllib.request.urlopen(req) as resp:
+    return resp.read()
+
 
 def extractMatch(match, errString = "ERROR"):
   if match == None:
@@ -13,8 +23,13 @@ def extractMatch(match, errString = "ERROR"):
     return match.group(0)
 
 
-with open("urls") as f:
-  urls = f.read().splitlines()
+if DEBUG:
+  with open("urls") as f:
+    urls = f.read().splitlines()
+else:
+  page = fetch('https://www.mspca.org/animal_care/boston-dog-training/')
+  all_urls = { re.search('https://secure2.convio.net[^"]*', str(l)).group(0) for l in page.splitlines() if(b"See Dates" in l) }
+  urls = sorted(all_urls)
 
 days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
@@ -71,8 +86,11 @@ def classify(session):
 
 classes = {}
 for u in urls:
-  with open(re.sub("/", "_", u)) as f:
-    lines = f.read()
+  if DEBUG:
+    with open(re.sub("/", "_", u)) as f:
+      lines = f.read()
+  else:
+    lines = str(fetch(u))
   title_line = re.search('product_image.*alt="([^"]*)"', lines)
   if title_line == None:
     continue
@@ -123,4 +141,4 @@ with open("template.html") as f:
   templateContents = f.read()
 template = Template(templateContents)
 now = list(os.popen('TZ=America/New_York date'))[0].rstrip()
-print template.substitute(now=now, classes = "\n".join(classData))
+print(template.substitute(now=now, classes = "\n".join(classData)))
