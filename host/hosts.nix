@@ -36,7 +36,7 @@ let
       systemd.timers.check-edanaher-mail = utils.simple-timer "*-*-* *:00,30:00" "Check mail for edanaher every half hour";
 
       host.monitor-disks = {
-        "/" = 90;
+        "/" = 80;
         "/mnt/movies" = 95;
         "/mnt/bak" = 90;
         "/boot" = 90;
