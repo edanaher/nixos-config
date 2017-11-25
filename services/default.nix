@@ -16,5 +16,6 @@
     ./angell-classes.nix
     ./nowaytopreventthis.nix
     ./disk-mon.nix
+    ./ctfwsinthepark.nix
   ];
 }
