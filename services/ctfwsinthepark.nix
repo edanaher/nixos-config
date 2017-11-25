@@ -32,7 +32,7 @@ in
       };
       "ctfwsinthepark.com" = {
         globalRedirect = "www.ctfwsinthepark.com";
-      }
+      };
     };
   };
 
