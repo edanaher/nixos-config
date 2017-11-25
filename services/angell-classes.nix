@@ -1,12 +1,20 @@
 {config, lib, pkgs, ...}:
 
-let angell-path = "/var/run/angell-classes";
+let angell-path = "/var/www/angell-classes";
     update-script = pkgs.copyPathToStore ./angell-classes.sh;
+    update-path = pkgs.copyPathToStore ./angell;
+    python = pkgs.python3.withPackages (ps: [ ps.docopt] );
     update-wrapper = pkgs.writeScriptBin "angell-classes-wrapper" ''
       #!/bin/sh
+      mkdir -p ${angell-path}/raw
       mkdir -p /var/run/angell-classes
-      ${update-script} > ${angell-path}/index.html.tmp
-      mv ${angell-path}/index.html.tmp ${angell-path}/index.html
+      ${update-script} > ${angell-path}/old.html.tmp
+      mv ${angell-path}/old.html.tmp ${angell-path}/old.html
+
+      now=`date -Iseconds`
+      cd ${update-path}
+      ${python}/bin/python generate.py -o ${angell-path}/new-$now.html -r ${angell-path}/raw/$now
+      ln -sf ${angell-path}/new-$now.html ${angell-path}/index.html
     '';
     utils = import ../utils.nix;
 in
