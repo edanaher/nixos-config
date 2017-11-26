@@ -5,6 +5,6 @@
     hardware.pulseaudio.enable = true;
     hardware.pulseaudio.package = pkgs.pulseaudioFull;
     hardware.bluetooth.enable = true;
-    hardware.pulseaudio.configFile = ./default.pa;
+    #    hardware.pulseaudio.configFile = ./default.pa;
   };
 }

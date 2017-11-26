@@ -33,7 +33,7 @@ in
 
     systemd.timers.snapshot-chileh-edanaher = utils.simple-timer "hourly" "Snapshot chileh homedir hourly";
 
-    systemd.services.snapshot-chileh-edanaher-to-borg = {
+    /*systemd.services.snapshot-chileh-edanaher-to-borg = {
       description = "Copy chileh homedir snapshots to borg";
       path = with pkgs; [ bash borgbackup utillinux exim ];
       serviceConfig = {
@@ -42,7 +42,7 @@ in
       };
     };
 
-    systemd.timers.snapshot-chileh-edanaher-to-borg = utils.simple-timer "daily" "Copy chileh homedir snapshots to borg daily";
+    systemd.timers.snapshot-chileh-edanaher-to-borg = utils.simple-timer "daily" "Copy chileh homedir snapshots to borg daily";*/
   };
 
   options = {

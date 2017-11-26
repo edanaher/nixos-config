@@ -8,9 +8,16 @@ let
     "doyha" = {
       host.class ="desktop";
       host.boot-type = "efi";
-      #host.chileh-backups.enable = true;
-      #nix.buildCores = 4;
-      #services.exim.enable = true;
+      host.chileh-backups.enable = true;
+      nix.buildCores = 6;
+      services.exim.enable = true;
+
+      hardware.pulseaudio.systemWide = true;
+      hardware.pulseaudio.daemon.config = { flat-volumes = "no"; };
+      hardware.pulseaudio.extraClientConf = ''
+        default-server = /var/run/pulse/native
+      '';
+      users.groups.audio.members = [ "root" ];
 
       host.virtualbox.enable = false;
 
@@ -24,7 +31,7 @@ let
         169.254.94.126 gemedetw
       '';
 
-      /*systemd.services.check-edanaher-mail = {
+      systemd.services.check-edanaher-mail = {
         description = "Check mail for edanaher";
         path = [ pkgs.fetchmail pkgs.procmail ];
         serviceConfig = {
@@ -32,16 +39,16 @@ let
           User = "edanaher";
           ExecStart = "/home/edanaher/bin/bin/run_fetchmail";
         };
-      };*/
+      };
 
-      /*systemd.timers.check-edanaher-mail = {
+      systemd.timers.check-edanaher-mail = {
         description = "Check mail for edanaher every half hour";
         wantedBy = [ "timers.target" ];
         timerConfig = {
           OnCalendar = "*-*-* *:00,30:00";
           Persistent = true;
         };
-      };*/
+      };
     };
     "chileh" = {
       host.class ="desktop";
