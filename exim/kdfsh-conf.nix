@@ -56,7 +56,7 @@
   # +local_domains, +relay_to_domains, and +relay_from_hosts, respectively. They
   # are all colon-separated lists:
   
-  domainlist local_domains = @:xmpp.kdf.sh : partywiththe.party : nowaytopreventthis.com : kellyandevan.party : forum.kellyandevan.party
+  domainlist local_domains = @:xmpp.kdf.sh : partywiththe.party : nowaytopreventthis.com : kellyandevan.party : forum.kellyandevan.party : ctfwsinthepark.com
   domainlist relay_to_domains =
   domainlist relay_to_gahlpo_domains = willcaltrainsucktoday.com : edanaher.net : xmpp.edanaher.net : kellyandevan2018.com : appeasement.party
   hostlist   relay_from_hosts = 127.0.0.1 : 172.17.0.0/24
