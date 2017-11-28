@@ -47,7 +47,6 @@ in
           "/" = {
             proxyPass = http://localhost:8081;
             extraConfig = ''
-              proxy_set_header Host $host;
               proxy_set_header Hostname $proxy_add_x_forwarded_for;
             '';
           };
@@ -87,7 +86,6 @@ in
           "/" = {
             proxyPass = http://localhost:8081;
             extraConfig = ''
-              proxy_set_header Host $host;
               proxy_set_header X-Kdf-Real-Ip $proxy_add_x_forwarded_for;
             '';
           };
