@@ -1,22 +1,47 @@
 {config, lib, pkgs, ...}:
 
-let angell-path = "/var/www/angell-classes";
-    update-script = pkgs.copyPathToStore ./angell-classes.sh;
-    update-path = pkgs.copyPathToStore ./angell;
+let monitor-script = pkgs.python3Packages.buildPythonApplication rec  {
+      name = "angell-class-monitor";
+      version = "1080f9e";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "edanaher";
+        repo = "angell-class-monitor";
+        rev = version;
+        sha256 = "0xgafp3qzg31g34r8x2chw6wk6xvafb1kpxf3mhgd2786hc08dld";
+      };
+
+      propagatedBuildInputs = [ pkgs.python3Packages.docopt ];
+
+      buildPhase = "";
+
+      installPhase = ''
+        mkdir -p $out/bin/
+        cp generate.py $out/bin
+        cp template.html $out/bin
+      '';
+
+      doCheck = false;
+
+      meta = {
+        homepage = http://github.com/edanaher/angell-class-monitor;
+        description = "Service for watching for changes in classes at the MSPCA Angell in Boston";
+        license = pkgs.stdenv.lib.licenses.bsd3;
+      };
+    };
+
+    angell-path = "/var/www/angell-classes";
     python = pkgs.python3.withPackages (ps: [ ps.docopt] );
     update-wrapper = pkgs.writeScriptBin "angell-classes-wrapper" ''
       #!/bin/sh
       mkdir -p ${angell-path}/raw
       mkdir -p /var/run/angell-classes
-      ${update-script} > ${angell-path}/old.html.tmp
-      mv ${angell-path}/old.html.tmp ${angell-path}/old.html
 
       now=`date -Iseconds`
-      cd ${update-path}
-      ${python}/bin/python generate.py -o ${angell-path}/new-$now.html -r ${angell-path}/raw/$now
+      cd ${monitor-script}/bin
+      ./generate.py -o ${angell-path}/new-$now.html -r ${angell-path}/raw/$now
       ln -sf ${angell-path}/new-$now.html ${angell-path}/index.html
     '';
-    utils = import ../utils.nix;
 in
 {
   config = lib.mkIf config.host.angell-classes.enable {
