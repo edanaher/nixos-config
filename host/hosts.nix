@@ -17,7 +17,7 @@ let
       hardware.pulseaudio.extraClientConf = ''
         default-server = /var/run/pulse/native
       '';
-      users.groups.audio.members = [ "root" ];
+      users.groups.audio.members = [ "root" "edanaher" ];
 
       host.virtualbox.enable = false;
 
@@ -49,6 +49,8 @@ let
           Persistent = true;
         };
       };
+
+      hardware.opengl.driSupport32Bit = true;
     };
     "chileh" = {
       host.class ="desktop";
