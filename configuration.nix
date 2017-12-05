@@ -80,4 +80,6 @@
   nix.useSandbox = true;
   nix.daemonNiceLevel = 10;
   nix.daemonIONiceLevel = 3;
+
+  boot.kernel.sysctl."vm.swappiness" = 1;
 }
