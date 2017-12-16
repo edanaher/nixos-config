@@ -40,5 +40,5 @@
 
   # Coffee Lake i915 is "alpha" quality?
   boot.kernelPackages = pkgs.linuxPackages_4_14;
-  boot.kernelParams = [ "i915.alpha_support" ];
+  #boot.kernelParams = [ "i915.alpha_support" ];
 }
