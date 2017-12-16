@@ -30,6 +30,61 @@
       fsType = "vfat";
     };
 
+  fileSystems."/mnt/snapshots" =
+    { device = "/dev/mapper/vgvagafah-home--snapshots";
+      fsType = "btrfs";
+      options = [ "compress" "noatime" "nofail" ];
+    };
+
+
+  fileSystems."/mnt/movies" =
+    { device = "/dev/mapper/vgvagabree-movies";
+      fsType = "ext4";
+      options = [ "nofail" "noatime" ];
+    };
+
+  fileSystems."/mnt/old" =
+    { device = "/dev/mapper/vgvagabree-old";
+      fsType = "ext4";
+      options = [ "nofail" "noatime" ];
+    };
+
+  fileSystems."/mnt/bak" =
+    { device = "/dev/mapper/vgvagabree-bak";
+      fsType = "ext4";
+      options = [ "nofail" "noatime" ];
+    };
+
+  fileSystems."/mnt/external" =
+    { device = "/dev/disk/by-uuid/6d5f4267-2d60-4cd6-b623-3b96793b3529";
+      fsType = "btrfs";
+      options = [ "noauto" "noatime" "nofail" "compress" "user" ];
+    };
+
+  fileSystems."/mnt/external-borg" =
+    { device = "/dev/md/borg-bak";
+      fsType = "ext4";
+      options = [ "noauto" "noatime" "nofail" "user" ];
+    };
+
+  fileSystems."/mnt/snapshots-borg" =
+    { device = "/dev/vgvagabree/borg-home";
+      fsType = "ext4";
+      options = [ "noatime" "nofail" ];
+    };
+
+  fileSystems."/mnt/data" =
+    { device = "/dev/mapper/vgvagabree-data";
+      fsType = "ext4";
+      options = [ "noatime" "nofail" ];
+    };
+
+  fileSystems."/mnt/kobo" =
+    { device = "/dev/disk/by-uuid/51A9-A1CD";
+      fsType = "vfat";
+      options = [ "noatime" "nofail" "noauto" "user" ];
+    };
+
   boot.initrd.luks.devices."btrfs".device = "/dev/disk/by-uuid/efa8285a-df23-47e6-b2e3-9fd930f5b295";
   boot.initrd.luks.devices."btrfs".preLVM = false;
 
