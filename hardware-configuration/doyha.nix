@@ -13,6 +13,8 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  boot.kernelParams = [ "pci=noaer" ];
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/e9bf5566-4a48-4505-a1a2-ba54ed4e9df3";
       fsType = "btrfs";
