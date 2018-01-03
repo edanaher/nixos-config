@@ -11,7 +11,7 @@
       ./backports.nix
       ./host
       ./hostname.nix
-      ./chileh-backups.nix
+      ./doyha-backups.nix
       ./containers.nix
       ./exim
       ./pulseaudio

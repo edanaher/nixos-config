@@ -19,7 +19,7 @@ let periodimail-script = pkgs.writeScriptBin "periodimail" ''
       echo Removing and mailing now-successful file $unit
       rm $MARKFILE
       /run/wrappers/bin/exim systemd@edanaher.net <<EOF
-  From: chileh@edanaher.net
+  From: doyha@edanaher.net
   To: systemd@edanaher.net
   Subject: Chileh unit '$2' succeeded
 
@@ -38,7 +38,7 @@ let periodimail-script = pkgs.writeScriptBin "periodimail" ''
       echo Mailing failure for $unit
       touch $MARKFILE
       /run/wrappers/bin/exim systemd@edanaher.net <<EOF
-  From: chileh@edanaher.net
+  From: doyha@edanaher.net
   To: systemd@edanaher.net
   Subject: Chileh unit '$2' failed
   

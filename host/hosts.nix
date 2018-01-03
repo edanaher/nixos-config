@@ -8,7 +8,7 @@ let
     "doyha" = {
       host.class ="desktop";
       host.boot-type = "efi";
-      host.chileh-backups.enable = true;
+      host.doyha-backups.enable = true;
       nix.buildCores = 6;
       services.exim.enable = true;
 
@@ -51,11 +51,22 @@ let
       };
 
       hardware.opengl.driSupport32Bit = true;
+
+      host.monitor-disks = {
+        "/" = 80;
+        "/mnt/movies" = 95;
+        "/mnt/bak" = 90;
+        "/boot" = 90;
+        "/mnt/data" = 95;
+        "/mnt/old" = 90;
+        "/mnt/snapshots" = 90;
+        "/mnt/snapshots-borg" = 90;
+      };
     };
     "chileh" = {
       host.class ="desktop";
       host.boot-type = "bios";
-      host.chileh-backups.enable = true;
+      #host.chileh-backups.enable = true;
       nix.buildCores = 4;
       services.exim.enable = true;
 
