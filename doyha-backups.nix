@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let two-days = 60 * 60 * 24 * 2 - 60;
-    periodimail = import ./scripts/periodimail.nix { inherit pkgs; };
+    periodimail = import ./scripts/periodimail.nix { inherit pkgs; hostname = config.host.name; };
     utils = import ./utils.nix;
 in
 {

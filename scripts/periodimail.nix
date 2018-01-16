@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, hostname }:
 
 let periodimail-script = pkgs.writeScriptBin "periodimail" ''
   #!/bin/sh
@@ -19,9 +19,9 @@ let periodimail-script = pkgs.writeScriptBin "periodimail" ''
       echo Removing and mailing now-successful file $unit
       rm $MARKFILE
       /run/wrappers/bin/exim systemd@edanaher.net <<EOF
-  From: doyha@edanaher.net
+  From: ${hostname}@edanaher.net
   To: systemd@edanaher.net
-  Subject: Chileh unit '$2' succeeded
+  Subject: ${hostname} unit '$2' succeeded
 
   $(journalctl -u $2 -n 10)
   EOF
@@ -38,9 +38,9 @@ let periodimail-script = pkgs.writeScriptBin "periodimail" ''
       echo Mailing failure for $unit
       touch $MARKFILE
       /run/wrappers/bin/exim systemd@edanaher.net <<EOF
-  From: doyha@edanaher.net
+  From: ${hostname}@edanaher.net
   To: systemd@edanaher.net
-  Subject: Chileh unit '$2' failed
+  Subject: ${hostname} unit '$2' failed
   
   $(journalctl -u $2 -n 10)
   EOF
