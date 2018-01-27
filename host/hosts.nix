@@ -3,7 +3,6 @@
 let
   utils = import ./utils.nix { inherit lib; };
   udev-keyboard-autoplug = import ../scripts/udev-keyboard-autoplug.nix;
-  acpid-script = import ../scripts/acpid-script.nix;
   hosts = {
     "doyha" = {};
     "chileh" = {
