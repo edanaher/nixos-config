@@ -2,14 +2,14 @@
 
 let utils = import ../utils.nix;
     monitor-script = pkgs.python3Packages.buildPythonApplication rec  {
-      name = "angell-class-monitor";
-      version = "6094532";
+      version = "aecd5a89";
+      name = "angell-class-monitor-${version}";
 
       src = pkgs.fetchFromGitHub {
         owner = "edanaher";
         repo = "angell-class-monitor";
         rev = version;
-        sha256 = "0484nac0019vzz58wmil0q9zbrrg2zn00h8krzdhfwgi6mfr08ib";
+        sha256 = "0x1lbailx1qx0xcjvzpyssf24pbrxb9pl7x46325bvnynb7kqa04";
       };
 
       propagatedBuildInputs = with pkgs.python3Packages; [ docopt psycopg2 ];
@@ -23,8 +23,10 @@ let utils = import ../utils.nix;
         substitute setup.sh $out/bin/setup.sh --replace @SUDO ${pkgs.sudo} --replace @POSTGRESQL ${pkgs.postgresql} --replace @OUT $out
         chmod +x $out/bin/setup.sh
 
-        mkdir -p $out/etc
-        cp angell.sql $out/etc/
+        mkdir -p $out/db
+        cp db/*.sql $out/db
+        substitute db/run.sh $out/db/run.sh --replace @POSTGRESQL ${pkgs.postgresql} --replace @OUT $out
+        chmod +x $out/db/run.sh
       '';
 
       doCheck = false;
