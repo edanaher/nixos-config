@@ -80,9 +80,10 @@ in
     };
 
     services.postgresql.enable = true;
-    services.postgresql.authentication = ''
-      local all all peer
-    '';
+    # Handled in angell-classes
+    #services.postgresql.authentication = ''
+    #  local all all peer
+    #'';
   };
 
   options = {
