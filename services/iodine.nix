@@ -7,7 +7,7 @@ let secrets = import ../secrets.nix; in
       enable = true;
       domain = "i2.kdf.sh";
       ip = "10.70.1.1";
-      extraConfig = "-cP ${secrets.iodine.password} -p 5392";
+      extraConfig = "-c -P ${secrets.iodine.password} -p 5392";
     };
   };
 
