@@ -41,7 +41,7 @@ in
       "willcaltrainsucktoday.kdf.sh" = {
         serverAliases = [ "willcaltrainsucktoday.com" "www.willcaltrainsucktoday.com" ];
         locations."/".proxyPass = "http://localhost:8083";
-        enableSSL = true;
+        onlySSL = true;
         sslCertificate = /var/lib/acme/kdf.sh/fullchain.pem;
         sslCertificateKey = /var/lib/acme/kdf.sh/key.pem;
         extraConfig = ''

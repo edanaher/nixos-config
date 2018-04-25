@@ -6,7 +6,7 @@ let
     name = "learing-with-texts-1.6.1";
 		src = pkgs.fetchzip {
 			url = https://downloads.sourceforge.net/project/lwt/lwt_v_1_6_1.zip;
-      sha256 = "11yzddwbz7mdvky4ynmp5r3qqb2p1mwb1624qs97n96msh8flnif";
+      sha256 = "1ay55wbscyrdbcfgpwmgp8a9irswl097hvxwjipgis2ib1477f2w";
       stripRoot = false;
 		};
 
