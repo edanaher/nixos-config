@@ -8,19 +8,11 @@ let utils = import ../utils.nix;
       template-path = "/var/run/angell-classes";
       mail-host = "127.0.0.1";
     };
-    angell-packages-build = pkgs.stdenv.mkDerivation rec {
-      version = "c984813dfdcbdcfb777f036e5ebd67a9d8f0ecd7";
-      name = "build-angell-monitor-${builtins.substring 0 8 version}";
-      src = pkgs.fetchFromGitHub {
-        owner = "edanaher";
-        repo = "angell-class-monitor";
-        rev = version;
-        sha256 = "07lr1qfydm0iwbzsvid1jqgz1q532lcyl3k34cjizpxfb5kw8znf";
-      };
-
-      installPhase = ''
-        cp -a . $out
-      '';
+    angell-packages-build = pkgs.fetchFromGitHub {
+      owner = "edanaher";
+      repo = "angell-class-monitor";
+      rev = "e2565286ce45215c868ba0002409b97d44038b04";
+      sha256 = "11ql8psbpymzbf6sydfh0pygw2c81zd7fsk8s065f380b2a6rhay";
     };
     angell-packages = import "${angell-packages-build}" { inherit pkgs; inherit (angell-config) web-path template-path mail-host angell-password; } ;
 in
