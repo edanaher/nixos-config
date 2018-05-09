@@ -5,6 +5,13 @@ let robots-none-txt = pkgs.writeText "robots-none.txt"
     User-agent: *
     Disallow: /
   '';
+  kdf-www-packages-build = pkgs.fetchFromGitHub {
+    owner = "edanaher";
+    repo = "kdf-www";
+    rev = "1fc0003abc125af7a79256260a1322599c0ad368";
+    sha256 = "1plbd3ik78pd8sq5zdgjshw2i5grr1mz46riny3i4dzxsbx86bwx";
+  };
+  kdf-www-packages = import "${kdf-www-packages-build}" { inherit pkgs; } ;
 in
 {
   config = lib.mkIf config.host.kdf-services.enable {
@@ -40,17 +47,14 @@ in
           };
         };
       };
-      # Generate an ACME cert for kdf.sh, but otherwise serve from kdf-web.
+      # Generate an ACME cert for kdf.sh, but otherwise redirect to www.
       "kdf.sh" = {
         enableACME = true;
-        locations = {
-          "/" = {
-            proxyPass = http://localhost:8081;
-            extraConfig = ''
-              proxy_set_header Hostname $proxy_add_x_forwarded_for;
-            '';
-          };
-        };
+        globalRedirect = "www.kdf.sh";
+      };
+      "www.kdf.sh" = kdf-www-packages.nginx-locations // {
+        enableACME = true;
+        forceSSL = true;
       };
       "echo.kdf.sh" = {
         locations = {
