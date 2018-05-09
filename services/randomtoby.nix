@@ -24,7 +24,7 @@ in
 
     services.nginx.virtualHosts = {
       "kellyandevan.party".globalRedirect = "www.kellyandevan.party";
-      "www.kellyandevan.party" = {
+      "realsite.kellyandevan.party" = {
         enableACME = true;
         forceSSL = true;
         locations = {
