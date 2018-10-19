@@ -47,6 +47,8 @@
   services.openssh.enable = true;
   programs.mosh.enable = true;
 
+  programs.ssh.startAgent = true;
+
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
