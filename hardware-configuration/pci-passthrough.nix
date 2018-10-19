@@ -15,11 +15,11 @@
   ];
 
   virtualisation.libvirtd.enable = true;
-  virtualisation.libvirtd.enableKVM = true;
+  #virtualisation.libvirtd.enableKVM = true;
 
-  users.groups.libvirtd.members = [ "root" "edanaher" ];
+  #users.groups.libvirtd.members = [ "root" "edanaher" ];
 
-  virtualisation.libvirtd.qemuVerbatimConfig = ''
-    nvram = [ "${pkgs.OVMF}/FV/OVMF.fd:${pkgs.OVMF}/FV/OVMF_VARS.fd" ];
-  '';
+  #virtualisation.libvirtd.qemuVerbatimConfig = ''
+  #  nvram = [ "${pkgs.OVMF}/FV/OVMF.fd:${pkgs.OVMF}/FV/OVMF_VARS.fd" ];
+  #'';
 }

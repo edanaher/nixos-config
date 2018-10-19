@@ -13,7 +13,7 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  boot.kernelParams = [ "pci=noaer" ];
+  boot.kernelParams = [ "pci=noaer" "i915.enable_fbc=0" ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/e9bf5566-4a48-4505-a1a2-ba54ed4e9df3";
@@ -96,6 +96,6 @@
   powerManagement.cpuFreqGovernor = "powersave";
 
   # Coffee Lake i915 is "alpha" quality?
-  boot.kernelPackages = pkgs.linuxPackages_4_14;
+  boot.kernelPackages = pkgs.linuxPackages_4_18;
   #boot.kernelParams = [ "i915.alpha_support" ];
 }

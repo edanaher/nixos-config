@@ -17,6 +17,14 @@ let
       hardware.pulseaudio.extraClientConf = ''
         default-server = /var/run/pulse/native
       '';
+      environment.etc."pulse/alsa-mixer/paths/analog-output.conf.common".text = ''
+        [Element Front]
+        volume = ignore
+        [Element Master]
+        volume = ignore
+        [Element PCM]
+        volume = ignore
+      '';
       users.groups.audio.members = [ "root" "edanaher" ];
 
       host.virtualbox.enable = false;
@@ -24,6 +32,7 @@ let
       services.openssh.forwardX11 = true;
       networking.firewall.allowedTCPPortRanges = [
         { from = 6945; to = 6949; }  # bittorrent
+        { from = 9875; to = 9875; }  # ad-hoc pashare
       ];
 
       networking.extraHosts = ''
@@ -62,6 +71,11 @@ let
         "/mnt/snapshots" = 90;
         "/mnt/snapshots-borg" = 90;
       };
+
+      services.atd.enable = true;
+
+      # *sigh*
+      services.postgresql.enable = true;
     };
     "chileh" = {
       host.class ="desktop";
