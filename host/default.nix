@@ -4,6 +4,7 @@ with lib;
 
 let
   cfg = config.host;
+  acpid-script = import ../scripts/acpid-script.nix;
 in
 {
   imports = [
