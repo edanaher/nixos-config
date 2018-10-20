@@ -8,7 +8,6 @@ in
 {
   imports = [
     ./hosts.nix
-    ../services
   ];
   options.host = {
     name = mkOption {

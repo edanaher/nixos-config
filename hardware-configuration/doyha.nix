@@ -95,7 +95,5 @@
   nix.maxJobs = lib.mkDefault 12;
   powerManagement.cpuFreqGovernor = "powersave";
 
-  # Coffee Lake i915 is "alpha" quality?
   boot.kernelPackages = pkgs.linuxPackages_4_18;
-  #boot.kernelParams = [ "i915.alpha_support" ];
 }
