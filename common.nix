@@ -73,8 +73,6 @@
     umount.source = "${pkgs.utillinux}/bin/umount";
   };
 
-  programs.ssh.startAgent = true;
-
   nix.useSandbox = true;
   nix.daemonNiceLevel = 10;
   nix.daemonIONiceLevel = 3;
