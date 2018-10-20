@@ -17,5 +17,6 @@
     ./nowaytopreventthis.nix
     ./disk-mon.nix
     ./ctfwsinthepark.nix
+    ./exim
   ];
 }

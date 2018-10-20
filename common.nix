@@ -7,7 +7,6 @@
       ./host
       ./doyha-backups.nix
       ./containers.nix
-      ./exim
       ./pulseaudio
       ./services
       ./xserver.nix
