@@ -77,7 +77,10 @@ in
       laptop = mkIf (cfg.class == "laptop") {
         services.acpid.enable = true;
         services.acpid.lidEventCommands = "${acpid-script}/bin/acpid-script.sh";
-        services.logind.extraConfig = "HandleLidSwitch=ignore";
+        services.logind.extraConfig = ''
+          HandleLidSwitch=ignore
+          HandlePowerKey=ignore
+        '';
 
         services.tlp.enable = true;
         services.tlp.extraConfig = ''

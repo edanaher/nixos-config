@@ -4,7 +4,7 @@
   config = lib.mkMerge [{
       networking.nat.enable = true;
       networking.nat.internalInterfaces = ["ve-+" "tap-boogihn"];
-      networking.nat.externalInterface = "wlp9s0";
+      networking.nat.externalInterface = "wlp9s0"; # TOOO: parameterize for primary interface.
 
       virtualisation.docker.enable = true;
       virtualisation.docker.storageDriver = "btrfs";
