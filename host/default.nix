@@ -7,9 +7,6 @@ let
   acpid-script = import ../scripts/acpid-script.nix;
 in
 {
-  imports = [
-    ./hosts.nix
-  ];
   options.host = {
     name = mkOption {
       type = types.str;
