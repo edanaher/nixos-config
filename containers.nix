@@ -19,7 +19,7 @@
     (lib.mkIf config.host.virtualbox.enable {
       virtualisation.virtualbox.host.enable = true;
     })
-    (lib.mkIf (config.host.name == "doyha") {
+    (lib.mkIf (config.host.samba.enable) {
       services.samba.enable = true;
       services.samba.extraConfig = ''
          guest ok = yes
@@ -55,6 +55,14 @@
       type = lib.types.bool;
       default = true;
       description = "Enable virtualbox";
+    };
+  };
+
+  options.host.samba = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable samba";
     };
   };
 }

@@ -10,6 +10,7 @@
     host.name = "doyha";
     host.class ="desktop";
     host.boot-type = "efi";
+    host.samba.enable = true;
     host.doyha-backups.enable = true;
     nix.buildCores = 6;
     services.exim.enable = true;
