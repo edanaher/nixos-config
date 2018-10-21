@@ -3,6 +3,7 @@
 {
   imports = [
     ../common.nix
+    ./_server.nix
     ../hardware-configuration/kdfsh.nix
   ];
 

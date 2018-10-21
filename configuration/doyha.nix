@@ -3,6 +3,7 @@
 {
   imports = [
     ../common.nix
+    ./_desktop.nix
     ../hardware-configuration/doyha.nix
   ];
 

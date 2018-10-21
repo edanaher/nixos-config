@@ -6,6 +6,7 @@ in
 {
   imports = [
     ../common.nix
+    ./_laptop.nix
     ../hardware-configuration/kroen.nix
   ];
 
