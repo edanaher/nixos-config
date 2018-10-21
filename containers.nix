@@ -28,8 +28,6 @@
          guest account = edanaher
          force user = edanaher
          security = user
-         bind interfaces only = yes
-         interfaces = lo tap-boogihn
 
          load printers = no
          printing = bsd
@@ -45,6 +43,16 @@
           "read only" = "no";
           "valid users" = "edanaher";
           "force user" = "edanaher";
+        };
+        kduncan-bak = {
+          path = "/mnt/kelly-bak/";
+          browseable = "yes";
+          comment = "Kelly's backup";
+          "read only" = "no";
+          "valid users" = "kduncan";
+          "force user" = "kduncan";
+          "fruit:appl" = "yes";
+          "vfs objects" = "catia fruit streams_xattr";
         };
       };
     })

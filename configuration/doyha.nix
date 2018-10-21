@@ -34,6 +34,8 @@
     host.virtualbox.enable = false;
 
     services.openssh.forwardX11 = true;
+    networking.firewall.allowedTCPPorts = [ 445 139 ];  # Samba
+    networking.firewall.allowedUDPPorts = [ 137 138 ];  # Samba
     networking.firewall.allowedTCPPortRanges = [
       { from = 6945; to = 6949; }  # bittorrent
       { from = 9875; to = 9875; }  # ad-hoc pashare
@@ -80,6 +82,9 @@
 
     # *sigh*
     services.postgresql.enable = true;
-  };
 
+    users.extraUsers.kduncan = {
+      uid = 1001;
+    };
+  };
 }

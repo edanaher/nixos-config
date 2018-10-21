@@ -57,6 +57,12 @@
       options = [ "nofail" "noatime" ];
     };
 
+  fileSystems."/mnt/kelly-bak" =
+    { device = "/dev/mapper/vgvagafah-kelly--bak";
+      fsType = "ext4";
+      options = [ "nofail" "noatime" ];
+    };
+
   fileSystems."/mnt/external" =
     { device = "/dev/disk/by-uuid/6d5f4267-2d60-4cd6-b623-3b96793b3529";
       fsType = "btrfs";
