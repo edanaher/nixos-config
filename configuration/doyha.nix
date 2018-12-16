@@ -16,7 +16,8 @@
     nix.buildCores = 6;
     services.exim.enable = true;
 
-    hardware.pulseaudio.systemWide = true;
+    host.pulseaudio.enable = true;
+    #hardware.pulseaudio.systemWide = true;
     hardware.pulseaudio.daemon.config = { flat-volumes = "no"; };
     hardware.pulseaudio.extraClientConf = ''
       default-server = /var/run/pulse/native
@@ -30,6 +31,7 @@
       volume = ignore
     '';
     users.groups.audio.members = [ "root" "edanaher" ];
+    users.groups.lp.members = [ "pulse" "edanaher" ];
 
     host.virtualbox.enable = false;
 
