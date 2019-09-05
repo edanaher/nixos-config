@@ -108,5 +108,5 @@
   nix.maxJobs = lib.mkDefault 12;
   powerManagement.cpuFreqGovernor = "powersave";
 
-  boot.kernelPackages = pkgs.linuxPackages_4_18;
+  boot.kernelPackages = pkgs.linuxPackages_5_2;
 }
