@@ -34,6 +34,7 @@
     users.groups.lp.members = [ "pulse" "edanaher" ];
 
     host.virtualbox.enable = false;
+    #virtualisation.anbox.enable = true;
 
     services.openssh.forwardX11 = true;
     networking.firewall.allowedTCPPorts = [ 445 139 ];  # Samba
@@ -81,6 +82,10 @@
     };
 
     services.atd.enable = true;
+
+    programs.adb.enable = true;
+    users.users.edanaher.extraGroups = ["adbusers"];
+
 
     # *sigh*
     services.postgresql.enable = true;
