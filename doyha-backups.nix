@@ -8,7 +8,7 @@ in
   config = lib.mkIf config.host.doyha-backups.enable {
     systemd.services.backup-deretheni = {
       description = "Backup deretheni";
-      path = with pkgs; [ borgbackup bup rsync openssh exim ];
+      path = with pkgs; [ borgbackup bup rsync openssh exim parallel ];
       wants = [ "network-online.target" ];
       serviceConfig = {
         User = "edanaher";
