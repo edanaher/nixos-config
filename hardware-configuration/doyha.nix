@@ -12,6 +12,9 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.supportedFilesystems = [ "zfs" ];
+
+  networking.hostId = "f587ff94";
 
   boot.kernelParams = [ "pci=noaer" /*"i915.enable_fbc=0" */];
   services.xserver.videoDrivers = lib.mkForce ["intel"];
