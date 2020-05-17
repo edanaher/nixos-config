@@ -35,18 +35,18 @@ in
       #                '"$http_referer" "$http_user_agent"';
  
     services.nginx.virtualHosts = {
-      "forum.kellyandevan.party" = {
-        enableACME = true;
-        forceSSL = true;
-        locations = {
-          "/robots.txt" = {
-            extraConfig = ''alias ${robots-none-txt};'';
-          };
-          "/" = {
-            proxyPass = http://unix:/var/discourse/shared/standalone/nginx.http.sock:;
-          };
-        };
-      };
+      #"forum.kellyandevan.party" = {
+      #  enableACME = true;
+      #  forceSSL = true;
+      #  locations = {
+      #    "=/robots.txt" = {
+      #      extraConfig = ''alias ${robots-none-txt};'';
+      #    };
+      #    "/" = {
+      #      proxyPass = http://unix:/var/discourse/shared/standalone/nginx.http.sock:;
+      #    };
+      #  };
+      #};
       # Generate an ACME cert for kdf.sh, but otherwise redirect to www.
       "kdf.sh" = {
         enableACME = true;
@@ -70,21 +70,20 @@ in
         };
       };
       "www.partywiththe.party" = {
-        globalRedirect = "kgb30.com";
+        globalRedirect = "partywiththe.party";
         locations = {
           "/" = {
             #globalRedirect = "kgb30.com";
           };
         };
-        };
+      };
       "partywiththe.party" = {
-        globalRedirect = "kgb30.com";
         locations = {
           "/" = {
-            #globalRedirect = "kgb30.com";
+            alias = "/home/edanaher/kgb30/";
           };
         };
-        };
+      };
       "*.kdf.sh" = {
         locations = {
           "/" = {

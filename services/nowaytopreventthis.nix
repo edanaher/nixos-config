@@ -8,6 +8,12 @@ let urls = [
         https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1819580358
         https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1820163660
         https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1823016659
+        https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1826142891
+        https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1829032821
+        https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1830308976
+        https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1830073842
+        https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1836949715
+        https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1836949580
       ];
     header = ''
   <html>
@@ -87,8 +93,6 @@ in
 {
   config = lib.mkIf config.host.nowaytopreventthis.enable {
 
-    networking.firewall.enable = false;
-
     services.nginx.virtualHosts = {
       "www.nowaytopreventthis.com" = {
         extraConfig = ''
@@ -102,12 +106,17 @@ in
                 local urls = { ${lib.strings.concatMapStrings (u: ''"${u}", '') urls} }
                 local url = urls[math.random(#urls)]
                 ngx.say([[${tophtml}]])
-                ngx.say([[<iframe frameBorder="0" src="]] .. url .. [[" />]])
+                --ngx.say([[<iframe frameBorder="0" src="]] .. url .. [[" />]])
+                ngx.say([[Sadly, the onion seems to have disabled iframe embeds, so this page no longer works.  Read a <a href="]] .. urls[math.random(#urls)] .. [[">random article</a>, or pick one from the list below:
+                <ul>]] ..
+                  ${lib.strings.concatMapStrings (u: ''[[<li><a href="${u}">${u}</a></li>]] ..
+'') urls}
+                [[</ul>]])
                 ngx.say([[${footer}]])
               }
             '';
           };
-          "/about" =  {
+          "=/about" =  {
             alias = about_page;
             extraConfig = ''
               default_type text/html;

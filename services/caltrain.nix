@@ -20,7 +20,7 @@ let
       sha256 = "1r63j1158klc7llhwx3qjrmbyhwfpvmln2zr5xifdzs44jbbcym9";
     };
 
-    buildInputs = with pkgs; [ urweb openssl ];
+    buildInputs = with pkgs; [ urweb openssl icu ];
 
     buildPhase = ''
       urweb willcaltrainsucktoday
@@ -60,7 +60,7 @@ in
       description = "daemon for willcaltrainsucktoday single page site";
       after = [ "network.target" "postgresql.service" ];
       wantedBy = [ "multi-user.target" ];
-      environment = { TZ = "America/Los_Angeles"; };
+      environment = { TZ = "America/New_York"; };
       serviceConfig = {
         ExecStart = "${caltrain}/bin/willcaltrainsucktoday -p 8083";
         Restart = "always";
@@ -71,11 +71,11 @@ in
       };
 
       preStart = ''
-        ${pkgs.postgresql}/bin/createuser willcaltrainsucktoday || true
-        ${pkgs.postgresql}/bin/createdb willcaltrainsucktoday -O willcaltrainsucktoday || true
+        ${pkgs.sudo}/bin/sudo -u postgres ${pkgs.postgresql}/bin/createuser willcaltrainsucktoday || true
+        ${pkgs.sudo}/bin/sudo -u postgres ${pkgs.postgresql}/bin/createdb willcaltrainsucktoday -O willcaltrainsucktoday || true
         ${pkgs.sudo}/bin/sudo -u willcaltrainsucktoday ${pkgs.postgresql}/bin/psql willcaltrainsucktoday < ${caltrain}/etc/db.sql || true
-        ${ruby-env}/bin/bundle exec ${caltrain}/etc/data/import_giants.rb ${caltrain}/etc/data/giants-2017.csv
-        ${ruby-env}/bin/bundle exec ${caltrain}/etc/data/import_sharks.rb ${caltrain}/etc/data/sharks-2016.csv
+        ${pkgs.sudo}/bin/sudo -u willcaltrainsucktoday ${ruby-env}/bin/bundle exec ${caltrain}/etc/data/import_giants.rb ${caltrain}/etc/data/giants-2017.csv
+        ${pkgs.sudo}/bin/sudo -u willcaltrainsucktoday ${ruby-env}/bin/bundle exec ${caltrain}/etc/data/import_sharks.rb ${caltrain}/etc/data/sharks-2016.csv
         '';
     };
 

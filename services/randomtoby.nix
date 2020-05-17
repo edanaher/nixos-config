@@ -28,7 +28,7 @@ in
         enableACME = true;
         forceSSL = true;
         locations = {
-          "/robots.txt" = {
+          "=/robots.txt" = {
             extraConfig = ''alias ${robots-none-txt};'';
           };
           "/imgs" = {

@@ -16,9 +16,10 @@ in
       enable = true;
       modules.bosh = true;
       extraModules = [ "vcard" ];
+      s2sRequireEncryption = false; # gahlpo doesn't support it yet.
       extraConfig = ''
-        plugin_paths = { "${kdf-plugins}" }
       '';
+        #plugin_paths = { "${#kdf-plugins}" }
       virtualHosts = {
         "kdf.sh" = {
           domain = "kdf.sh";

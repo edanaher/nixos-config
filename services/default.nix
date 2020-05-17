@@ -17,5 +17,7 @@
     ./nowaytopreventthis.nix
     ./disk-mon.nix
     ./ctfwsinthepark.nix
+    ./ankisync.nix
+    ./ceremony-rsvp.nix
   ];
 }

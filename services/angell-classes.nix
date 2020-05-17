@@ -4,15 +4,15 @@ let utils = import ../utils.nix;
     secrets = import ../secrets.nix;
     angell-config = {
       angell-password = secrets.angell.password;
-      web-path = "/var/www/angell-classes";
+      web-path = "/var/www/angell-classes/";
       template-path = "/var/run/angell-classes";
       mail-host = "127.0.0.1";
     };
     angell-packages-build = pkgs.fetchFromGitHub {
       owner = "edanaher";
       repo = "angell-class-monitor";
-      rev = "e2565286ce45215c868ba0002409b97d44038b04";
-      sha256 = "11ql8psbpymzbf6sydfh0pygw2c81zd7fsk8s065f380b2a6rhay";
+      rev = "cc7292c2f3827d91b842fe8891746068ea641656";
+      sha256 = "1l6554h9vlyx1wqni4dmxpzv60xq5x4081bb38vnl3bc1g4n0hql";
     };
     angell-packages = import "${angell-packages-build}" { inherit pkgs; inherit (angell-config) web-path template-path mail-host angell-password; } ;
 in
@@ -30,6 +30,7 @@ in
 
     services.postgresql.authentication = ''
       local angell angell md5
+      local rsvpsite rsvpsite md5
       local all all peer
     '';
   };

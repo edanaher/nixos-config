@@ -3,10 +3,10 @@
 let
   secrets = import ../secrets.nix;
   lwt = pkgs.stdenv.mkDerivation {
-    name = "learing-with-texts-1.6.1";
+    name = "learing-with-texts-1.6.2";
 		src = pkgs.fetchzip {
-			url = https://downloads.sourceforge.net/project/lwt/lwt_v_1_6_1.zip;
-      sha256 = "1ay55wbscyrdbcfgpwmgp8a9irswl097hvxwjipgis2ib1477f2w";
+			url = https://downloads.sourceforge.net/project/lwt/lwt_v_1_6_2.zip;
+      sha256 = "036m8wng0xf783f0ddxl5fj0rymi2qaviq05l2p98vw7jfdxbwgn";
       stripRoot = false;
 		};
 
@@ -25,6 +25,7 @@ in
     services.mysql.package = pkgs.mysql;
     services.phpfpm.pools.lwt = {
       listen = "/var/run/lwt-php.sock";
+      user = "nobody";
       extraConfig = ''
         user = nobody
         listen.group = "nginx"

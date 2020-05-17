@@ -2,13 +2,14 @@
 
 let gritonputty = with pkgs.stdenv; mkDerivation rec {
   name = "gritonputty-${version}";
-  version = "ee4f8252";
+  version = "2b5d9899";
 
   src = pkgs.fetchFromGitHub {
     owner = "edanaher";
     repo = "gritonputty";
     rev = version;
-    sha256 = "1vxnj3ll1iv1ax460cb7jf13qs9bc7xllflm4cmpkw0gs3msrxzs";
+    sha256 = "04vlxxnh3vrgb8f6cw7633i41ngx1jqqp4pfv19849zv6d7g1v8p";
+
   };
 
   phases = [ "installPhase" ];

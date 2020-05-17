@@ -63,10 +63,7 @@
     71.19.155.118 gahlpo
   '';
 
-  networking.firewall.allowedTCPPortRanges = [
-    { from = 5900; to = 5910; } # VNC
-    { from = 24800; to = 24800; } # Synergy
-  ];
+  networking.firewall.enable = true;
 
   #nix.nixPath = [ "/home/edanaher" "nixos-config=/etc/nixos/configuration.nix" ];
 
@@ -82,4 +79,5 @@
   nix.daemonIONiceLevel = 3;
 
   boot.kernel.sysctl."vm.swappiness" = 1;
+  system.stateVersion = "18.09";
 }
