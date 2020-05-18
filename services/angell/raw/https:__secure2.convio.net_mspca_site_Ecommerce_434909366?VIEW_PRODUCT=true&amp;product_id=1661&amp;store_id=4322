@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<base href="https://secure2.convio.net/mspca/site/" />
+<title>
+
+MSPCA-Angell
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="Keywords" content=" " />
+<meta name="Description" content="" />
+<meta name="Robots" content="index, follow" />
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="../yui3/yui/yui-min.js"></script><noscript>&nbsp;</noscript>
+<script type="text/javascript" src="../js/convio/modules.js?version=2.9"></script><noscript>&nbsp;</noscript>
+<script type="text/javascript">
+var Y = YUI({base: '../yui3/',
+insertBefore: 'yui_marker_loader_css', // insert all YUI module css before customstyle so it can be overridden
+debug: false, 
+modules: getModules('../', 'convio', true)});
+</script><noscript>&nbsp;</noscript>
+
+
+<script type="text/javascript" src="../js/utils.js"></script><noscript>&nbsp;</noscript>
+
+<script type="text/javascript" src="../js/obs_comp_rollup.js"></script><noscript>&nbsp;</noscript>
+
+
+<link href="../css/themes/default.css" rel="stylesheet" type="text/css" />
+<link href="../css/themes/alphacube.css" rel="stylesheet" type="text/css"/>
+
+
+
+
+
+<link href="../css/UserGlobalStyle.css" rel="stylesheet" type="text/css" />
+
+
+<link href="../css/responsive/ResponsiveBase.css" rel="stylesheet" type="text/css" />
+
+
+<link href="../css/responsive/EcommerceResponsive.css" rel="stylesheet" type="text/css" />
+
+
+<link href="../css/PremiumStyle.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" id="yui_marker_loader_css" />
+<link href="../css/CustomStyle.css" rel="stylesheet" type="text/css" />
+<link href="../css/CustomWysiwygStyle.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+<meta name="CnvHeaderVersion" content="v5.0" />
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0;"> 
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<style>
+/* TeamRaiser Service Module Styles */
+/* Color codes
+#eeeeee - body background color
+#4899d2 - nav bar color, banner border color
+#f44727 - button colors
+#f44727 - current step progress bar color
+*/
+
+  body.mobile {
+	background-color: #eee;
+  }
+
+  div.responsive {
+	padding: 20px;
+	background-color: #fff;
+  }
+  
+  div.tr-page-container {
+    border: 0px;
+    color: #555555;
+	background-color: #fff;
+  }
+  
+  div.wrapper-header {
+    margin: 0 auto;
+    width: 896px;
+    padding: 20px 20px 0px 20px;
+    background-color: #ffffff;
+  }
+	
+  div.nav-content {
+    float: left;
+    width: 100%;
+  }
+
+  ul.nav-links {
+    background-color: #4899d2;
+    padding: 10px 10px;
+    margin: 10px 0;
+    list-style-type: none;
+    margin: 0;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  }
+
+  ul.nav-links li {
+    width: 110px;
+    text-decoration: none;
+    display: inline-block;
+    zoom: 1;
+    vertical-align: middle;
+	font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+  }
+  
+  ul.nav-links a.nav-link {
+    color: #fff;
+	text-decoration: none;
+	display:block;
+	width:100px;
+	line-height:40px;
+	text-align:center;
+	background-color: #4899d2;
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  }
+  
+  ul.nav-links a:hover.nav-link {
+    color: #fff;
+	text-decoration: none;
+	background-color:#f44727;
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  }
+  
+  input.log-button {
+    border: 0px;;
+    color: #1598f2;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  }
+
+  div.banner {
+    margin: 20px 0 10px;
+	height:135px;
+	border: 10px solid #4899d2;
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    width: 876px;
+  }
+
+  div.banner img#banner_image { 
+    width: 400px;
+	float: left;
+  }
+  
+  .mobile p#banner_text_large {
+    font-size:24px;
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	float: left;
+	margin: 0 auto;
+	width: 400px;
+	padding: 20px 20px;
+	text-align: center;
+  }
+  
+  .mobile p#banner_text_small {
+    font-size: 16px;
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	float: left;
+	margin: 0 auto;
+	width: 400px;
+	padding: 10px 20px; 
+	text-align: center;
+  }
+  
+/* Buttons */ 
+  
+  #next_step, #cancel, #fuw_previous, #fuw_next, #fuw_cancel, #another_button, #next_button, #friend_potion_next, #fr_find_search, #fr_search_do, #fr_search_cancel, #CANCEL_DIRECT_PAY_FORM, #PARSE_PAYMENT_FORM, #CANCEL_PAYMENT_PROCESS, #SHOW_PAYMENT_FORM, #TRANSACT_CHARGE, #user_type_login_login_button {
+	background-image: none;
+  }
+
+  #next_step, #cancel, #fuw_previous, #fuw_next, #fuw_cancel, #another_button, #next_button, #friend_potion_next, #fr_find_search, #fr_search_do, #fr_search_cancel, #CANCEL_DIRECT_PAY_FORM, #PARSE_PAYMENT_FORM, #CANCEL_PAYMENT_PROCESS, #SHOW_PAYMENT_FORM, #TRANSACT_CHARGE, #user_type_login_login_button {
+    background-color: #f44727;
+    border: 0px;
+    border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 5px 7px;
+	filter: none;
+  }
+
+/* Search results Join button */
+
+  div#team_find_search_results_container div.list-component-cell-column-join-link a {
+    background-color: #f44727;
+    background-image: none;
+    border: 0px;
+    border-radius: 3px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 132px;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration: none;
+	font-weight: bold;
+	filter: none;
+  }  
+  
+/* Next step buttons on Greeting page */
+
+  div.responsive a.next-step, div.responsive button.next-step  {
+	background-color: #f44727;
+    background-image: none;
+    border: 0px;
+    border-radius: 3px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 132px;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration: none;
+	font-weight: bold;
+	filter: none;
+  }
+
+  div.responsive a.next-step:hover, div.responsive button.next-step:hover {
+    background-color: #f44727;
+    background-image: none;
+    border: 0px;;
+    border-radius: 3px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 132px;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration: none;
+	font-weight: bold;
+	filter: none;
+  }
+
+  div.responsive a.secondary-step, div.responsive button.secondary-step {
+    background-color: #f44727;
+    background-image: none;
+    border: 0px;
+    border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 132px;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration: none;
+	font-weight: bold;
+	filter: none;
+  }
+
+  div.responsive a.secondary-step:hover, div.responsive button.secondary-step:hover {
+    background-color: #f44727;
+    background-image: none;
+    border: 0px;
+    border-radius: 3px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 132px;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration: none;
+	font-weight: bold;
+	filter: none;
+  }
+
+/* Current step in progress bar */
+
+  div.progress-bar-step-current div.progress-bar-step-number-container {
+    background: none repeat scroll 0 0 #f44727;
+  }
+
+/* Hide title above progress bar */ 
+  
+  div.campaign-banner-container {
+    display: none;
+}
+
+/* Selected participant type */
+
+  div.part-type-container.selected {
+    background-color: #f7f7f7;
+    border-color: #f44727;
+  }
+  
+/* For donation form */
+
+  div.donation-form-container.responsive {
+    background: none repeat scroll 0 0 #f8f8f8;
+    border: 0px;
+    border-radius: 0px;
+    padding: 20px;
+  }
+
+/* Media query specific css */
+/* 768px to 991px */
+
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+	
+	div.wrapper-header {
+      width: 712px;
+    }
+	
+    .mobile div.nav-content {
+      width: 712px;
+    }
+    
+	.mobile  div.banner {
+      width: 700px;
+	}
+	
+    .mobile img#banner_image {
+      width: 300px;
+	  float: left;
+	}
+
+    .mobile p#banner_text_large {
+	  font-size:20px;
+	  width: 200px;
+	  padding: 10px 20px;
+	  text-align: center;
+	}
+  
+  .mobile p#banner_text_small {
+	  font-size: 14px;
+	  width: 200px;
+	  padding: 10px 20px; 
+	  text-align: center;
+	}
+	
+  } 
+
+/* 480px to 767px */
+
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+  
+    div.wrapper-header {
+      width: 436px;
+    }
+	
+   .mobile div.nav-content {
+      width: 436px;
+    }
+	
+	.mobile  div.banner {
+		width: 416px;
+	}	
+	
+	div.banner img#banner_image {
+      display: none;
+    }
+	
+	.mobile div.responsive { 
+		width: 436px;
+	}
+	
+  }
+ 
+/* up to 479px */
+    @media only screen and (min-width: 100px) and (max-width: 479px) {
+  
+    div.wrapper-header {
+      width: 252px;
+    }
+	
+	div.banner  { 
+     	width: 235px;
+	}
+	
+	div.banner img#banner_image {
+      display: none;
+    }
+	
+	div.logo img#logo_image {
+      width: 200px;
+    }
+	
+	ul.nav-links {
+		list-style: none outside none;
+		background-color: #fff;
+		width: 200px;
+		text-align: center;
+		margin: 0px;
+    } 
+	 
+	ul.nav-links li {
+		padding: 3px;
+	}
+	 
+	ul.nav-links a.nav-link {
+		color: #fff;
+		width: 150px;
+		background-color: #4899d2;
+	}
+  
+	ul.nav-links a:hover.nav-link {
+	   color: #fff;
+	   background-color:#f44727;
+	   width: 150px;
+	}
+	
+	.mobile p#banner_text_large {
+	   width: 200px;
+	   padding: 20px 20px;
+	   text-align: center;
+	}
+  
+   .mobile p#banner_text_small {
+	   width: 200px;
+	   padding: 0 0 0 20px;
+	   text-align: center;
+	}
+	
+	div.progress-bar-step-container {    
+		margin-bottom: 5px;  
+		padding-right: 15px;		
+	}
+
+}
+
+</style>
+
+
+
+
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-6645268-1']);
+_gaq.push(['_setDomainName', 'none']);
+_gaq.push(['_setAllowLinker', true]);
+
+
+_gaq.push(['_trackPageview', '/funnel/Ecommerce/Boston Dog Training-RESPONSIVE/product_detail']);
+
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+addOnLoadHandler(function() {
+// track items and transactions 
+if (typeof trackItemsAndTransactions != "undefined" && typeof trackItemsAndTransactions != null){
+trackItemsAndTransactions();
+}
+});
+</script><noscript>&nbsp;</noscript>
+ 
+ 
+ 
+ 
+
+		
+</head>
+<body
+
+
+
+
+
+
+
+
+
+
+
+
+class="mobile" 
+>	
+<div class="wrapper-header clearfix">
+<div class="nav-content">
+<div class="logo">
+      <img id="logo_image" src="../images/content/pagebuilder/responsive-logo-sample-dzYEAREND.gif" alt="" />
+      
+    </div>
+<ul class="nav-links">
+<li><a class="nav-link" href="http://www.mspca.org">Return Home</a></li>
+</ul>
+<div class="login-fields">
+&nbsp;
+</div>
+</div>
+<div class="wrapper-body">
+&nbsp;
+<br />
+
+
+
+
+
+
+<div class="appArea responsive">
+
+<h1><span>MSPCA-Boston Dog Training </span></h1>
+<p><span>Please choose your class below. <span style="color: #990000;">You will be prompted to complete a&nbsp;<em>dog&nbsp;registration form</em> and choose your class day and time&nbsp;<span style="text-decoration: underline;">after</span> payment. </span>Please complete this form prior to the start of your class so that we can hold your spot. Otherwise, we will not know what class you plan to attend and therefore, you may not&nbsp;be included in that class. <br /></span><br /><strong>If you are registering an adopted dog,</strong> you are eligible for a $10 discount. Please use the discount code "adoptedboston" (case sensitive)&nbsp;to receive your discount. You must enter this code prior to entering billing information by clicking "Enter Discount Code Here."</p>
+<div class="login-fields">
+<strong>Frequent Flyers: Please log in below to use your special discount.
+</strong><br />
+<form name="lLogonForm" method="post" action="UserLogin">
+<div id="userNameBlock" class="user-field">
+<label for="USERNAME">User Name:</label>
+<input class="login-input" type="text" size="20" name="USERNAME" id="USERNAME" value="" maxlength="60" />
+</div>
+<div id="userPasswordBlock" class="user-field">
+<label for="Password">Password:</label>
+<input class="login-input" type="password" size="20" name="Password" id="Password" maxlength="20" />
+</div>
+<div id="submitBlock">
+<input type="submit" class="log-button" name="login" id="login" value="Log In" title="Login" />
+ <label for="RememberMe">Remember me?</label>
+<input type="checkbox" name="RememberMe" id="RememberMe" value="RememberMe" />
+
+</div>
+<div id="OAuthLink">
+
+</div>
+<div id="newUserLink">
+<a href = "https://secure2.convio.net/mspca/site/ConsProfileUser">New User?</a>
+</div>
+<div id="troubleSigningInLink">
+<a href="UserLogin">Trouble signing in?</a>
+</div>
+<input type="hidden" name="NEXTURL" id="NEXTURL" value="https&#x3a;&#x2f;&#x2f;secure2.convio.net&#x2f;mspca&#x2f;site&#x2f;Ecommerce&#x3f;store_id&#x3d;4322" />
+</form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<br />
+<div class="ProductDetailsHeader">
+Level 2 obedience  (6 Weeks)
+</div>
+
+
+<div class="ProductLongDescription clearfix">
+<div id="product_image"><img src="" alt="Level 2 obedience  (6 Weeks)" border="0" /></div>
+<div id="product_long_description"><p>Class
+size is limited, so you and your dog will get lots of personal attention. How
+to enroll:
+</p>
+<ol>
+<li>Select
+a class from the drop down menu below.</li>
+<li>Enter
+a quantity into the quantity box (1 dog = quantity of 1).</li>
+<li>Click
+&ldquo;Add to cart below.&rdquo;</li>
+<li>Note:
+if a class is filled, it will be listed below, on this page.</li>
+</ol></div>
+</div>
+
+<a name="ConfigForm"></a>
+<form id="ConfigureProduct" name="ConfigureProduct" action="https://secure2.convio.net/mspca/site/Ecommerce/885266326?store_id=4322#ConfigForm" method="post">
+<input type="hidden" name="false" value="4322" />
+<input type="hidden" name="product_id" value="1661" />
+
+<input type="hidden" value="" name="PROXY_TYPE"/>
+<input type="hidden" value="" name="PROXY_ID"/>
+<input type="hidden" value="" name="FR_ID"/>
+
+
+<div class="ProductConfigSection">Configure this product</div>
+
+
+
+<div class="ProductConfig table">
+<div class="row">
+<div id="product_config_price" class="ProductConfigLabel column-left">
+<label class="ProductConfigLabel">Price</label>
+</div>
+<div class="column-right">
+<div>$200.00</div>
+</div>
+</div>
+
+<div class="row">
+<div id="product_config_discount_label" class="ProductConfigLabel column-left">
+<label class="ProductConfigLabel" for="discount_code">Discount Code:</label>
+</div>
+<div id="product_config_discount_input" class="column-right">
+<input type="text" name="discount_code" id="discount_code" size="10" value="" />
+</div>
+</div>
+
+
+
+
+<div class="row">
+<div class="ProductConfigLabel column-left">
+<label class="ProductConfigLabel" for="quantity"> <strong>*</strong>Quantity: <span style="position:absolute;left:-9999px">Required</span></label>
+</div>
+<div class="column-right">
+<input type="text" name="quantity" id="quantity" size="3" maxlength="3" value=""
+onkeypress="return submitEnter(this.form.ADD_CONFIG_TO_CART, event)"/>
+</div>
+</div>
+
+
+
+<div class="row">
+<div id="product_config_option_label_2122" class="column-left">
+<strong>*</strong>
+<label for="product_option_2122" class="ProductConfigLabel">Class Times  2017</label>
+</div>
+<div id="product_config_select_2122" class="column-right">
+<select name="product_option_2122" id="product_option_2122" size="1" 
+ >
+<option value="2440" >Saturday: 9:15-10:15AM (October 21st-December 2nd)(No class 11/25)</option>
+<option value="3850" >Thursday: 7:45 - 8:45 PM (October 19th-November 30th)(No class 11/23)</option>
+<option value="3890" >Wednesday: 7:30-8:30PM (November 1st-December 13th)(no class 11/22)</option>
+
+</select>
+<script type="text/javascript">
+<!--
+var comp = new ObservableComponent('product_option_2122', '');
+comp.hide = function(_hidden)
+{
+var _display = _hidden ? 'none' : '';
+set_display ('product_option_2122_Row', _display);
+this.disable_submit_flag (_hidden);
+} 
+//-->
+</script>
+<noscript><br/>Required</noscript>
+
+</div>
+</div>
+
+
+
+<div id="unavailable_options">
+<label class="Hint">
+The options listed below are currently unavailable. Please choose another from the drop down above.<br />
+Saturday: 9:15-10:15AM (October 21st-December 2nd)(No class 11/25)
+</label>
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="ShoppingButtonRow clearfix">
+<span class="mobile-display">
+<input type="submit" class="ShoppingButtons tertiary step-button" name="CANCEL" id="mobile_cancel" value="Cancel" />
+<input type="submit" class="ShoppingButtonPrimary primary step-button" name="ADD_CONFIG_TO_CART" id="mobile_add_config_to_cart" value="Add to Cart" onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }" />
+</span>
+<input type="submit" class="ShoppingButtons tertiary step-button" name="CANCEL" id="cancel" value="Cancel" />
+<input type="submit" class="ShoppingButtonPrimary primary step-button" name="ADD_AND_CHECKOUT" id="add_and_checkout" value="Add to Cart and Checkout" onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }" />
+<input type="submit" class="ShoppingButtonPrimary primary step-button" name="ADD_CONFIG_TO_CART" id="add_config_to_cart" value="Add to Cart" onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }" />
+</div>
+
+
+</form>
+
+
+
+
+</div>
+</div>
+</div>
+</body>
+
+</html>

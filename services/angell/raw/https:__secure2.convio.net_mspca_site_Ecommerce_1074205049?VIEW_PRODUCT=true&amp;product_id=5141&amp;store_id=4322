@@ -1,0 +1,2093 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<base href="https://secure2.convio.net/mspca/site/" />
+<title>
+
+MSPCA-Angell
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="Keywords" content=" " />
+<meta name="Description" content="" />
+<meta name="Robots" content="index, follow" />
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="../yui3/yui/yui-min.js"></script><noscript>&nbsp;</noscript>
+<script type="text/javascript" src="../js/convio/modules.js?version=2.9"></script><noscript>&nbsp;</noscript>
+<script type="text/javascript">
+var Y = YUI({base: '../yui3/',
+insertBefore: 'yui_marker_loader_css', // insert all YUI module css before customstyle so it can be overridden
+debug: false, 
+modules: getModules('../', 'convio', true)});
+</script><noscript>&nbsp;</noscript>
+
+
+<script type="text/javascript" src="../js/utils.js"></script><noscript>&nbsp;</noscript>
+
+<script type="text/javascript" src="../js/obs_comp_rollup.js"></script><noscript>&nbsp;</noscript>
+
+
+<link href="../css/themes/default.css" rel="stylesheet" type="text/css" />
+<link href="../css/themes/alphacube.css" rel="stylesheet" type="text/css"/>
+
+
+
+
+
+<link href="../css/UserGlobalStyle.css" rel="stylesheet" type="text/css" />
+
+
+<link href="../css/responsive/ResponsiveBase.css" rel="stylesheet" type="text/css" />
+
+
+<link href="../css/responsive/EcommerceResponsive.css" rel="stylesheet" type="text/css" />
+
+
+<link href="../css/PremiumStyle.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" id="yui_marker_loader_css" />
+<link href="../css/CustomStyle.css" rel="stylesheet" type="text/css" />
+<link href="../css/CustomWysiwygStyle.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+<meta name="CnvHeaderVersion" content="v5.0" />
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0;"> 
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<style>
+/* TeamRaiser Service Module Styles */
+/* Color codes
+#eeeeee - body background color
+#4899d2 - nav bar color, banner border color
+#f44727 - button colors
+#f44727 - current step progress bar color
+*/
+
+  body.mobile {
+	background-color: #eee;
+  }
+
+  div.responsive {
+	padding: 20px;
+	background-color: #fff;
+  }
+  
+  div.tr-page-container {
+    border: 0px;
+    color: #555555;
+	background-color: #fff;
+  }
+  
+  div.wrapper-header {
+    margin: 0 auto;
+    width: 896px;
+    padding: 20px 20px 0px 20px;
+    background-color: #ffffff;
+  }
+	
+  div.nav-content {
+    float: left;
+    width: 100%;
+  }
+
+  ul.nav-links {
+    background-color: #4899d2;
+    padding: 10px 10px;
+    margin: 10px 0;
+    list-style-type: none;
+    margin: 0;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  }
+
+  ul.nav-links li {
+    width: 110px;
+    text-decoration: none;
+    display: inline-block;
+    zoom: 1;
+    vertical-align: middle;
+	font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+  }
+  
+  ul.nav-links a.nav-link {
+    color: #fff;
+	text-decoration: none;
+	display:block;
+	width:100px;
+	line-height:40px;
+	text-align:center;
+	background-color: #4899d2;
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  }
+  
+  ul.nav-links a:hover.nav-link {
+    color: #fff;
+	text-decoration: none;
+	background-color:#f44727;
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  }
+  
+  input.log-button {
+    border: 0px;;
+    color: #1598f2;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  }
+
+  div.banner {
+    margin: 20px 0 10px;
+	height:135px;
+	border: 10px solid #4899d2;
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    width: 876px;
+  }
+
+  div.banner img#banner_image { 
+    width: 400px;
+	float: left;
+  }
+  
+  .mobile p#banner_text_large {
+    font-size:24px;
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	float: left;
+	margin: 0 auto;
+	width: 400px;
+	padding: 20px 20px;
+	text-align: center;
+  }
+  
+  .mobile p#banner_text_small {
+    font-size: 16px;
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	float: left;
+	margin: 0 auto;
+	width: 400px;
+	padding: 10px 20px; 
+	text-align: center;
+  }
+  
+/* Buttons */ 
+  
+  #next_step, #cancel, #fuw_previous, #fuw_next, #fuw_cancel, #another_button, #next_button, #friend_potion_next, #fr_find_search, #fr_search_do, #fr_search_cancel, #CANCEL_DIRECT_PAY_FORM, #PARSE_PAYMENT_FORM, #CANCEL_PAYMENT_PROCESS, #SHOW_PAYMENT_FORM, #TRANSACT_CHARGE, #user_type_login_login_button {
+	background-image: none;
+  }
+
+  #next_step, #cancel, #fuw_previous, #fuw_next, #fuw_cancel, #another_button, #next_button, #friend_potion_next, #fr_find_search, #fr_search_do, #fr_search_cancel, #CANCEL_DIRECT_PAY_FORM, #PARSE_PAYMENT_FORM, #CANCEL_PAYMENT_PROCESS, #SHOW_PAYMENT_FORM, #TRANSACT_CHARGE, #user_type_login_login_button {
+    background-color: #f44727;
+    border: 0px;
+    border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 5px 7px;
+	filter: none;
+  }
+
+/* Search results Join button */
+
+  div#team_find_search_results_container div.list-component-cell-column-join-link a {
+    background-color: #f44727;
+    background-image: none;
+    border: 0px;
+    border-radius: 3px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 132px;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration: none;
+	font-weight: bold;
+	filter: none;
+  }  
+  
+/* Next step buttons on Greeting page */
+
+  div.responsive a.next-step, div.responsive button.next-step  {
+	background-color: #f44727;
+    background-image: none;
+    border: 0px;
+    border-radius: 3px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 132px;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration: none;
+	font-weight: bold;
+	filter: none;
+  }
+
+  div.responsive a.next-step:hover, div.responsive button.next-step:hover {
+    background-color: #f44727;
+    background-image: none;
+    border: 0px;;
+    border-radius: 3px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 132px;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration: none;
+	font-weight: bold;
+	filter: none;
+  }
+
+  div.responsive a.secondary-step, div.responsive button.secondary-step {
+    background-color: #f44727;
+    background-image: none;
+    border: 0px;
+    border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 132px;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration: none;
+	font-weight: bold;
+	filter: none;
+  }
+
+  div.responsive a.secondary-step:hover, div.responsive button.secondary-step:hover {
+    background-color: #f44727;
+    background-image: none;
+    border: 0px;
+    border-radius: 3px;
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 132px;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration: none;
+	font-weight: bold;
+	filter: none;
+  }
+
+/* Current step in progress bar */
+
+  div.progress-bar-step-current div.progress-bar-step-number-container {
+    background: none repeat scroll 0 0 #f44727;
+  }
+
+/* Hide title above progress bar */ 
+  
+  div.campaign-banner-container {
+    display: none;
+}
+
+/* Selected participant type */
+
+  div.part-type-container.selected {
+    background-color: #f7f7f7;
+    border-color: #f44727;
+  }
+  
+/* For donation form */
+
+  div.donation-form-container.responsive {
+    background: none repeat scroll 0 0 #f8f8f8;
+    border: 0px;
+    border-radius: 0px;
+    padding: 20px;
+  }
+
+/* Media query specific css */
+/* 768px to 991px */
+
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+	
+	div.wrapper-header {
+      width: 712px;
+    }
+	
+    .mobile div.nav-content {
+      width: 712px;
+    }
+    
+	.mobile  div.banner {
+      width: 700px;
+	}
+	
+    .mobile img#banner_image {
+      width: 300px;
+	  float: left;
+	}
+
+    .mobile p#banner_text_large {
+	  font-size:20px;
+	  width: 200px;
+	  padding: 10px 20px;
+	  text-align: center;
+	}
+  
+  .mobile p#banner_text_small {
+	  font-size: 14px;
+	  width: 200px;
+	  padding: 10px 20px; 
+	  text-align: center;
+	}
+	
+  } 
+
+/* 480px to 767px */
+
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+  
+    div.wrapper-header {
+      width: 436px;
+    }
+	
+   .mobile div.nav-content {
+      width: 436px;
+    }
+	
+	.mobile  div.banner {
+		width: 416px;
+	}	
+	
+	div.banner img#banner_image {
+      display: none;
+    }
+	
+	.mobile div.responsive { 
+		width: 436px;
+	}
+	
+  }
+ 
+/* up to 479px */
+    @media only screen and (min-width: 100px) and (max-width: 479px) {
+  
+    div.wrapper-header {
+      width: 252px;
+    }
+	
+	div.banner  { 
+     	width: 235px;
+	}
+	
+	div.banner img#banner_image {
+      display: none;
+    }
+	
+	div.logo img#logo_image {
+      width: 200px;
+    }
+	
+	ul.nav-links {
+		list-style: none outside none;
+		background-color: #fff;
+		width: 200px;
+		text-align: center;
+		margin: 0px;
+    } 
+	 
+	ul.nav-links li {
+		padding: 3px;
+	}
+	 
+	ul.nav-links a.nav-link {
+		color: #fff;
+		width: 150px;
+		background-color: #4899d2;
+	}
+  
+	ul.nav-links a:hover.nav-link {
+	   color: #fff;
+	   background-color:#f44727;
+	   width: 150px;
+	}
+	
+	.mobile p#banner_text_large {
+	   width: 200px;
+	   padding: 20px 20px;
+	   text-align: center;
+	}
+  
+   .mobile p#banner_text_small {
+	   width: 200px;
+	   padding: 0 0 0 20px;
+	   text-align: center;
+	}
+	
+	div.progress-bar-step-container {    
+		margin-bottom: 5px;  
+		padding-right: 15px;		
+	}
+
+}
+
+</style>
+
+
+
+
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-6645268-1']);
+_gaq.push(['_setDomainName', 'none']);
+_gaq.push(['_setAllowLinker', true]);
+
+
+_gaq.push(['_trackPageview', '/funnel/Ecommerce/Boston Dog Training-RESPONSIVE/catalog']);
+
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+addOnLoadHandler(function() {
+// track items and transactions 
+if (typeof trackItemsAndTransactions != "undefined" && typeof trackItemsAndTransactions != null){
+trackItemsAndTransactions();
+}
+});
+</script><noscript>&nbsp;</noscript>
+ 
+ 
+ 
+ 
+
+		
+</head>
+<body
+
+
+
+
+
+
+
+
+
+
+
+
+class="mobile" 
+>	
+<div class="wrapper-header clearfix">
+<div class="nav-content">
+<div class="logo">
+      <img id="logo_image" src="../images/content/pagebuilder/responsive-logo-sample-dzYEAREND.gif" alt="" />
+      
+    </div>
+<ul class="nav-links">
+<li><a class="nav-link" href="http://www.mspca.org">Return Home</a></li>
+</ul>
+<div class="login-fields">
+&nbsp;
+</div>
+</div>
+<div class="wrapper-body">
+&nbsp;
+<br />
+
+
+
+
+
+
+<style>
+div.catalog-product-image {
+
+width: 150px;
+
+}
+</style>
+
+
+
+<div class="appArea responsive catalog-view">
+
+<div id="store_header"><h1><span>MSPCA-Boston Dog Training </span></h1>
+<p><span>Please choose your class below. <span style="color: #990000;">You will be prompted to complete a&nbsp;<em>dog&nbsp;registration form</em> and choose your class day and time&nbsp;<span style="text-decoration: underline;">after</span> payment. </span>Please complete this form prior to the start of your class so that we can hold your spot. Otherwise, we will not know what class you plan to attend and therefore, you may not&nbsp;be included in that class. <br /></span><br /><strong>If you are registering an adopted dog,</strong> you are eligible for a $10 discount. Please use the discount code "adoptedboston" (case sensitive)&nbsp;to receive your discount. You must enter this code prior to entering billing information by clicking "Enter Discount Code Here."</p>
+<div class="login-fields">
+<strong>Frequent Flyers: Please log in below to use your special discount.
+</strong><br />
+<form name="lLogonForm" method="post" action="UserLogin">
+<div id="userNameBlock" class="user-field">
+<label for="USERNAME">User Name:</label>
+<input class="login-input" type="text" size="20" name="USERNAME" id="USERNAME" value="" maxlength="60" />
+</div>
+<div id="userPasswordBlock" class="user-field">
+<label for="Password">Password:</label>
+<input class="login-input" type="password" size="20" name="Password" id="Password" maxlength="20" />
+</div>
+<div id="submitBlock">
+<input type="submit" class="log-button" name="login" id="login" value="Log In" title="Login" />
+ <label for="RememberMe">Remember me?</label>
+<input type="checkbox" name="RememberMe" id="RememberMe" value="RememberMe" />
+
+</div>
+<div id="OAuthLink">
+
+</div>
+<div id="newUserLink">
+<a href = "https://secure2.convio.net/mspca/site/ConsProfileUser">New User?</a>
+</div>
+<div id="troubleSigningInLink">
+<a href="UserLogin">Trouble signing in?</a>
+</div>
+<input type="hidden" name="NEXTURL" id="NEXTURL" value="https&#x3a;&#x2f;&#x2f;secure2.convio.net&#x2f;mspca&#x2f;site&#x2f;Ecommerce&#x3f;store_id&#x3d;4322" />
+</form>
+
+</div></div>
+
+
+
+
+
+<div class="ErrorMsg">
+Error: The item you selected is not currently available.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form id="CatalogTop" name="CatalogTop" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="PROXY_TYPE" value="0"/>
+<input type="hidden" name="PROXY_ID" value="0"/>
+<input type="hidden" name="FR_ID" value="0"/>
+
+
+<div id="top_buttons" class="shopping-buttons-container">
+
+<button type="submit" id="view_cart_button_top" class="step-button shopping-button secondary" name="VIEW_CART">View Contents of Cart</button>
+<button type="submit" id="checkout_button_top" class="step-button shopping-button secondary" name="GO_TO_CHECKOUT">Proceed to Checkout</button>
+
+<button type="submit" id="cancel_button_top" class="step-button shopping-button tertiary" name="CANCEL_ALL">Cancel</button>
+
+</div>
+
+
+</form>
+
+
+<div id="browse_search_container" class="clearfix">
+
+		
+<div id="browse_container">
+<div id="browse_label">Browse Store</div>
+<div class="browse-category-container"><!-- product_category_browser.themed.responsive.ftl -->
+
+<!--
+Available properties
+
+categories = FolderNode[]
+useStoreHomePage = true/false
+currentFolderId = int
+storeId = int
+-->
+<script lang="javascript">
+    function createUrl(folderId)
+    {
+        var url = document.location.protocol + "//" + document.location.hostname + window.location.pathname + "?store_id=4322&FOLDER=" + folderId;
+        if (folderId == 0 && false)
+        {
+            url = url + "&VIEW_HOMEPAGE=" + false;
+        }
+        return url;
+    }
+</script>
+
+<select id="product_category_browser" name="productCategoryBrowser" onchange="location = createUrl(this.options[this.selectedIndex].value);">
+    <option value="0">View all categories</option>
+    <option disabled>---</option>
+        <option value="1100" >
+            Boston Dog Training
+        </option>
+</select></div>
+</div>
+<div class="divider"></div>
+
+
+ 
+<div id="search_container">
+<div id="search_label">Search</div>
+<div id="search_form">
+<form id="CatalogSearch" name="CatalogSearch" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="PROXY_TYPE" value="0"/>
+<input type="hidden" name="PROXY_ID" value="0"/>
+<input type="hidden" name="FR_ID" value="0"/>
+<span class="cell">
+<input type="text" id="NAME" name="NAME" value="" placeholder="Item Name"/>
+</span>
+<span class="cell">
+<input type="text" id="PRICE" name="PRICE" value="" placeholder="Price"/>
+</span>
+
+<span class="cell">
+<select name="TYPE" id="TYPE" size="1" 
+ >
+<option ></option>
+<option value="Boston Dog Training" >Boston Dog Training</option>
+
+</select>
+<script type="text/javascript">
+<!--
+var comp = new ObservableComponent('TYPE', '');
+comp.hide = function(_hidden)
+{
+var _display = _hidden ? 'none' : '';
+set_display ('TYPE_Row', _display);
+this.disable_submit_flag (_hidden);
+} 
+//-->
+</script>
+<noscript><br/>Required</noscript>
+
+</span>
+<script lang="javascript">
+Y.use('jquery-ui', function(Y)
+{
+var firstOption = jQuery('#TYPE').children('option:first');
+firstOption.text('Item Type');
+firstOption.attr("value", "");
+firstOption.prop("selected", "selected");
+});
+</script>
+
+<span class="cell">
+<select name="SORT_ORDER" id="SORT_ORDER">
+<option value="">Order By</option>
+<option value="name">Item Name</option>
+<option value="ascending">Price: Low to High</option>
+<option value="descending">Price: High to Low</option>
+</select>
+</span>
+<span class="cell">
+<button type="submit" class="secondary shopping-button step-button" id="SEARCH" name="SEARCH" title="Search">Go</button>
+</span>
+</form>
+</div>
+</div>
+	
+
+</div>
+
+
+
+
+
+
+
+<div class="catalog-product-table">
+
+
+
+
+<form name="PremiumList2844" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="2844" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=2844&amp;store_id=4322"  title="Click here for more information about Therapy Dog Package" >
+<span class="ShoppingTitle">Therapy Dog Package</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+Beginner Pet Obedience &amp; Level 2 Obedience &amp; Canine Good Citizen.
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$575.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<span class="Explicit"><label for="quantity_2844">Quantity:</label>&nbsp;</span>
+<input type="text"
+name="quantity"
+id="quantity_2844"
+size="3"
+maxlength="3"
+onkeypress="return submitEnter(this.form.ADD_ITEM_2844, event)"
+/>
+
+</div>
+<div class="catalog-product-button">
+<input class="add-to-cart primary step-button"
+name="ADD_TO_CART"
+id="ADD_ITEM_2844"
+class="step-button"
+type="submit"
+value="Add to Cart" title="Add to Cart"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList2842" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="2842" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=2842&amp;store_id=4322"  title="Click here for more information about Puppy Package 2" >
+<span class="ShoppingTitle">Puppy Package 2</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+This package consists of 4 Puppy Play 'n Learn classes, followed by Beginner Pet Obedience class (7 weeks), and finishes with the Level 2 class of your choice - Level 2 Obedience, Obility, Agility or Nosework.
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$525.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<span class="Explicit"><label for="quantity_2842">Quantity:</label>&nbsp;</span>
+<input type="text"
+name="quantity"
+id="quantity_2842"
+size="3"
+maxlength="3"
+onkeypress="return submitEnter(this.form.ADD_ITEM_2842, event)"
+/>
+
+</div>
+<div class="catalog-product-button">
+<input class="add-to-cart primary step-button"
+name="ADD_TO_CART"
+id="ADD_ITEM_2842"
+class="step-button"
+type="submit"
+value="Add to Cart" title="Add to Cart"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList2843" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="2843" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=2843&amp;store_id=4322"  title="Click here for more information about Dog Package" >
+<span class="ShoppingTitle">Dog Package</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+Beginner Pet Obedience &amp; Level 2 Obedience (or Agility, Obility or Nosework).
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$400.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<span class="Explicit"><label for="quantity_2843">Quantity:</label>&nbsp;</span>
+<input type="text"
+name="quantity"
+id="quantity_2843"
+size="3"
+maxlength="3"
+onkeypress="return submitEnter(this.form.ADD_ITEM_2843, event)"
+/>
+
+</div>
+<div class="catalog-product-button">
+<input class="add-to-cart primary step-button"
+name="ADD_TO_CART"
+id="ADD_ITEM_2843"
+class="step-button"
+type="submit"
+value="Add to Cart" title="Add to Cart"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList2841" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="2841" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=2841&amp;store_id=4322"  title="Click here for more information about Puppy Package 1" >
+<span class="ShoppingTitle">Puppy Package 1</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+This package consists of 4 Puppy Play 'n Learn classes, followed by Beginner Pet Obedience class (7 weeks). This package will get your puppy well-started in their training while they are cute and playful, and will carry them (and you!) through their adolescence, which can be a trying time!
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$350.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<span class="Explicit"><label for="quantity_2841">Quantity:</label>&nbsp;</span>
+<input type="text"
+name="quantity"
+id="quantity_2841"
+size="3"
+maxlength="3"
+onkeypress="return submitEnter(this.form.ADD_ITEM_2841, event)"
+/>
+
+</div>
+<div class="catalog-product-button">
+<input class="add-to-cart primary step-button"
+name="ADD_TO_CART"
+id="ADD_ITEM_2841"
+class="step-button"
+type="submit"
+value="Add to Cart" title="Add to Cart"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList6541" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="6541" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=6541&amp;store_id=4322"  title="Click here for more information about Beginner Pet Obedience (7 Weeks)" >
+<span class="ShoppingTitle">Beginner Pet Obedience (7 Weeks)</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+This class is taught in a manner that is fun for you and for your dog. Class size is limited, so you and your dog will get lots of personal attention.
+
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$245.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<input type="hidden" name="quantity" value="1" />
+
+</div>
+<div class="catalog-product-button">
+<input class="configure primary step-button"
+name="CONFIGURE_PRODUCT"
+id="ADD_ITEM_6541"
+class="step-button"
+type="submit"
+value="Configure" title="Configure"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList1541" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="1541" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=1541&amp;store_id=4322"  title="Click here for more information about Agility (6 Weeks)" >
+<span class="ShoppingTitle">Agility (6 Weeks)</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+You must get permission from the Training Coordinator to take this class if you have not taken classes at the MSPCA; email tbright@mspca.org with your dog's training history.
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$200.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<input type="hidden" name="quantity" value="1" />
+
+</div>
+<div class="catalog-product-button">
+<input class="configure primary step-button"
+name="CONFIGURE_PRODUCT"
+id="ADD_ITEM_1541"
+class="step-button"
+type="submit"
+value="Configure" title="Configure"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList1544" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="1544" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=1544&amp;store_id=4322"  title="Click here for more information about CGC Preparation Class (6 Weeks)" >
+<span class="ShoppingTitle">CGC Preparation Class (6 Weeks)</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+The &quot;Canine Good Citizen&quot; Award is a certificate bestowed by the American Kennel Club to any dog that passes a formal test that involves basic Obedience and social behaviors.
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$200.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<span class="Explicit"><label for="quantity_1544">Quantity:</label>&nbsp;</span>
+<input type="text"
+name="quantity"
+id="quantity_1544"
+size="3"
+maxlength="3"
+onkeypress="return submitEnter(this.form.ADD_ITEM_1544, event)"
+/>
+
+</div>
+<div class="catalog-product-button">
+<input class="add-to-cart primary step-button"
+name="ADD_TO_CART"
+id="ADD_ITEM_1544"
+class="step-button"
+type="submit"
+value="Add to Cart" title="Add to Cart"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList7726" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="7726" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=7726&amp;store_id=4322"  title="Click here for more information about CGC Preparation Class (6 Weeks) Updated" >
+<span class="ShoppingTitle">CGC Preparation Class (6 Weeks) Updated</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+The &quot;Canine Good Citizen&quot; Award is a certificate bestowed by the American Kennel Club to any dog that passes a formal test that involves basic Obedience and social behaviors.
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$200.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<span class="Explicit"><label for="quantity_7726">Quantity:</label>&nbsp;</span>
+<input type="text"
+name="quantity"
+id="quantity_7726"
+size="3"
+maxlength="3"
+onkeypress="return submitEnter(this.form.ADD_ITEM_7726, event)"
+/>
+
+</div>
+<div class="catalog-product-button">
+<input class="add-to-cart primary step-button"
+name="ADD_TO_CART"
+id="ADD_ITEM_7726"
+class="step-button"
+type="submit"
+value="Add to Cart" title="Add to Cart"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList1661" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="1661" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=1661&amp;store_id=4322"  title="Click here for more information about Level 2 obedience  (6 Weeks)" >
+<span class="ShoppingTitle">Level 2 obedience  (6 Weeks)</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+This class is for folks who have taken Beginner Pet Obedience at the MSPCA, and who want to continue their excellent training with our skilled instructors.
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$200.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<input type="hidden" name="quantity" value="1" />
+
+</div>
+<div class="catalog-product-button">
+<input class="configure primary step-button"
+name="CONFIGURE_PRODUCT"
+id="ADD_ITEM_1661"
+class="step-button"
+type="submit"
+value="Configure" title="Configure"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList2481" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="2481" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=2481&amp;store_id=4322"  title="Click here for more information about Nosework (6 Classes)" >
+<span class="ShoppingTitle">Nosework (6 Classes)</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+&quot;Nosework&quot; is the next big thing in dog training! It is a fun sport that involves teaching your dog to follow his nose to find different scents. Based upon the work that police and bomb- and airport-sniffing dogs do, you dog learns first to find the box that has food in it. Over repeated lessons, the food is then paired with a scent, and the dog continues the hunt!  The result is a dog who can search a space for that particular smell. Dogs LOVE this sport, as sniffing is something they were born to do! You will smile with pride as you watch your dog learn how to, well...be such a DOG!
+
+Your dog will be crated or waiting in your car when it is not their turn; this is the only prerequisite for the class.
+
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$200.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<input type="hidden" name="quantity" value="1" />
+
+</div>
+<div class="catalog-product-button">
+<input class="configure primary step-button"
+name="CONFIGURE_PRODUCT"
+id="ADD_ITEM_2481"
+class="step-button"
+type="submit"
+value="Configure" title="Configure"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList6321" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="6321" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=6321&amp;store_id=4322"  title="Click here for more information about Obedience Unlimited (6 weeks)" >
+<span class="ShoppingTitle">Obedience Unlimited (6 weeks)</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+Obedience Unlimited features behaviors that make up a well-trained dog. The instructor relies on known (and fun) techniques from the competition Obedience community; however, this is not a class about competition; it is about reliability.
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$200.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<input type="hidden" name="quantity" value="1" />
+
+</div>
+<div class="catalog-product-button">
+<input class="configure primary step-button"
+name="CONFIGURE_PRODUCT"
+id="ADD_ITEM_6321"
+class="step-button"
+type="submit"
+value="Configure" title="Configure"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList1681" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="1681" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=1681&amp;store_id=4322"  title="Click here for more information about Obility (6 Weeks)" >
+<span class="ShoppingTitle">Obility (6 Weeks)</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+Please make sure when you purchase this class you select the check box next to the class time.
+
+&quot;Obility&quot; is a word coined to describe the pre-requisite skills needed by a dog and their handler to play the fun and fast-growing sport of Canine Agility. In this class, you and your dog will learn behavioral shaping games involving standing on things that move; they will also learn to jump and go through tunnels. Even more important, they will learn to stay and watch their handler and play games while other dogs jump and go through tunnels.
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$200.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<input type="hidden" name="quantity" value="1" />
+
+</div>
+<div class="catalog-product-button">
+<input class="configure primary step-button"
+name="CONFIGURE_PRODUCT"
+id="ADD_ITEM_1681"
+class="step-button"
+type="submit"
+value="Configure" title="Configure"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList7724" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="7724" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=7724&amp;store_id=4322"  title="Click here for more information about Practical Precision Obedience-multiple classes" >
+<span class="ShoppingTitle">Practical Precision Obedience-multiple classes</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+In this class, you will learn to transform traditional Obedience behaviors into daily practical usage: at home, at the vet, and in your community.
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$200.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<input type="hidden" name="quantity" value="1" />
+
+</div>
+<div class="catalog-product-button">
+<input class="configure primary step-button"
+name="CONFIGURE_PRODUCT"
+id="ADD_ITEM_7724"
+class="step-button"
+type="submit"
+value="Configure" title="Configure"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList2261" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="2261" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=2261&amp;store_id=4322"  title="Click here for more information about Rally Obedience (6 Weeks)" >
+<span class="ShoppingTitle">Rally Obedience (6 Weeks)</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+Rally Obedience is a fun sport that combines the precision of competition Obedience with the fun of Agility. 
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$200.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<input type="hidden" name="quantity" value="1" />
+
+</div>
+<div class="catalog-product-button">
+<input class="configure primary step-button"
+name="CONFIGURE_PRODUCT"
+id="ADD_ITEM_2261"
+class="step-button"
+type="submit"
+value="Configure" title="Configure"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList1461" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="1461" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=1461&amp;store_id=4322"  title="Click here for more information about Puppy Play 'n Learn Boston (4 Weeks)" >
+<span class="ShoppingTitle">Puppy Play 'n Learn Boston (4 Weeks)</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+Research has shown that the early weeks of a puppy's life are crucial to social development, with other dogs and with people.
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$150.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<input type="hidden" name="quantity" value="1" />
+
+</div>
+<div class="catalog-product-button">
+<input class="configure primary step-button"
+name="CONFIGURE_PRODUCT"
+id="ADD_ITEM_1461"
+class="step-button"
+type="submit"
+value="Configure" title="Configure"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList5941" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="5941" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=5941&amp;store_id=4322"  title="Click here for more information about 4 week level 2.5 class" >
+<span class="ShoppingTitle">4 week level 2.5 class</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+4 week level 2.5 class
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$130.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<input type="hidden" name="quantity" value="1" />
+
+</div>
+<div class="catalog-product-button">
+<input class="configure primary step-button"
+name="CONFIGURE_PRODUCT"
+id="ADD_ITEM_5941"
+class="step-button"
+type="submit"
+value="Configure" title="Configure"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList8050" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="8050" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=8050&amp;store_id=4322"  title="Click here for more information about Try-It (4 Weeks)" >
+<span class="ShoppingTitle">Try-It (4 Weeks)</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+Looking for something fun to learn with your dog but not sure what, exactly?  
+
+Come and try a little Agility, a little Nosework, a little Rally Obedience, and some trick-training. A smorgasbord of training fun!
+
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$130.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<span class="Explicit"><label for="quantity_8050">Quantity:</label>&nbsp;</span>
+<input type="text"
+name="quantity"
+id="quantity_8050"
+size="3"
+maxlength="3"
+onkeypress="return submitEnter(this.form.ADD_ITEM_8050, event)"
+/>
+
+</div>
+<div class="catalog-product-button">
+<input class="add-to-cart primary step-button"
+name="ADD_TO_CART"
+id="ADD_ITEM_8050"
+class="step-button"
+type="submit"
+value="Add to Cart" title="Add to Cart"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList7725" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="7725" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=7725&amp;store_id=4322"  title="Click here for more information about Whistle Recall Class!" >
+<span class="ShoppingTitle">Whistle Recall Class!</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+Does your dog come when you call them? Every time? If they don't , here is a novel new way to teach them- with a whistle! In this 4-week class, your dog will learn that when you blow the whistle, they should come running! We will supply the whistle; you supply the dog!
+
+You must get permission from the Training Coordinator to take this class if you have not taken classes at the MSPCA; email mbishop@mspca.org with your dog's training history.
+
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$130.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<span class="Explicit"><label for="quantity_7725">Quantity:</label>&nbsp;</span>
+<input type="text"
+name="quantity"
+id="quantity_7725"
+size="3"
+maxlength="3"
+onkeypress="return submitEnter(this.form.ADD_ITEM_7725, event)"
+/>
+
+</div>
+<div class="catalog-product-button">
+<input class="add-to-cart primary step-button"
+name="ADD_TO_CART"
+id="ADD_ITEM_7725"
+class="step-button"
+type="submit"
+value="Add to Cart" title="Add to Cart"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList4421" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="4421" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=4421&amp;store_id=4322"  title="Click here for more information about Agility Run-Throughs" >
+<span class="ShoppingTitle">Agility Run-Throughs</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+If your dog can perform all of the agility obstacles safely, and you do not need instruction, you may pay $100 and do 4 run-throughs of the obstacles.
+
+
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$100.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<input type="hidden" name="quantity" value="1" />
+
+</div>
+<div class="catalog-product-button">
+<input class="configure primary step-button"
+name="CONFIGURE_PRODUCT"
+id="ADD_ITEM_4421"
+class="step-button"
+type="submit"
+value="Configure" title="Configure"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList7544" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="7544" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=7544&amp;store_id=4322"  title="Click here for more information about Kitten Kindergarten (4 Weeks)" >
+<span class="ShoppingTitle">Kitten Kindergarten (4 Weeks)</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+The kittens will learn to socialize with other kittens and people, as well as learn some training skills, such as being handled and groomed, etc.
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$100.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<span class="Explicit"><label for="quantity_7544">Quantity:</label>&nbsp;</span>
+<input type="text"
+name="quantity"
+id="quantity_7544"
+size="3"
+maxlength="3"
+onkeypress="return submitEnter(this.form.ADD_ITEM_7544, event)"
+/>
+
+</div>
+<div class="catalog-product-button">
+<input class="add-to-cart primary step-button"
+name="ADD_TO_CART"
+id="ADD_ITEM_7544"
+class="step-button"
+type="submit"
+value="Add to Cart" title="Add to Cart"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList5001" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="5001" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=5001&amp;store_id=4322"  title="Click here for more information about Sniff-Thru" >
+<span class="ShoppingTitle">Sniff-Thru</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+This will be a practice event; you will be doing searches on the MSPCA/Angell property with your dog which conform to competition guidelines. The fee is $40 for the whole event.
+
+
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$40.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<span class="Explicit"><label for="quantity_5001">Quantity:</label>&nbsp;</span>
+<input type="text"
+name="quantity"
+id="quantity_5001"
+size="3"
+maxlength="3"
+onkeypress="return submitEnter(this.form.ADD_ITEM_5001, event)"
+/>
+
+</div>
+<div class="catalog-product-button">
+<input class="add-to-cart primary step-button"
+name="ADD_TO_CART"
+id="ADD_ITEM_5001"
+class="step-button"
+type="submit"
+value="Add to Cart" title="Add to Cart"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList7727" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="7727" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=7727&amp;store_id=4322"  title="Click here for more information about Kitten Kindergarten  Updated" >
+<span class="ShoppingTitle">Kitten Kindergarten  Updated</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+The kittens will learn to socialize with other kittens and people, as well as learn some training skills, such as being handled and groomed, etc.
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$50 for 2 classes, $95 for 4 classes</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<input type="hidden" name="quantity" value="1" />
+
+</div>
+<div class="catalog-product-button">
+<input class="configure primary step-button"
+name="CONFIGURE_PRODUCT"
+id="ADD_ITEM_7727"
+class="step-button"
+type="submit"
+value="Configure" title="Configure"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList6361" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="6361" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=6361&amp;store_id=4322"  title="Click here for more information about TEST PRODUCT-NO PURCHASE" >
+<span class="ShoppingTitle">TEST PRODUCT-NO PURCHASE</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+test
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$0.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<span class="Explicit"><label for="quantity_6361">Quantity:</label>&nbsp;</span>
+<input type="text"
+name="quantity"
+id="quantity_6361"
+size="3"
+maxlength="3"
+onkeypress="return submitEnter(this.form.ADD_ITEM_6361, event)"
+/>
+
+</div>
+<div class="catalog-product-button">
+<input class="add-to-cart primary step-button"
+name="ADD_TO_CART"
+id="ADD_ITEM_6361"
+class="step-button"
+type="submit"
+value="Add to Cart" title="Add to Cart"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<form name="PremiumList7723" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post"  class="catalog-product-row">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="product_id" value="7723" />
+<input type="hidden" value="0" name="PROXY_TYPE"/>
+<input type="hidden" value="0" name="PROXY_ID"/>
+<input type="hidden" value="0" name="FR_ID"/>
+<div class="catalog-info-primary no_image">
+<div class="catalog-product-title">
+<a class="Smaller" href="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?VIEW_PRODUCT=true&amp;product_id=7723&amp;store_id=4322"  title="Click here for more information about TEST-NO PURCHASE 2" >
+<span class="ShoppingTitle">TEST-NO PURCHASE 2</span></br>
+</a>
+</div>
+</div>
+<div class="catalog-info-secondary no_image">
+<div class="catalog-product-desc mobile-hide">
+teswt
+</div>
+</div>
+<div class="catalog-product-price">
+
+<span class="ShoppingPrice">$0.00</span>&nbsp;
+
+</div>
+
+<div class="catalog-product-purchase">
+<div class="catalog-product-quantity">
+
+<span class="Explicit"><label for="quantity_7723">Quantity:</label>&nbsp;</span>
+<input type="text"
+name="quantity"
+id="quantity_7723"
+size="3"
+maxlength="3"
+onkeypress="return submitEnter(this.form.ADD_ITEM_7723, event)"
+/>
+
+</div>
+<div class="catalog-product-button">
+<input class="add-to-cart primary step-button"
+name="ADD_TO_CART"
+id="ADD_ITEM_7723"
+class="step-button"
+type="submit"
+value="Add to Cart" title="Add to Cart"
+onClick="if (this.form.quantity.value == '') { this.form.quantity.value = 1; }"
+/>
+</div>
+</div>
+
+</form>
+
+
+
+
+
+</div>
+
+
+
+
+<form id="CatalogBottom" name="CatalogBottom" action="https://secure2.convio.net/mspca/site/Ecommerce/2058665581?store_id=4322" method="post">
+<input type="hidden" name="store_id" value="4322" />
+<input type="hidden" name="PROXY_TYPE" value="0"/>
+<input type="hidden" name="PROXY_ID" value="0"/>
+<input type="hidden" name="FR_ID" value="0"/>
+
+
+<div id="bottom_buttons" class="shopping-buttons-container">
+
+<button type="submit" id="view_cart_button" class="step-button shopping-button secondary" name="VIEW_CART">View Contents of Cart</button>
+<button type="submit" id="checkout_button" class="step-button shopping-button secondary" name="GO_TO_CHECKOUT">Proceed to Checkout</button>
+
+<button type="submit" id="cancel_button" class="step-button shopping-button tertiary" name="CANCEL_ALL">Cancel</button>
+
+</div>
+
+
+</form>
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+</body>
+
+</html>

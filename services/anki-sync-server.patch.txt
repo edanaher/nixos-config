@@ -1,0 +1,40 @@
+diff -urN AnkiServer/apps/sync_app.py AnkiServer/apps/sync_app.py
+--- old/AnkiServer/apps/sync_app.py	2016-10-21 22:14:27.672485051 +0200
++++ new/AnkiServer/apps/sync_app.py	2016-10-26 23:18:24.287625612 +0200
+@@ -471,6 +471,7 @@
+             os.rename(temp_db_path, session.get_collection_path())
+         finally:
+             col.reopen()
++            col.load()
+ 
+         # If everything went fine, run hook_upload if one is defined.
+         if self.hook_upload is not None:
+@@ -488,6 +489,7 @@
+             data = open(session.get_collection_path(), 'rb').read()
+         finally:
+             col.reopen()
++            col.load()
+         return data
+ 
+     @wsgify
+diff -urN AnkiServer/collection.py AnkiServer/collection.py
+--- old/AnkiServer/collection.py	2016-10-21 22:14:27.672485051 +0200
++++ new/AnkiServer/collection.py	2016-10-23 10:38:47.869428818 +0200
+@@ -75,7 +75,7 @@
+             else:
+                 raise
+ 
+-        col = anki.storage.Collection(self.path)
++        col = anki.storage.Collection(self.path, server=True)
+ 
+         # Do any special setup
+         if self.setup_new_collection is not None:
+@@ -87,7 +87,7 @@
+         """Open the collection, or create it if it doesn't exist."""
+         if self.__col is None:
+             if os.path.exists(self.path):
+-                self.__col = anki.storage.Collection(self.path)
++                self.__col = anki.storage.Collection(self.path, server=True)
+             else:
+                 self.__col = self.__create_collection()
+ 
