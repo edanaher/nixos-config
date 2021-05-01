@@ -8,7 +8,7 @@
       extraModules = [ pkgs.pulseaudio-modules-bt ];
     };
     hardware.bluetooth.enable = true;
-    hardware.bluetooth.config = {
+    hardware.bluetooth.settings = {
       General.Enable = "Source,Sink,Media,Socket";
     };
 #    hardware.pulseaudio.configFile = pkgs.writeText "default.pa" ''
