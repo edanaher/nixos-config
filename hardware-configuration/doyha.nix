@@ -157,6 +157,10 @@
           ${xinput} set-prop $MOUSE 'Device Accel Velocity Scaling' 0.6
         done
       '' }"
+
+      ACTION=="add", ATTRS{id/vendor}=="055a", ATTRS{id/product}=="0998", ATTRS{capabilities/ev}=="120013", ATTRS{phys}=="usb-0000:00:14.0-14/input0", SYMLINK+="input/by-id/foot-pedal-back"
+      #-%n-%k-$attr{capabilities/ev}"
+      ACTION=="add", ATTRS{id/vendor}=="055a", ATTRS{id/product}=="0998", ATTRS{capabilities/ev}=="120013", ATTRS{phys}!="usb-0000:00:14.0-14/input0", SYMLINK+="input/by-id/foot-pedal-front"
   '';
 
   services.udev.extraHwdb = ''
@@ -169,10 +173,10 @@
      KEYBOARD_KEY_90003=f16 #pageup
 
     # foot switch
-    evdev:input:b*v055Ap0998*
-     KEYBOARD_KEY_7001e=4 # left
-     KEYBOARD_KEY_7001f=5 # mid
-     KEYBOARD_KEY_70020=6 # right
+#    evdev:input:b*v055Ap0998*
+#     KEYBOARD_KEY_7001e=3 # left
+#     KEYBOARD_KEY_7001f=5 # mid
+#     KEYBOARD_KEY_70020=6 # right
 
     # noppoo
     evdev:input:b*v0483p5100*
