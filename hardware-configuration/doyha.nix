@@ -132,7 +132,7 @@
       pkgs.writeShellScript "setupKeyboard" ''
         export DISPLAY=:0
         export XAUTHORITY=/home/edanaher/.Xauthority
-        ${pkgs.xorg.setxkbmap}/bin/setxkbmap us -variant altgr-intl >> /dev/udevdebug 2>&1
+        ${pkgs.xorg.setxkbmap}/bin/setxkbmap us -variant altgr-intl
         ${pkgs.xorg.xset}/bin/xset r rate 300 34
       '' }"
 
@@ -140,7 +140,7 @@
       pkgs.writeShellScript "setupKeyboard" ''
         export DISPLAY=:0
         export XAUTHORITY=/home/edanaher/.Xauthority
-        ${pkgs.xorg.setxkbmap}/bin/setxkbmap us -variant altgr-intl >> /dev/udevdebug 2>&1
+        ${pkgs.xorg.setxkbmap}/bin/setxkbmap us -variant altgr-intl
         ${pkgs.xorg.xset}/bin/xset r rate 300 34
       '' }"
 
@@ -151,13 +151,11 @@
         export XAUTHORITY=/home/edanaher/.Xauthority
         sleep 1
         for MOUSE in `${xinput} --list | grep Swiftpoint | grep -v Z\ Keyboard | sed 's/.*id=\([0-9]*\).*/\1/'`; do
-          echo fixing $MOUSE >> /tmp/udevdebug
           ${xinput} set-prop $MOUSE 'Device Accel Profile' 2
           ${xinput} set-prop $MOUSE 'Device Accel Constant Deceleration' 1.4
           ${xinput} set-prop $MOUSE 'Device Accel Adaptive Deceleration' 1.6
           ${xinput} set-prop $MOUSE 'Device Accel Velocity Scaling' 0.6
         done
-        date >> /tmp/udevdebug
       '' }"
   '';
 
