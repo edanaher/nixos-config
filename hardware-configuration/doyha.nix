@@ -125,5 +125,61 @@
   nix.maxJobs = lib.mkDefault 12;
   powerManagement.cpuFreqGovernor = "powersave";
 
-  boot.kernelPackages = pkgs.linuxPackages_5_2;
+  boot.kernelPackages = pkgs.linuxPackages_5_4;
+
+  services.udev.extraRules = ''
+    ACTION=="add", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2303", RUN+="${
+      pkgs.writeShellScript "setupKeyboard" ''
+        export DISPLAY=:0
+        export XAUTHORITY=/home/edanaher/.Xauthority
+        ${pkgs.xorg.setxkbmap}/bin/setxkbmap us -variant altgr-intl >> /dev/udevdebug 2>&1
+        ${pkgs.xorg.xset}/bin/xset r rate 300 34
+      '' }"
+
+    ACTION=="add", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5100", RUN+="${
+      pkgs.writeShellScript "setupKeyboard" ''
+        export DISPLAY=:0
+        export XAUTHORITY=/home/edanaher/.Xauthority
+        ${pkgs.xorg.setxkbmap}/bin/setxkbmap us -variant altgr-intl >> /dev/udevdebug 2>&1
+        ${pkgs.xorg.xset}/bin/xset r rate 300 34
+      '' }"
+
+    ACTION=="add", ATTRS{idVendor}=="214e", ATTRS{idProduct}=="0005", RUN+="${
+      let xinput = "${pkgs.xorg.xinput}/bin/xinput"; in
+      pkgs.writeShellScript "setupSwiftpoint" ''
+        export DISPLAY=:0
+        export XAUTHORITY=/home/edanaher/.Xauthority
+        sleep 1
+        for MOUSE in `${xinput} --list | grep Swiftpoint | grep -v Z\ Keyboard | sed 's/.*id=\([0-9]*\).*/\1/'`; do
+          echo fixing $MOUSE >> /tmp/udevdebug
+          ${xinput} set-prop $MOUSE 'Device Accel Profile' 2
+          ${xinput} set-prop $MOUSE 'Device Accel Constant Deceleration' 1.4
+          ${xinput} set-prop $MOUSE 'Device Accel Adaptive Deceleration' 1.6
+          ${xinput} set-prop $MOUSE 'Device Accel Velocity Scaling' 0.6
+        done
+        date >> /tmp/udevdebug
+      '' }"
+  '';
+
+  services.udev.extraHwdb = ''
+    ACTION=="add|change", KERNEL=="event[0-9]*", ATTRS{idVendor}=="05f3", ATTRS{idProduct}=="00ff", ENV{ID_INPUT_KEYBOARD}="1"
+
+    # infinity foot pedal
+    evdev:input:b*v05F3p00FF*
+     KEYBOARD_KEY_90001=f14 #pagedown
+     KEYBOARD_KEY_90002=f15 #down
+     KEYBOARD_KEY_90003=f16 #pageup
+
+    # foot switch
+    evdev:input:b*v055Ap0998*
+     KEYBOARD_KEY_7001e=4 # left
+     KEYBOARD_KEY_7001f=5 # mid
+     KEYBOARD_KEY_70020=6 # right
+
+    # noppoo
+    evdev:input:b*v0483p5100*
+     KEYBOARD_KEY_70029=capslock
+     KEYBOARD_KEY_70039=esc
+     KEYBOARD_KEY_70046=f13
+  '';
 }
