@@ -13,10 +13,11 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = [ "zfs" ];
+  services.zfs.autoScrub.enable = true;
 
   networking.hostId = "f587ff94";
 
-  boot.kernelParams = [ "pci=noaer" /*"i915.enable_fbc=0" */];
+  boot.kernelParams = [ "pci=noaer" "zfs.zfs_arc_max=17179869184" /*"i915.enable_fbc=0" */];
   services.xserver.videoDrivers = lib.mkForce ["intel"];
   /*services.xserver.drivers = [{
     name = "intel";
@@ -26,15 +27,28 @@
   }];*/
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e9bf5566-4a48-4505-a1a2-ba54ed4e9df3";
-      fsType = "btrfs";
-      options = [ "subvol=@" "compress" "noatime" ];
+    { device = "zfsroot/root";
+      fsType = "zfs";
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/e9bf5566-4a48-4505-a1a2-ba54ed4e9df3";
-      fsType = "btrfs";
-      options = [ "subvol=@home" "compress" "noatime" ];
+    { device = "zfsroot/home";
+      fsType = "zfs";
+    };
+
+  fileSystems."/home/edanaher" =
+    { device = "zfsroot/home/edanaher";
+      fsType = "zfs";
+    };
+
+  fileSystems."/nix/store" =
+    { device = "zfsroot/nix/store";
+      fsType = "zfs";
+    };
+
+  fileSystems."/build" =
+    { device = "zfsroot/build";
+      fsType = "zfs";
     };
 
   fileSystems."/boot" =
@@ -67,11 +81,11 @@
       options = [ "nofail" "noatime" ];
     };
 
-  fileSystems."/mnt/kelly-bak" =
-    { device = "/dev/mapper/vgvagafah-kelly--bak";
-      fsType = "ext4";
-      options = [ "nofail" "noatime" ];
-    };
+#    fileSystems."/mnt/kelly-bak" =
+#    { device = "/dev/mapper/vgvagafah-kelly--bak";
+#      fsType = "ext4";
+#      options = [ "nofail" "noatime" ];
+#    };
 
   fileSystems."/mnt/external" =
     { device = "/dev/disk/by-uuid/6d5f4267-2d60-4cd6-b623-3b96793b3529";
@@ -103,10 +117,10 @@
       options = [ "noatime" "nofail" "noauto" "user" ];
     };
 
-  boot.initrd.luks.devices."btrfs".device = "/dev/disk/by-uuid/efa8285a-df23-47e6-b2e3-9fd930f5b295";
-  boot.initrd.luks.devices."btrfs".preLVM = false;
+#  boot.initrd.luks.devices."btrfs".device = "/dev/disk/by-uuid/efa8285a-df23-47e6-b2e3-9fd930f5b295";
+#  boot.initrd.luks.devices."btrfs".preLVM = false;
 
-  swapDevices = [ { device = "/dev/mapper/vgmain-swap"; } ];
+  swapDevices = [ { device = "/dev/disk/by-id/nvme-Samsung_SSD_960_EVO_1TB_S3ETNB0J406507V-part4"; } ];
 
   nix.maxJobs = lib.mkDefault 12;
   powerManagement.cpuFreqGovernor = "powersave";

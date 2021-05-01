@@ -32,9 +32,11 @@
     '';
     users.groups.audio.members = [ "root" "edanaher" ];
     users.groups.lp.members = [ "pulse" "edanaher" ];
+    users.groups.dialout.members = [ "edanaher" ];
 
     host.virtualbox.enable = false;
-    #virtualisation.anbox.enable = true;
+    virtualisation.anbox.enable = true;
+    #virtualisation.anbox.extraInit = "export DISPLAY=:5";
 
     services.openssh.forwardX11 = true;
     networking.firewall.allowedTCPPorts = [ 445 139 ];  # Samba
@@ -45,7 +47,8 @@
     ];
 
     networking.extraHosts = ''
-      192.168.12.205 deretheni
+      192.168.12.204 deretheni-old
+      192.168.12.128 deretheni
       169.254.94.126 gemedetw
     '';
 
@@ -86,12 +89,29 @@
     programs.adb.enable = true;
     users.users.edanaher.extraGroups = ["adbusers"];
 
+    services.minidlna = {
+      enable = false;
+      announceInterval = 60;
+      mediaDirs = [ "/mnt/bak/deretheni/camera-all/" ];
+    };
 
     # *sigh*
-    services.postgresql.enable = true;
+    services.postgresql = {
+      enable = true;
+      ensureUsers = [{
+        name = "edanaher";
+        ensurePermissions = { "ALL TABLES IN SCHEMA public" = "ALL PRIVILEGES"; };
+      }];
+      ensureDatabases = [ "edanaher" ];
+    };
 
     users.extraUsers.kduncan = {
+      isNormalUser = true;
       uid = 1001;
     };
+
+    services.xserver.serverFlagsSection = ''
+      Option "MaxClients" "2048"
+    '';
   };
 }
