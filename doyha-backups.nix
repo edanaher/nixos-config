@@ -27,7 +27,7 @@ in
       frequent = 2*24*4;
       hourly = 14*24;
       daily = 120;
-      weekly = 104;
+      weekly = 52;
       monthly = 1200;
     };
 

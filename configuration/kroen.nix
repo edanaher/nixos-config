@@ -12,7 +12,7 @@ in
 
   config = {
     host.name = "kroen";
-    nix.buildCores = 4;
+    nix.settings.cores = 4;
     networking.hostId = "65c89bd7";
     host.class ="laptop";
     services.exim.enable = true;

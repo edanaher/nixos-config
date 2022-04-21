@@ -6,8 +6,8 @@
     time.timeZone = "America/New_York";
     host.exim.class = "client";
     environment.systemPackages = [ pkgs.firejail ];
-    security.wrappers = {
-      firejail.source = "${pkgs.firejail}/bin/firejail";
-    };
+#    security.wrappers = {
+#      firejail.source = "${pkgs.firejail}/bin/firejail";
+#    };
   };
 }

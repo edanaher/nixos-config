@@ -26,8 +26,8 @@ in
       fvwm_gestures
       hsetroot
       rxvt_unicode-with-plugins
-      xlibs.xmodmap
-      xlibs.xev
+      xorg.xmodmap
+      xorg.xev
     ];
   };
 }

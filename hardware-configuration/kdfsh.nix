@@ -33,7 +33,7 @@
 
     swapDevices = [ ];
 
-    nix.maxJobs = lib.mkDefault 1;
+    nix.settings.max-jobs = lib.mkDefault 1;
   }
   (lib.mkForce {
     # xen-domU.nix wants to use grub 2; override that here.

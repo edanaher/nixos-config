@@ -13,7 +13,7 @@
     host.boot-type = "efi";
     host.samba.enable = true;
     host.doyha-backups.enable = true;
-    nix.buildCores = 6;
+    nix.settings.cores = 6;
     services.exim.enable = true;
 
     host.pulseaudio.enable = true;
@@ -35,7 +35,8 @@
     users.groups.dialout.members = [ "edanaher" ];
 
     host.virtualbox.enable = false;
-    virtualisation.anbox.enable = true;
+    #virtualisation.waydroid.enable = true;
+    #virtualisation.anbox.enable = true;
     #virtualisation.anbox.extraInit = "export DISPLAY=:5";
 
     services.openssh.forwardX11 = true;
@@ -113,5 +114,17 @@
     services.xserver.serverFlagsSection = ''
       Option "MaxClients" "2048"
     '';
+
+    #programs.steam.enable = true;
+    #nixpkgs.config.packageOverrides = pkgs: {
+    #  steam = pkgs.steam.override {
+    #    nativeOnly = true;
+    #  };
+    #};
+    #nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    #     "steam"
+    #     "steam-original"
+    #     "steam-runtime"
+    #   ];
   };
 }

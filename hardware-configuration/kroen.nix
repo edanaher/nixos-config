@@ -36,5 +36,5 @@
     [ { device = "/dev/sda7"; }
     ];
 
-  nix.maxJobs = 4;
+  nix.settings.max-jobs = 4;
 }

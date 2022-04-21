@@ -73,9 +73,8 @@
     umount.source = "${pkgs.utillinux}/bin/umount";
   };
 
-  nix.useSandbox = true;
-  nix.daemonNiceLevel = 10;
-  nix.daemonIONiceLevel = 3;
+  nix.settings.sandbox = true;
+  nix.daemonIOSchedPriority = 3;
 
 
   boot.kernel.sysctl."vm.swappiness" = 1;
