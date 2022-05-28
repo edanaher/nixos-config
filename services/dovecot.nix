@@ -13,9 +13,7 @@
     };
     security.acme.certs."dovecot-kdf.sh" ={
       domain = "kdf.sh";
-      user = "root";
       group = "dovecot2";
-      allowKeysForGroup = true;
       webroot = config.security.acme.certs."kdf.sh".webroot;
       postRun = "systemctl reload dovecot2";
       email = "dovecotcert@kdf.sh";

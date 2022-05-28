@@ -10,9 +10,7 @@ let cfg = config.host.exim;
       services.exim.config = import ./kdfsh-conf.nix { inherit smtp-to-xmpp; };
       security.acme.certs."exim-kdf.sh" ={
         domain = "kdf.sh";
-        user = "root";
         group = "exim";
-        allowKeysForGroup = true;
         webroot = config.security.acme.certs."kdf.sh".webroot;
         postRun = "systemctl reload exim";
       };

@@ -53,6 +53,7 @@ in
     };
 
     users.users.willcaltrainsucktoday = {
+      isSystemUser = true;
       description = "User to run the willcaltrainsucktoday daemon";
     };
 

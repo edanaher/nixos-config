@@ -24,7 +24,10 @@ in
 
     systemd.services.init-rsvp-ceremony = rsvp.service;
 
-    users.users.rsvpsite.description = "User to run the ceremony rsvp site";
+    users.users.rsvpsite = {
+      isSystemUser = true;
+      description = "User to run the ceremony rsvp site";
+    };
   };
   options = {
     host.ceremony-rsvp.enable = lib.mkOption {

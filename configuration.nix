@@ -78,6 +78,9 @@
   nix.daemonNiceLevel = 10;
   nix.daemonIONiceLevel = 3;
 
+  security.acme.email = "ssl@edanaher.net";
+  security.acme.acceptTerms = true;
+
   boot.kernel.sysctl."vm.swappiness" = 1;
   system.stateVersion = "18.09";
 }

@@ -95,6 +95,7 @@ in
     };
 
     users.users.ankisync = {
+      isSystemUser = true;
       description = "User to run the anki-sync service";
     };
   };

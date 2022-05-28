@@ -26,7 +26,10 @@ in
     systemd.services.update-angell-classes = angell-packages.service;
     systemd.timers.update-angell-classes = utils.simple-timer "daily" "Scrape updates for Angell classes daily";
 
-    users.users.angell.description = "User to run the angell-class-monitor script";
+    users.users.angell = {
+      isSystemUser = true;
+      description = "User to run the angell-class-monitor script";
+    };
 
     services.postgresql.authentication = ''
       local angell angell md5
