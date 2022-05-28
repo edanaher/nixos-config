@@ -70,10 +70,11 @@ in
     services.nginx.virtualHosts = {
       "ankisync.kdf.sh" = {
         enableACME = true;
-        #forceSSL = true;
+        addSSL = true;
         locations = {
           "/" = {
             proxyPass = "http://127.0.0.1:${toString anki-port}";
+            extraConfig = "client_max_body_size 64M;";
           };
         };
       };
