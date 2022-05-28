@@ -2,11 +2,12 @@
 
 let
   secrets = import ../secrets.nix;
-  lwt = pkgs.stdenv.mkDerivation {
-    name = "learing-with-texts-1.6.2";
+  lwt = pkgs.stdenv.mkDerivation rec {
+    version = "1.6.2";
+    name = "learing-with-texts-${version}";
 		src = pkgs.fetchzip {
-			url = https://downloads.sourceforge.net/project/lwt/lwt_v_1_6_2.zip;
-      sha256 = "036m8wng0xf783f0ddxl5fj0rymi2qaviq05l2p98vw7jfdxbwgn";
+			url = "https://downloads.sourceforge.net/project/lwt/lwt_v_${builtins.replaceStrings ["."] ["_"] version}.zip";
+      sha256 = "0yiww7q2zkrzf3yawm5g5249kc9jssx49vywy86z5a7d54q1zn5p";
       stripRoot = false;
 		};
 

@@ -4,9 +4,9 @@
   config = lib.mkMerge [{
       networking.nat.enable = true;
       networking.nat.internalInterfaces = ["ve-+" "tap-boogihn"];
-      networking.nat.externalInterface = "wlp9s0";
+      networking.nat.externalInterface = "wlp9s0"; # TOOO: parameterize for primary interface.
 
-      virtualisation.docker.enable = true;
+      virtualisation.docker.enable = false;
       virtualisation.docker.storageDriver = "btrfs";
       networking.firewall.extraCommands = ''
         iptables -A INPUT -p tcp --dport 25 -s 10.233.1.2 -j ACCEPT
@@ -19,23 +19,23 @@
     (lib.mkIf config.host.virtualbox.enable {
       virtualisation.virtualbox.host.enable = true;
     })
-    (lib.mkIf (config.host.name == "doyha") {
+    (lib.mkIf (config.host.samba.enable) {
       services.samba.enable = true;
       services.samba.extraConfig = ''
-         guest ok = yes
-         guest only = yes
-         valid users = edanaher
-         guest account = edanaher
+         guest ok = no
+         guest only = no
+         valid users = edanaher kduncan
          force user = edanaher
          security = user
-         bind interfaces only = yes
-         interfaces = lo tap-boogihn
 
          load printers = no
          printing = bsd
          printcap name = /dev/null
          disable spoolss = yes
          acl allow execute always = true
+         ntlm auth = true
+
+         smb2 max credits 32768
       '';
       services.samba.shares = {
         transfer = {
@@ -46,6 +46,24 @@
           "valid users" = "edanaher";
           "force user" = "edanaher";
         };
+        camera-all = {
+          path = "/mnt/bak/deretheni/camera-all/";
+          browseable = "yes";
+          comment = "Backup of all deretheni pictures";
+          "read only" = "yes";
+          "valid users" = "edanaher";
+          "force user" = "edanaher";
+        };
+        kduncan-bak = {
+          path = "/mnt/kelly-bak/";
+          browseable = "yes";
+          comment = "Kelly's backup";
+          "read only" = "no";
+          "valid users" = "kduncan";
+          "force user" = "kduncan";
+          "fruit:appl" = "yes";
+#          "vfs objects" = "catia fruit streams_xattr";
+        };
       };
     })
   ];
@@ -55,6 +73,14 @@
       type = lib.types.bool;
       default = true;
       description = "Enable virtualbox";
+    };
+  };
+
+  options.host.samba = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable samba";
     };
   };
 }

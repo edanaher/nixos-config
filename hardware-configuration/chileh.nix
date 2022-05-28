@@ -94,5 +94,5 @@
     [ { device = "/dev/sdc1"; }
     ];
 
-  nix.maxJobs = lib.mkDefault 4;
+  nix.settings.max-jobs = lib.mkDefault 4;
 }

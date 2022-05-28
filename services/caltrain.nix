@@ -42,8 +42,8 @@ in
         serverAliases = [ "willcaltrainsucktoday.com" "www.willcaltrainsucktoday.com" ];
         locations."/".proxyPass = "http://localhost:8083";
         onlySSL = true;
-        sslCertificate = /var/lib/acme/kdf.sh/fullchain.pem;
-        sslCertificateKey = /var/lib/acme/kdf.sh/key.pem;
+        sslCertificate = "/var/lib/acme/kdf.sh/fullchain.pem";
+        sslCertificateKey = "/var/lib/acme/kdf.sh/key.pem";
         extraConfig = ''
           listen 80;
           listen [::]:80;

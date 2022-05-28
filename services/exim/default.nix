@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let cfg = config.host.exim;
-    secrets = import ../secrets.nix;
+    secrets = import ../../secrets.nix;
     smtp-to-xmpp = import /home/edanaher/smtp-to-xmpp { inherit pkgs; };
     client-config = lib.mkIf (cfg.enable && cfg.class == "client")  {
       services.exim.config = import ./client-conf.nix { inherit secrets; };

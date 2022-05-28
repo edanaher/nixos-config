@@ -8,7 +8,7 @@ in
   config = lib.mkIf config.host.doyha-backups.enable {
     systemd.services.backup-deretheni = {
       description = "Backup deretheni";
-      path = with pkgs; [ borgbackup bup rsync openssh exim ];
+      path = with pkgs; [ borgbackup bup rsync openssh exim parallel ];
       wants = [ "network-online.target" ];
       serviceConfig = {
         User = "edanaher";
@@ -21,17 +21,27 @@ in
 
     systemd.timers.backup-deretheni = utils.simple-timer "daily" "Backup deretheni daily";
 
-    systemd.services.snapshot-doyha-edanaher = {
-      description = "Snapshot doyha homedir";
-      path = with pkgs; [ btrfs-progs ];
-      wants = [ "network-online.target" ];
-      serviceConfig = {
-        User = "root";
-        ExecStart = periodimail.wrap { interval = two-days; script = "/home/edanaher/bin/bin/do_snapshot_home"; service = "snapshot-doyha-edanaher"; };
-      };
+    services.zfs.autoSnapshot = {
+      enable = true;
+      flags = "-k -p --utc";
+      frequent = 2*24*4;
+      hourly = 14*24;
+      daily = 90;
+      weekly = 26;
+      monthly = 1200;
     };
 
-    systemd.timers.snapshot-doyha-edanaher = utils.simple-timer "hourly" "Snapshot doyha homedir hourly";
+#    systemd.services.snapshot-doyha-edanaher = {
+#      description = "Snapshot doyha homedir";
+#      path = with pkgs; [ btrfs-progs ];
+#      wants = [ "network-online.target" ];
+#      serviceConfig = {
+#        User = "root";
+#        ExecStart = periodimail.wrap { interval = two-days; script = "/home/edanaher/bin/bin/do_snapshot_home"; service = "snapshot-doyha-edanaher"; };
+#      };
+#    };
+#
+#    systemd.timers.snapshot-doyha-edanaher = utils.simple-timer "hourly" "Snapshot doyha homedir hourly";
 
     systemd.services.snapshot-doyha-edanaher-to-borg = {
       description = "Copy doyha homedir snapshots to borg";

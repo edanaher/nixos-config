@@ -1,20 +1,14 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, lib, pkgs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration
+    [
       ./backports.nix
       ./host
-      ./hostname.nix
       ./doyha-backups.nix
       ./containers.nix
-      ./exim
       ./pulseaudio
+      ./services
       ./xserver.nix
     ];
 
@@ -47,6 +41,8 @@
   services.openssh.enable = true;
   programs.mosh.enable = true;
 
+  programs.ssh.startAgent = true;
+
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
@@ -56,7 +52,7 @@
   users.extraUsers.edanaher = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "audio" "docker" "wheel" ];
+    extraGroups = [ "audio" "docker" "wheel" "input" ];
   };
 
   networking.extraHosts = ''
@@ -74,9 +70,9 @@
     umount.source = "${pkgs.utillinux}/bin/umount";
   };
 
-  nix.useSandbox = true;
-  nix.daemonNiceLevel = 10;
-  nix.daemonIONiceLevel = 3;
+  nix.settings.sandbox = true;
+  nix.daemonIOSchedPriority = 3;
+
 
   security.acme.email = "ssl@edanaher.net";
   security.acme.acceptTerms = true;
