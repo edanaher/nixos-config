@@ -24,18 +24,16 @@ in
     services.mysql.enable = true;
     services.mysql.package = pkgs.mysql;
     services.phpfpm.pools.lwt = {
-      listen = "/var/run/lwt-php.sock";
       user = "nobody";
-      extraConfig = ''
-        user = nobody
-        listen.group = "nginx"
-        pm = dynamic
-        pm.max_children = 75
-        pm.start_servers = 3
-        pm.min_spare_servers = 2
-        pm.max_spare_servers = 5
-        pm.max_requests = 500
-      '';
+      settings = {
+        "listen.group" = "nginx";
+        "pm" = "dynamic";
+        "pm.max_children" = 75;
+        "pm.start_servers" = 3;
+        "pm.min_spare_servers" = 2;
+        "pm.max_spare_servers" = 5;
+        "pm.max_requests" = 500;
+      };
     };
 		services.nginx.virtualHosts = {
       "lwt.edanaher.net" = {
@@ -57,7 +55,7 @@ in
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
               fastcgi_param REQUEST_URI $request_uri;
               fastcgi_index index.php;
-              fastcgi_pass unix:${config.services.phpfpm.pools.lwt.listen};
+              fastcgi_pass unix:${config.services.phpfpm.pools.lwt.socket};
             '';
           };
         };
