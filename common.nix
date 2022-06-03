@@ -70,8 +70,8 @@
     umount.source = "${pkgs.utillinux}/bin/umount";
   };
 
-  nix.settings.sandbox = true;
-  nix.daemonIOSchedPriority = 3;
+  nix.useSandbox = true;
+  #nix.daemonIOSchedPriority = 3;
 
 
   security.acme.email = "ssl@edanaher.net";

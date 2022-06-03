@@ -8,9 +8,9 @@
       extraModules = [ pkgs.pulseaudio-modules-bt ];
     };
     hardware.bluetooth.enable = true;
-    hardware.bluetooth.settings = {
-      General.Enable = "Source,Sink,Media,Socket";
-    };
+    #hardware.bluetooth.settings = {
+    #  General.Enable = "Source,Sink,Media,Socket";
+    #};
 #    hardware.pulseaudio.configFile = pkgs.writeText "default.pa" ''
 #      load-module module-bluetooth-policy
 #      load-module module-bluetooth-discover

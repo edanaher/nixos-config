@@ -4,14 +4,18 @@ let
   secrets = import ../secrets.nix;
   lwt = pkgs.stdenv.mkDerivation rec {
     version = "1.6.2";
-    name = "learing-with-texts-${version}";
+    name = "learning-with-texts-${version}";
 		src = pkgs.fetchzip {
-			url = "https://downloads.sourceforge.net/project/lwt/lwt_v_${builtins.replaceStrings ["."] ["_"] version}.zip";
-      sha256 = "0yiww7q2zkrzf3yawm5g5249kc9jssx49vywy86z5a7d54q1zn5p";
+			url = "https://downloads.sourceforge.net/project/learning-with-texts/learning_with_texts_${builtins.replaceStrings ["."] ["_"] version}_complete.zip";
+      sha256 = "0n3bwzi5nanpjkdiyz4h1w08wmi26x155db145wkavf2fdwaf2vz";
       stripRoot = false;
 		};
 
-  buildPhase = "echo";
+  buildInputs = [ pkgs.unzip ];
+  buildPhase = ''
+    rm README.txt LWT_INSTALLATION.txt
+    unzip lwt_v*.zip
+    '';
 
   installPhase = ''
     mkdir -p $out

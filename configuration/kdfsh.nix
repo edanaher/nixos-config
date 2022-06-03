@@ -41,6 +41,12 @@
         { from = 5269; to = 5269; }  # XMPP (prosody)
         { from = 5222; to = 5222; }  # XMPP (prosody)
       ];
+
+      security.acme.email = "ssl@edanaher.net";
+      security.acme.acceptTerms = true;
+
+      system.stateVersion = "18.09";
+
     };
 
 }
