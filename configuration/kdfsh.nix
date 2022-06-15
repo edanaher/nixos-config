@@ -5,6 +5,7 @@
     ../common.nix
     ./_server.nix
     ../hardware-configuration/kdfsh.nix
+    ../upgrade-postgres.nix
   ];
 
     config = {
@@ -21,6 +22,7 @@
       host.angell-classes.enable = true;
       host.nowaytopreventthis.enable = true;
       host.ctfwsinthepark.enable = true;
+      host.babybuddy.enable = true;
 
       networking.interfaces.eth0 = {
         ipv6Address = "2605:2700:0:5::4713:9cf2";
@@ -44,6 +46,8 @@
 
       security.acme.email = "ssl@edanaher.net";
       security.acme.acceptTerms = true;
+
+      services.postgresql.package = pkgs.postgresql_12;
 
       system.stateVersion = "18.09";
 

@@ -19,6 +19,7 @@
     ./ctfwsinthepark.nix
     ./ankisync.nix
     ./ceremony-rsvp.nix
+    ./babybuddy
     ./exim
   ];
 }

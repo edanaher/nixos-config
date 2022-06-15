@@ -1,6 +1,7 @@
 {config, lib, pkgs, ...}:
 
 let
+  secrets = import ../../secrets.nix;
   mach-nix = import (builtins.fetchGit {
     url = "https://github.com/DavHau/mach-nix";
     ref = "refs/tags/3.4.0";
@@ -11,9 +12,9 @@ from .base import *
 # Production settings
 # See babybuddy.settings.base for additional settings information.
 
-SECRET_KEY = "ff9e289b26bf01e0b921554ac91eec93f52997c48b33106dc"
+SECRET_KEY = "${secrets.babybuddy.django-secret}"
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["localhost", "baby.edanaher.net"]
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -41,10 +42,10 @@ MEDIA_ROOT = "/home/babybuddy/media"
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
 #TODO: Disable this.
-CSRF_TRUSTED_ORIGINS = ["http://localhost:8089"]
+#CSRF_TRUSTED_ORIGINS = ["http://localhost:8089"]
 
 #TODO: Disable this.
-DEBUG=True
+#DEBUG=True
 
 '';
 requirements = ''
@@ -119,6 +120,7 @@ babybuddy-python = mach-nix.mkPython { inherit requirements; };
 # babybuddy-python = pkgs.python39.withPackages (p: with p; [ gunicorn django python-dotenv django-axes ]);
 in
 {
+  imports = [ ./backup.nix ];
   config = lib.mkIf config.host.babybuddy.enable {
     services.nginx.enable = true;
 
@@ -156,8 +158,8 @@ in
 
     services.nginx.virtualHosts = {
       "baby.edanaher.net" = {
-        #enableACME = true;
-        #forceSSL = true;
+        enableACME = true;
+        forceSSL = true;
         locations."/".proxyPass = "http://localhost:8000";
       };
     };

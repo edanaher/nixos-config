@@ -20,6 +20,7 @@ let
   installPhase = ''
     mkdir -p $out
     cp -ax * $out
+    ls -l $out/
     mv $out/connect_xampp.inc.php $out/connect.inc.php
   '';
   };

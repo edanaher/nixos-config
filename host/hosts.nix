@@ -164,6 +164,7 @@ let
       host.ctfwsinthepark.enable = true;
       host.ankisync.enable = true;
       host.ceremony-rsvp.enable = true;
+      host.babybuddy.enabl = true;
 
       networking.interfaces.eth0 = {
         ipv6.addresses = [ { address = "2605:2700:0:5::4713:9cf2"; prefixLength = 64; } ] ;
