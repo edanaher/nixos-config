@@ -100,6 +100,7 @@
     # *sigh*
     services.postgresql = {
       enable = true;
+      package = pkgs.postgresql_11;
       ensureUsers = [{
         name = "edanaher";
         ensurePermissions = { "ALL TABLES IN SCHEMA public" = "ALL PRIVILEGES"; };
