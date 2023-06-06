@@ -6,8 +6,8 @@ let
     version = "1.6.2";
     name = "learning-with-texts-${version}";
 		src = pkgs.fetchzip {
-			url = "https://downloads.sourceforge.net/project/learning-with-texts/learning_with_texts_${builtins.replaceStrings ["."] ["_"] version}_complete.zip";
-      sha256 = "0n3bwzi5nanpjkdiyz4h1w08wmi26x155db145wkavf2fdwaf2vz";
+			url = "https://downloads.sourceforge.net/project/learning-with-texts/Old_Versions/lwt_v_${builtins.replaceStrings ["."] ["_"] version}.zip";
+      sha256 = "0n3bwzi5nanpjkdiyz4h1w08wmi26x155db145wkavf2fdwaf2vq";
       stripRoot = false;
 		};
 
