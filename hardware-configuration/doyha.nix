@@ -47,7 +47,7 @@
     };
 
   fileSystems."/build" =
-    { device = "zfsroot/build";
+    { device = "zfs4/build";
       fsType = "zfs";
     };
 
