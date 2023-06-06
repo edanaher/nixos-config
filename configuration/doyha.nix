@@ -33,6 +33,7 @@
     users.groups.audio.members = [ "root" "edanaher" ];
     users.groups.lp.members = [ "pulse" "edanaher" ];
     users.groups.dialout.members = [ "edanaher" ];
+    users.groups.exim.members = [ "exim" "edanaher" ];
 
     host.virtualbox.enable = false;
     #virtualisation.waydroid.enable = true;
