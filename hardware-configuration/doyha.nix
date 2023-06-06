@@ -166,6 +166,7 @@
     ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="feed", ATTRS{idProduct}=="6065", ATTRS{manufacturer}=="OLKB", SYMLINK+="ttyPLANCK0"
     ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="feed", ATTRS{idProduct}=="3621", ATTRS{manufacturer}=="Noll Electronics LLC", SYMLINK+="ttyNOLL0"
     ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="feed", ATTRS{idProduct}=="6060", ATTRS{manufacturer}=="SOFT/HRUF", SYMLINK+="ttySOFTHRUF"
+    ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="feed", ATTRS{idProduct}=="0000", ATTRS{manufacturer}=="Diego Palacios", ATTRS{product}=="cantor", SYMLINK+="ttyCantor"
   '';
 
   services.udev.extraHwdb = ''
