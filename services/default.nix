@@ -21,5 +21,6 @@
     ./ceremony-rsvp.nix
     ./babybuddy
     ./exim
+    ./superset.nix
   ];
 }

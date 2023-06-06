@@ -15,6 +15,7 @@
     host.doyha-backups.enable = true;
     nix.settings.cores = 6;
     services.exim.enable = true;
+    host.superset.enable = true;
 
     host.pulseaudio.enable = true;
     #hardware.pulseaudio.systemWide = true;
@@ -52,6 +53,8 @@
       192.168.12.204 deretheni-old
       192.168.12.128 deretheni
       169.254.94.126 gemedetw
+      127.0.0.1      superset
+      127.0.0.1      superset.local
     '';
 
     systemd.services.check-edanaher-mail = {
