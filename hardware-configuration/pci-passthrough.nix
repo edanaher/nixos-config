@@ -15,7 +15,7 @@
   ];
 
   virtualisation.libvirtd.enable = true;
-  #virtualisation.libvirtd.enableKVM = true;
+  virtualisation.libvirtd.qemu.ovmf.enable = true;
 
   #users.groups.libvirtd.members = [ "root" "edanaher" ];
 
