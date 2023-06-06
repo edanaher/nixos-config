@@ -117,6 +117,18 @@
       Option "MaxClients" "2048"
     '';
 
+    services.yubikey-agent.enable = true;
+    services.pcscd.enable = true;
+
+
+    #services.dnsmasq = {
+    #  enable = true;
+    #  extraConfig = ''
+    #    address=/superset/192.168.122.1
+    #  '';
+    #  servers = [ "75.75.75.75" "76.76.76.76" "4.2.2.1" "1.1.1.1" ];
+    #};
+
     #programs.steam.enable = true;
     #nixpkgs.config.packageOverrides = pkgs: {
     #  steam = pkgs.steam.override {
