@@ -41,7 +41,7 @@
     #virtualisation.anbox.extraInit = "export DISPLAY=:5";
 
     services.openssh.forwardX11 = true;
-    networking.firewall.allowedTCPPorts = [ 445 139 ];  # Samba
+    networking.firewall.allowedTCPPorts = [ 80 445 139 24800 ];  # Samba, Barrier
     networking.firewall.allowedUDPPorts = [ 137 138 ];  # Samba
     networking.firewall.allowedTCPPortRanges = [
       { from = 6945; to = 6949; }  # bittorrent
