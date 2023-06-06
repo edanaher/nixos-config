@@ -125,7 +125,7 @@
   nix.settings.max-jobs = lib.mkDefault 12;
   powerManagement.cpuFreqGovernor = "powersave";
 
-  boot.kernelPackages = pkgs.linuxPackages_5_15;
+  boot.kernelPackages = pkgs.linuxPackages_6_1;
 
     #ACTION=="add", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2303", RUN+="${
     #  pkgs.writeShellScript "setupKeyboard" ''
