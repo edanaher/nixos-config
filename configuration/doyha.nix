@@ -36,7 +36,7 @@
     users.groups.exim.members = [ "exim" "edanaher" ];
 
     host.virtualbox.enable = false;
-    #virtualisation.waydroid.enable = true;
+    virtualisation.waydroid.enable = true;
     #virtualisation.anbox.enable = true;
     #virtualisation.anbox.extraInit = "export DISPLAY=:5";
 
