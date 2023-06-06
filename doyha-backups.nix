@@ -26,8 +26,8 @@ in
       flags = "-k -p --utc";
       frequent = 2*24*4;
       hourly = 14*24;
-      daily = 90;
-      weekly = 26;
+      daily = 60;
+      weekly = 13;
       monthly = 1200;
     };
 
