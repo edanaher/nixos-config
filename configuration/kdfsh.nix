@@ -18,7 +18,8 @@
       host.iodine.enable = true;
       host.randomtoby.enable = true;
       host.caltrain.enable = true;
-      host.lwt.enable = true;
+      host.lwt.enable = false;
+      host.ankisync.enable = true;
       host.angell-classes.enable = true;
       host.nowaytopreventthis.enable = true;
       host.ctfwsinthepark.enable = true;
